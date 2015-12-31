@@ -4,6 +4,7 @@ include 'Header.php';
 include 'Navigation.php';
 include 'Page.php';
 include 'PageMeta.php';
+include 'Site.php';
 
 $pagesMeta = array(
 	new PageMeta('ChipPanFire', 'index.html', 'content-homepage.phtml'),
@@ -18,19 +19,5 @@ foreach ($pagesMeta as $pageMeta) {
 	$pages[] = new Page($pageMeta, $navigation);
 }
 
-ob_start();
-foreach ($pages as $page) {
-	# code...
-	$page->render();
-	file_put_contents('site/' . $page->filename(), ob_get_contents());
-	ob_clean();
-}
-ob_end_clean();
-
-
-
-
-// Get the content that is in the buffer and put it in your file //
-
-
-
+$site = new Site($pages);
+$site->render();

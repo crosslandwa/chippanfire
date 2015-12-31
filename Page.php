@@ -1,9 +1,9 @@
 <?php
 
 class Page {
-	private $_header;
-	private $_navigation;
-	private $_meta;
+    private $_header;
+    private $_navigation;
+    private $_meta;
 
     function __construct($meta, $navigation) {
         $this->_header = new Header();
@@ -12,14 +12,14 @@ class Page {
     }
 
     function filename() {
-    	return $this->_meta->filename();
+        return $this->_meta->filename();
     }
 
     function renderContent() {
-    	require $this->_meta->contentFilename();
+        require $this->_meta->contentFilename();
     }
 
-	function render() {
-		require 'page.phtml';
-	}
+    function render() {
+        require 'page.phtml';
+    }
 }
