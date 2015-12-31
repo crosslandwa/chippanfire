@@ -20,6 +20,6 @@ class Page {
     }
 
     function render() {
-        require 'page.phtml';
+        require 'template/page.phtml';
     }
 }

@@ -11,6 +11,6 @@ class Navigation {
     }
 
 	function render() {
-		require 'navigation.phtml';
+		require 'template/navigation.phtml';
 	}
 }

@@ -3,6 +3,6 @@
 class Header {
 	function render() {
 		$this->a = '123';
-		require 'header.phtml';
+		require 'template/header.phtml';
 	}
 }
