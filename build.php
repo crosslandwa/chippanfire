@@ -1,10 +1,12 @@
 <?php
 
-include 'Header.php';
-include 'Navigation.php';
-include 'Page.php';
-include 'PageMeta.php';
-include 'Site.php';
+error_reporting(E_STRICT);
+
+include 'src/Header.php';
+include 'src/Navigation.php';
+include 'src/Page.php';
+include 'src/PageMeta.php';
+include 'src/Site.php';
 
 $pagesMeta = array(
 	new PageMeta('ChipPanFire', 'index.html', 'content-homepage.phtml'),
