@@ -4,10 +4,10 @@
   <?php echo $this->_header->render() ?>
 
   <body>
-    <?php echo $this->_navigation->render() ?>
+    <?php echo $this->_renderNavigation() ?>
 
     <div class="container main-content">
-      <?php $this->renderContent() ?>
+      <?php $this->_renderContent() ?>
     </div><!-- /.container -->
 
     <footer class="footer">

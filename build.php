@@ -15,11 +15,9 @@ $pagesMeta = array(
 	new PageMeta('Contact', 'contact.html', 'template/content-contact.phtml')
 );
 
-$navigation = new Navigation($pagesMeta);
-
 $pages = array();
 foreach ($pagesMeta as $pageMeta) {
-	$pages[] = new Page($pageMeta, $navigation);
+	$pages[] = new Page($pageMeta, new Navigation($pagesMeta, $pageMeta));
 }
 
 $site = new Site($pages);

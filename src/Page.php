@@ -15,7 +15,11 @@ class Page {
         return $this->_meta->filename();
     }
 
-    function renderContent() {
+    private function _renderNavigation() {
+        $this->_navigation->render();
+    }
+
+    private function _renderContent() {
         require $this->_meta->contentFilename();
     }
 
