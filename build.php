@@ -12,6 +12,8 @@ include 'src/Site.php';
 $pagesMeta = array(
 	new PageMeta('ChipPanFire', 'index.html', 'template/content-homepage.phtml'),
 	new PageMeta('Music', 'music.html', 'template/content-music.phtml'),
+	new PageMeta('Software', 'software.html', 'template/content-software.phtml'),
+	new PageMeta('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', 'template/content-devicesnapshotmanager.phtml'),
 	new PageMeta('Contact', 'contact.html', 'template/content-contact.phtml')
 );
 

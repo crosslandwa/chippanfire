@@ -3,7 +3,7 @@ body {
 }
 .content-block {
   padding: 15px 15px;
-  text-align: center;
+  text-align: left;
 }
 
 .footer {
@@ -20,6 +20,18 @@ body {
 .text-muted {
     color: #777;
 }
+
+.no-spill {
+    overflow: hidden;
+}
+
+.headline-image {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    max-height: 200px;
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
