@@ -1,72 +1,48 @@
-<div class="content-block">
-    <div class="col-md-12">
-        <h1><?php echo $this->title() ?></h1>
-        <p class="lead">
-            A <a href="http://www.ableton.com/maxforlive" target="_blank">Max For Live</a> device that adds the ability
-            to store and recall ‘snapshots’ of Ableton Live devices in realtime
-            <br>
-            <br>
-            <img src="http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg"
-                 alt="Device Snapshot Manager screenshot" class="headline-image">
-        </p>
+<div class="row content-block ">
+    <div class="col-md-4">
+        <h3>Buy full version</h3>
+        <p>Device Snapshot Manager is distributed as two fully editable Max For Live .amxd files – one MIDI effect
+            and one Audio effect. I intend to offer any updates for free</p>
+        <a class="btn btn btn-default" href="http://www.oronjo.com/live/next/?fi=79382" target="_blank"><img
+            src="http://www.oronjo.com/live/images/image.php?id=79382" border="0" alt=""><br>Buy Device Snapshot
+            Manager</a>
+        <br>
+        <br>
+        <form action="http://www.chippanfire.com/cpf_media/software/Device Snapshot Manager.pdf" method="GET">
+            <button type="submit" class="btn btn btn-success">Download Documentation</button>
+        </form>
     </div>
-
-    <div class="row content-block ">
-        <div class="col-md-4">
-            <h3>Buy full version</h3>
-            <p>Device Snapshot Manager is distributed as two fully editable Max For Live .amxd files – one MIDI effect
-                and one Audio effect. I intend to offer any updates for free</p>
-            <a class="btn btn btn-default" href="http://www.oronjo.com/live/next/?fi=79382" target="_blank"><img
-                src="http://www.oronjo.com/live/images/image.php?id=79382" border="0" alt=""><br>Buy Device Snapshot
-                Manager</a>
-            <br>
-            <br>
-            <form action="http://www.chippanfire.com/cpf_media/software/Device Snapshot Manager.pdf" method="GET">
-                <button type="submit" class="btn btn btn-success">Download Documentation</button>
-            </form>
-        </div>
-        <div class="col-md-4 no-spill">
-            <h3>Watch</h3>
-            <iframe width="336" height="252" src="http://www.youtube.com/embed/IIeFszBbUHc" frameborder="0"
-                    allowfullscreen=""></iframe>
-        </div>
-        <div class="col-md-4">
-            <h3>Download free demo version</h3>
-            <p>A demo can be downloaded and used for free. It is fully functional and editable, but lacks the following
-                features:</p>
-            <ul>
-                <li>Snapshot naming</li>
-                <li>Device randomisation function</li>
-                <li>Device reset function</li>
-            </ul>
-            <p>
-                <!--TODO Demo to be located on my server, not Oronjo-->
-                <a href="http://www.oronjo.com/live/next/?fi=79539" target="_blank">
-                    <button type="submit" class="btn btn btn-success">Download Demo</button>
-                </a>
-            </p>
-        </div>
+    <div class="col-md-4 no-spill">
+        <h3>Watch</h3>
+        <iframe width="336" height="252" src="http://www.youtube.com/embed/IIeFszBbUHc" frameborder="0"
+                allowfullscreen=""></iframe>
     </div>
-    <div class="col-md-12">
-        <h3>Version History</h3>
-        <h4>1.1.1</h4>
+    <div class="col-md-4">
+        <h3>Download free demo version</h3>
+        <p>A demo can be downloaded and used for free. It is fully functional and editable, but lacks the following
+            features:</p>
         <ul>
-            <li>Fixed bug where snapshots with more than 128 parameters were not fully recalled</li>
-            <li>Improved speed of JS-based Live API interactions</li>
+            <li>Snapshot naming</li>
+            <li>Device randomisation function</li>
+            <li>Device reset function</li>
         </ul>
-        <h4>1.1.0</h4>
-        <ul>
-            <li> Added ability to name snapshots</li>
-        </ul>
-    </div>
-    <div class="col-md-12 alert alert-info">
         <p>
-            <em>
-                Paid downloads from this page are managed using <a href="http://www.oronjo.com/"
-                                                                   target="_blank">Oronjo</a>. Clicking the ‘buy’ button
-                or download link will take you to the Oronjo site, where the software can be bought via Paypal (using a
-                credit card or your Paypal account)
-            </em>
+            <!--TODO Demo to be located on my server, not Oronjo-->
+            <a href="http://www.oronjo.com/live/next/?fi=79539" target="_blank">
+                <button type="submit" class="btn btn btn-primary">Download Demo</button>
+            </a>
         </p>
     </div>
+</div>
+<div class="col-md-12">
+    <h3>Version History</h3>
+    <h4>1.1.1</h4>
+    <ul>
+        <li>Fixed bug where snapshots with more than 128 parameters were not fully recalled</li>
+        <li>Improved speed of JS-based Live API interactions</li>
+    </ul>
+    <h4>1.1.0</h4>
+    <ul>
+        <li> Added ability to name snapshots</li>
+    </ul>
 </div>

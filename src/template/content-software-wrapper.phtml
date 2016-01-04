@@ -1,0 +1,25 @@
+<div class="content-block">
+    <div class="col-md-12">
+        <h1><?php echo $page->title() ?></h1>
+        <p class="lead">
+            <?php echo $this->headlineText()?>
+            <br>
+            <br>
+            <img src="<?php echo $this->headlineImage()?>"
+                 alt="<?php echo $page->title() ?> screenshot" class="headline-image">
+        </p>
+    </div>
+
+    <?php $this->_renderMainContent($page) ?>
+
+    <div class="col-md-12 alert alert-info">
+        <p>
+            <em>
+                Paid downloads from this page are managed using <a href="http://www.oronjo.com/"
+                                                                   target="_blank">Oronjo</a>. Clicking the ‘buy’ button
+                or download link will take you to the Oronjo site, where the software can be bought via Paypal (using a
+                credit card or your Paypal account)
+            </em>
+        </p>
+    </div>
+</div>

@@ -11,14 +11,19 @@ set_error_handler("exception_error_handler");
 include 'src/Header.php';
 include 'src/Navigation.php';
 include 'src/Page.php';
+include 'src/SimpleContent.php';
 include 'src/Site.php';
+include 'src/SoftwareContent.php';
+include 'src/SoftwareContentFactory.php';
 
-$software = new Page('Software', 'software.html', 'content-software.phtml');
-$m4lDSM = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', 'content-devicesnapshotmanager.phtml');
-$m4lWAI = new Page('Where Am I', 'software-m4l-where-am-i.html', 'content-whereami.phtml');
-$home = new Page('ChipPanFire', 'index.html', 'content-homepage.phtml');
-$music = new Page('Music', 'music.html', 'content-music.phtml');
-$contact = new Page('Contact', 'contact.html', 'content-contact.phtml');
+$softwareFactory = new SoftwareContentFactory();
+
+$software = new Page('Software', 'software.html', new SimpleContent('content-software.phtml'));
+$m4lDSM = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', $softwareFactory->deviceSnapshotManager());
+$m4lWAI = new Page('Where Am I', 'software-m4l-where-am-i.html', $softwareFactory->whereAmI());
+$home = new Page('ChipPanFire', 'index.html', new SimpleContent('content-homepage.phtml'));
+$music = new Page('Music', 'music.html', new SimpleContent('content-music.phtml'));
+$contact = new Page('Contact', 'contact.html', new SimpleContent('content-contact.phtml'));
 
 $allPages = array($home, $music, $software, $m4lDSM, $m4lWAI, $contact);
 $navPages = array($home, $music, $software, $contact);
