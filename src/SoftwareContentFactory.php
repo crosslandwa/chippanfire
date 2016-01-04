@@ -5,7 +5,7 @@ final class SoftwareContentFactory {
     public function deviceSnapshotManager() {
         return new SoftwareContent(
             'content-devicesnapshotmanager.phtml',
-            'A <a href="http://www.ableton.com/maxforlive" target="_blank">Max For Live</a> device that adds '
+            '<a href="http://www.ableton.com/maxforlive" target="_blank">Max For Live</a> device that adds '
                 . 'the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime',
             'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg'
         );

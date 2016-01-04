@@ -15,7 +15,7 @@ final class SoftwareContent {
         require 'template/content-software-wrapper.phtml';
     }
 
-    private function headlineText() {
+    public function headlineText() {
         return $this->_description;
     }
 

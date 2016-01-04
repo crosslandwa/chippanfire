@@ -15,12 +15,21 @@ include 'src/SimpleContent.php';
 include 'src/Site.php';
 include 'src/SoftwareContent.php';
 include 'src/SoftwareContentFactory.php';
+include 'src/SoftwareHomeContent.php';
+include 'src/SoftwareSummary.php';
 
 $softwareFactory = new SoftwareContentFactory();
 
-$software = new Page('Software', 'software.html', new SimpleContent('content-software.phtml'));
 $m4lDSM = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', $softwareFactory->deviceSnapshotManager());
 $m4lWAI = new Page('Where Am I', 'software-m4l-where-am-i.html', $softwareFactory->whereAmI());
+
+$ohDear = array(
+    new SoftwareSummary($m4lDSM, $softwareFactory->deviceSnapshotManager()),
+    new SoftwareSummary($m4lWAI, $softwareFactory->whereAmI())
+);
+
+$software = new Page('Software', 'software.html', new SoftwareHomeContent($ohDear));
+
 $home = new Page('ChipPanFire', 'index.html', new SimpleContent('content-homepage.phtml'));
 $music = new Page('Music', 'music.html', new SimpleContent('content-music.phtml'));
 $contact = new Page('Contact', 'contact.html', new SimpleContent('content-contact.phtml'));
