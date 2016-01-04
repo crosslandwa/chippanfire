@@ -2,17 +2,15 @@
 
 class Navigation {
 
-	private $_pagesMeta;
-	private $_homepage;
-	private $_activePage;
+    private $_pages;
+    private $_homepage;
 
-    function __construct($pagesMeta, $activePage) {
-        $this->_pagesMeta = $pagesMeta;
-        $this->_homepage = $this->_pagesMeta[0];
-        $this->_activePage = $activePage;
+    function __construct($pages) {
+        $this->_pages = $pages;
+        $this->_homepage = $this->_pages[0];
     }
 
-	function render() {
-		require 'template/navigation.phtml';
-	}
+    function render($currentPage) {
+        require 'template/navigation.phtml';
+    }
 }

@@ -2,28 +2,34 @@
 
 class Page {
     private $_header;
-    private $_navigation;
-    private $_meta;
+    private $_title;
+    private $_filename;
+    private $_contentFilename;
 
-    function __construct($meta, $navigation) {
+    function __construct($title, $filename, $contentFilename) {
         $this->_header = new Header();
-        $this->_navigation = $navigation;
-        $this->_meta = $meta;
+        $this->_title = $title;
+        $this->_filename = $filename;
+        $this->_contentFilename = $contentFilename;
     }
 
     function filename() {
-        return $this->_meta->filename();
+        return $this->_filename;
     }
 
-    private function _renderNavigation() {
-        $this->_navigation->render();
+    function title() {
+        return $this->_title;
+    }
+
+    function href($classes = '') {
+        return '<a class="' . $classes . '" href="' . $this->filename() . '">' . $this->title() . '</a>';
     }
 
     private function _renderContent() {
-        require $this->_meta->contentFilename();
+        require $this->_contentFilename;
     }
 
-    function render() {
+    function render($navigation) {
         require 'template/page.phtml';
     }
 }

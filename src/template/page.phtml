@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <?php echo $this->_header->render() ?>
 
   <body>
-    <?php echo $this->_renderNavigation() ?>
+    <?php echo $navigation->render($this) ?>
 
     <div class="container main-content">
       <?php $this->_renderContent() ?>
