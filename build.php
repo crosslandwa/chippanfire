@@ -8,16 +8,28 @@ function exception_error_handler($errno, $errstr, $errfile, $errline ) {
 }
 set_error_handler("exception_error_handler");
 
+// Remove HTML pages from previous build
+$oldFiles = glob('site/*.html');
+foreach ($oldFiles as $oldFile) {
+    if (is_file($oldFile)) {
+        unlink($oldFile);
+    }
+}
+
 include 'src/Header.php';
 include 'src/Navigation.php';
 include 'src/Page.php';
 include 'src/Site.php';
 
+$softwarePage = new Page('Software', 'software.html', 'template/content-software.phtml');
+
+$dsmPage = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', 'template/content-devicesnapshotmanager.phtml');
+
 $pages = array(
 	new Page('ChipPanFire', 'index.html', 'template/content-homepage.phtml'),
 	new Page('Music', 'music.html', 'template/content-music.phtml'),
-	new Page('Software', 'software.html', 'template/content-software.phtml'),
-	new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', 'template/content-devicesnapshotmanager.phtml'),
+	$softwarePage,
+	$dsmPage,
 	new Page('Contact', 'contact.html', 'template/content-contact.phtml')
 );
 
