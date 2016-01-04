@@ -26,7 +26,7 @@ final class Page {
     }
 
     private function _renderContent() {
-        require $this->_contentFilename;
+        require 'template/' . $this->_contentFilename;
     }
 
     public function render($navigation) {
