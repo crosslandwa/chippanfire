@@ -1,27 +1,27 @@
 <?php
 
-class Page {
+final class Page {
     private $_header;
     private $_title;
     private $_filename;
     private $_contentFilename;
 
-    function __construct($title, $filename, $contentFilename) {
+    public function __construct($title, $filename, $contentFilename) {
         $this->_header = new Header();
         $this->_title = $title;
         $this->_filename = $filename;
         $this->_contentFilename = $contentFilename;
     }
 
-    function filename() {
+    public function filename() {
         return $this->_filename;
     }
 
-    function title() {
+    private function title() {
         return $this->_title;
     }
 
-    function href($classes = '') {
+    public function href($classes = '') {
         return '<a class="' . $classes . '" href="' . $this->filename() . '">' . $this->title() . '</a>';
     }
 
@@ -29,7 +29,7 @@ class Page {
         require $this->_contentFilename;
     }
 
-    function render($navigation) {
+    public function render($navigation) {
         require 'template/page.phtml';
     }
 }

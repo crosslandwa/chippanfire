@@ -1,8 +1,7 @@
 <?php
 
-class Header {
-	function render() {
-		$this->a = '123';
-		require 'template/header.phtml';
-	}
+final class Header {
+    public function render() {
+        require 'template/header.phtml';
+    }
 }
