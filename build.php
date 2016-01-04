@@ -13,17 +13,15 @@ include 'src/Navigation.php';
 include 'src/Page.php';
 include 'src/Site.php';
 
-$softwarePage = new Page('Software', 'software.html', 'template/content-software.phtml');
-$dsmPage = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', 'template/content-devicesnapshotmanager.phtml');
+$software = new Page('Software', 'software.html', 'template/content-software.phtml');
+$dsm = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', 'template/content-devicesnapshotmanager.phtml');
+$home = new Page('ChipPanFire', 'index.html', 'template/content-homepage.phtml');
+$music = new Page('Music', 'music.html', 'template/content-music.phtml');
+$contact = new Page('Contact', 'contact.html', 'template/content-contact.phtml');
 
-$pages = array(
-    new Page('ChipPanFire', 'index.html', 'template/content-homepage.phtml'),
-    new Page('Music', 'music.html', 'template/content-music.phtml'),
-    $softwarePage,
-    $dsmPage,
-    new Page('Contact', 'contact.html', 'template/content-contact.phtml')
-);
+$allPages = array($home, $music, $software, $dsm, $contact);
+$navPages = array($home, $music, $software, $contact);
 
-$site = new Site($pages);
+$site = new Site($allPages, new Navigation($navPages));
 $site->clearLastBuild();
 $site->render();

@@ -2,9 +2,11 @@
 
 final class Site {
     private $_pages;
+    private $_navigation;
 
-    public function __construct($pages) {
+    public function __construct($pages, $navigation) {
         $this->_pages = $pages;
+        $this->_navigation = $navigation;
     }
 
     /**
@@ -22,7 +24,7 @@ final class Site {
     public function render() {
         ob_start();
         foreach ($this->_pages as $page) {
-            $page->render(new Navigation($this->_pages));
+            $page->render($this->_navigation);
             file_put_contents('site/' . $page->filename(), ob_get_contents());
             ob_clean();
         }
