@@ -20,15 +20,19 @@ include 'src/SoftwareSummary.php';
 
 $softwareFactory = new SoftwareContentFactory();
 
+
+// TODO yuk - sort this. All into factory?
 $m4lDSM = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', $softwareFactory->deviceSnapshotManager());
 $m4lWAI = new Page('Where Am I', 'software-m4l-where-am-i.html', $softwareFactory->whereAmI());
+$kmkControlScript = new Page('KMK Control Script', 'https://github.com/crosslandwa/kmkControl', $softwareFactory->kmkControlScript());
 
-$ohDear = array(
+$softwareSummaries = array(
     new SoftwareSummary($m4lDSM, $softwareFactory->deviceSnapshotManager()),
-    new SoftwareSummary($m4lWAI, $softwareFactory->whereAmI())
+    new SoftwareSummary($m4lWAI, $softwareFactory->whereAmI()),
+    new SoftwareSummary($kmkControlScript, $softwareFactory->kmkControlScript())
 );
 
-$software = new Page('Software', 'software.html', new SoftwareHomeContent($ohDear));
+$software = new Page('Software', 'software.html', new SoftwareHomeContent($softwareSummaries));
 
 $home = new Page('ChipPanFire', 'index.html', new SimpleContent('content-homepage.phtml'));
 $music = new Page('Music', 'music.html', new SimpleContent('content-music.phtml'));

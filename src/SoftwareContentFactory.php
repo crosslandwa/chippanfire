@@ -19,4 +19,12 @@ final class SoftwareContentFactory {
             'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg'
         );
     }
+
+    public function kmkControlScript() {
+        return new SoftwareContent(
+            null,
+            'In-depth control of <a href="http://www.ableton.com" target="_blank">Ableton Live</a> using the Korg Microkontrol (greatly improved on that offered natively).',
+            'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg'
+        );
+    }
 }
