@@ -24,12 +24,14 @@ $softwareFactory = new SoftwareContentFactory();
 // TODO yuk - sort this. All into factory?
 $m4lDSM = new Page('Device Snapshot Manager', 'software-m4l-device-snapshot-manager.html', $softwareFactory->deviceSnapshotManager());
 $m4lWAI = new Page('Where Am I', 'software-m4l-where-am-i.html', $softwareFactory->whereAmI());
+$wacNetworkMidi = new Page('Wac Network MIDI', 'software-wac-network-midi.html', $softwareFactory->wacNetworkMidi());
 $kmkControlScript = new Page('KMK Control Script', 'https://github.com/crosslandwa/kmkControl', $softwareFactory->kmkControlScript());
 
 $softwareSummaries = array(
     new SoftwareSummary($m4lDSM, $softwareFactory->deviceSnapshotManager()),
     new SoftwareSummary($m4lWAI, $softwareFactory->whereAmI()),
-    new SoftwareSummary($kmkControlScript, $softwareFactory->kmkControlScript())
+    new SoftwareSummary($kmkControlScript, $softwareFactory->kmkControlScript()),
+    new SoftwareSummary($wacNetworkMidi, $softwareFactory->wacNetworkMidi())
 );
 
 $software = new Page('Software', 'software.html', new SoftwareHomeContent($softwareSummaries));
@@ -38,7 +40,7 @@ $home = new Page('ChipPanFire', 'index.html', new SimpleContent('content-homepag
 $music = new Page('Music', 'music.html', new SimpleContent('content-music.phtml'));
 $contact = new Page('Contact', 'contact.html', new SimpleContent('content-contact.phtml'));
 
-$allPages = array($home, $music, $software, $m4lDSM, $m4lWAI, $contact);
+$allPages = array($home, $music, $software, $m4lDSM, $m4lWAI, $wacNetworkMidi, $contact);
 $navPages = array($home, $music, $software, $contact);
 
 $site = new Site($allPages, new Navigation($navPages));

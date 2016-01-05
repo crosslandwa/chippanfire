@@ -27,4 +27,12 @@ final class SoftwareContentFactory {
             'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg'
         );
     }
+
+    public function wacNetworkMidi() {
+        return new SoftwareContent(
+            'content-wacnetworkmidi.phtml',
+            'Cross-platform (Win and OSX) tool built with <a rel="nofollow" href="http://www.cycling74.com/" target="_blank">MaxMSP</a> for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.',
+            'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png'
+        );
+    }
 }
