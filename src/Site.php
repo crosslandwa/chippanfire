@@ -59,17 +59,28 @@ final class Site {
                 'location' => 'internal',
                 'content' => new SimpleContent('content-contact.phtml')
             ),
+            'software' => array(
+                'title' => 'Software',
+                'href' => 'software.html',
+                'location' => 'internal'
+            ),
         );
 
-        $pages = array();
+        $internalPages = array();
         $softwareSummaries = array();
         foreach ($pagesMeta as $key => $p) {
             $link = call_user_func('Link::' . $p['location'], $p['title'], $p['href']);
 
-            $page = new Page($p['title'], $p['href'], $p['content'], $link);
+            if ($key === 'software') {
+                $content = new SoftwareHomeContent($softwareSummaries);
+            } else {
+                $content = $p['content'];
+            }
+
+            $page = new Page($p['title'], $p['href'], $content, $link);
 
             if ($p['location'] === 'internal') {
-                $pages[$key] = $page;
+                $internalPages[$key] = $page;
             }
 
             if (isset($p['has_summary']) && $p['has_summary']) {
@@ -77,12 +88,8 @@ final class Site {
             }
         }
 
-        // TODO keep moving into above pattern
-        $pages['software'] = new Page('Software', 'software.html', new SoftwareHomeContent($softwareSummaries), Link::internal('Software', 'software.html'));
-
-        $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
-
-        return new Site($pages, new Navigation($navPages));
+        $navPages = array($internalPages['home'], $internalPages['music'], $internalPages['software'], $internalPages['contact']);
+        return new Site($internalPages, new Navigation($navPages));
     }
 
     /**
