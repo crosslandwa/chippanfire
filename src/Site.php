@@ -16,80 +16,66 @@ final class Site {
             'm4lDSM' => array(
                 'title' => 'Device Snapshot Manager',
                 'href' => 'software-m4l-device-snapshot-manager.html',
-                'location' => 'internal',
                 'content' => $softwareFactory->deviceSnapshotManager(),
-                'has_summary' => true
             ),
             'm4lWAI' => array(
                 'title' => 'Where Am I',
                 'href' => 'software-m4l-where-am-i.html',
-                'location' => 'internal',
                 'content' => $softwareFactory->whereAmI(),
-                'has_summary' => true
-            ),
-            'kmkControlScript' => array(
-                'title' => 'KMK Control Script',
-                'href' => 'https://github.com/crosslandwa/kmkControl',
-                'location' => 'external',
-                'content' => $softwareFactory->kmkControlScript(),
-                'has_summary' => true
             ),
             'wacNetworkMidi' => array(
                 'title' => 'Wac Network MIDI',
                 'href' => 'software-wac-network-midi.html',
-                'location' => 'internal',
                 'content' => $softwareFactory->wacNetworkMidi(),
-                'has_summary' => true
             ),
             'home' => array(
                 'title' => 'ChipPanFire',
                 'href' => 'index.html',
-                'location' => 'internal',
                 'content' => new SimpleContent('content-homepage.phtml')
             ),
             'music' => array(
                 'title' => 'Music',
                 'href' => 'music.html',
-                'location' => 'internal',
                 'content' => new SimpleContent('content-music.phtml')
             ),
             'contact' => array(
                 'title' => 'Contact',
                 'href' => 'contact.html',
-                'location' => 'internal',
                 'content' => new SimpleContent('content-contact.phtml')
-            ),
-            'software' => array(
-                'title' => 'Software',
-                'href' => 'software.html',
-                'location' => 'internal'
             ),
         );
 
-        $internalPages = array();
-        $softwareSummaries = array();
+        $pageLinks = array();
         foreach ($pagesMeta as $key => $p) {
-            $link = call_user_func('Link::' . $p['location'], $p['title'], $p['href']);
-
-            if ($key === 'software') {
-                $content = new SoftwareHomeContent($softwareSummaries);
-            } else {
-                $content = $p['content'];
-            }
-
-            $page = new Page($p['title'], $p['href'], $content, $link);
-
-            if ($p['location'] === 'internal') {
-                $internalPages[$key] = $page;
-            }
-
-            if (isset($p['has_summary']) && $p['has_summary']) {
-                $softwareSummaries[] = new SoftwareSummary($page, $p['content']);
-            }
+            $pageLinks[$key] = Link::internal($p['title'], $p['href']);
         }
 
-        $navPages = array($internalPages['home'], $internalPages['music'], $internalPages['software'], $internalPages['contact']);
-        return new Site($internalPages, new Navigation($navPages));
+        $kmk = array(
+            'title' => 'KMK Control Script',
+            'href' => 'https://github.com/crosslandwa/kmkControl',
+            'content' => $softwareFactory->kmkControlScript(),
+        );
+
+        $softwareSummaries = array();
+        forEach (array('m4lDSM', 'm4lWAI', 'wacNetworkMidi') as $key) {
+            $softwareSummaries[] = new SoftwareSummary($pageLinks[$key], $pagesMeta[$key]['content']);
+        }
+        $softwareSummaries[] = new SoftwareSummary(Link::external($kmk['title'], $kmk['href']), $kmk['content']);
+
+        $pagesMeta['software'] = array(
+            'title' => 'Software',
+            'href' => 'software.html',
+            'content' => new SoftwareHomeContent($softwareSummaries)
+        );
+        $pageLinks['software'] = Link::internal($pagesMeta['software']['title'], $pagesMeta['software']['href']);
+
+        $pages = array();
+        foreach ($pagesMeta as $key => $p) {
+            $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $pageLinks[$key]);
+        }
+
+        $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
+        return new Site($pages, new Navigation($navPages));
     }
 
     /**

@@ -1,16 +1,16 @@
 <?php
 
 final class SoftwareSummary {
-    private $_page;
+    private $_link;
     private $_content;
 
-    public function __construct(Page $page, SoftwareContent $content) {
-        $this->_page = $page;
+    public function __construct(Link $link, SoftwareContent $content) {
+        $this->_link = $link;
         $this->_content = $content;
     }
 
     public function href() {
-        return $this->_page->href();
+        return $this->_link;
     }
 
     public function headlineText() {
