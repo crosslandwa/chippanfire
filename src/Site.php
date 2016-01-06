@@ -16,25 +16,28 @@ final class Site {
             'm4lDSM' => array(
                 'title' => 'Device Snapshot Manager',
                 'href' => 'software-m4l-device-snapshot-manager.html',
+                'location' => 'internal',
                 'content' => $softwareFactory->deviceSnapshotManager(),
                 'has_summary' => true
             ),
             'm4lWAI' => array(
                 'title' => 'Where Am I',
                 'href' => 'software-m4l-where-am-i.html',
+                'location' => 'internal',
                 'content' => $softwareFactory->whereAmI(),
                 'has_summary' => true
             ),
             'kmkControlScript' => array(
                 'title' => 'KMK Control Script',
                 'href' => 'https://github.com/crosslandwa/kmkControl',
-                'is_external' => true,
+                'location' => 'external',
                 'content' => $softwareFactory->kmkControlScript(),
                 'has_summary' => true
             ),
             'wacNetworkMidi' => array(
                 'title' => 'Wac Network MIDI',
                 'href' => 'software-wac-network-midi.html',
+                'location' => 'internal',
                 'content' => $softwareFactory->wacNetworkMidi(),
                 'has_summary' => true
             ),
@@ -43,11 +46,7 @@ final class Site {
         $pages = array();
         $softwareSummaries = array();
         foreach ($pagesMeta as $key => $p) {
-            if (isset($p['is_external']) && $p['is_external']) {
-                $link = Link::external($p['title'], $p['href']);
-            } else {
-                $link = Link::internal($p['title'], $p['href']);
-            }
+            $link = call_user_func('Link::' . $p['location'], $p['title'], $p['href']);
 
             $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $link);
 
