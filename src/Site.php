@@ -18,6 +18,7 @@ final class Site {
         $pages['software'] = $pageFactory->software();
         $pages['m4lWAI'] = $pageFactory->m4lWAI();
         $pages['m4lDSM'] = $pageFactory->m4lDSM();
+        $pages['m4lMCM'] = $pageFactory->m4lMCM();
         $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
 
         $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);

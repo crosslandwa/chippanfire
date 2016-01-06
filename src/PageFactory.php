@@ -35,7 +35,7 @@ class PageFactory {
         $title = 'Software';
         $href = 'software.html';
 
-        $linkedPages = array($this->m4lDSM(), $this->m4lWAI(), $this->kmkControlScript(), $this->wacNetworkMidi());
+        $linkedPages = array($this->m4lDSM(), $this->m4lWAI(), $this->m4lMCM(), $this->kmkControlScript(), $this->wacNetworkMidi());
 
         return new Page($title, $href, new SoftwareHomeContent($linkedPages), Link::internal($title, $href));
     }
@@ -60,6 +60,18 @@ class PageFactory {
             'content-whereami.phtml',
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg'
+        );
+        return new Page($title, $href, $content, Link::internal($title, $href), $headlineText);
+    }
+
+    public function m4lMCM() {
+        $title = 'MIDI Clip Modulo';
+        $href = 'software-m4l-midi-clip-modulo.html';
+        $headlineText = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips.";
+        $content = new SoftwareContent(
+            'content-midiclipmodulo.phtml',
+            $headlineText,
+            'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg'
         );
         return new Page($title, $href, $content, Link::internal($title, $href), $headlineText);
     }
