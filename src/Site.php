@@ -12,36 +12,12 @@ final class Site {
     public final static function create() {
         $pageFactory = new PageFactory();
 
-        $pagesMeta = array(
-            'home' => array(
-                'title' => 'ChipPanFire',
-                'href' => 'index.html',
-                'content' => new SimpleContent('content-homepage.phtml')
-            ),
-            'music' => array(
-                'title' => 'Music',
-                'href' => 'music.html',
-                'content' => new SimpleContent('content-music.phtml')
-            ),
-            'contact' => array(
-                'title' => 'Contact',
-                'href' => 'contact.html',
-                'content' => new SimpleContent('content-contact.phtml')
-            ),
-        );
-
-        $pageLinks = array();
-        foreach ($pagesMeta as $key => $p) {
-            $pageLinks[$key] = Link::internal($p['title'], $p['href']);
-        }
-
-        $pages = array();
-        foreach ($pagesMeta as $key => $p) {
-            $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $pageLinks[$key]);
-        }
+        $pages['home'] = $pageFactory->home();
+        $pages['music'] = $pageFactory->music();
+        $pages['contact'] = $pageFactory->contact();
+        $pages['software'] = $pageFactory->software();
         $pages['m4lWAI'] = $pageFactory->m4lWAI();
         $pages['m4lDSM'] = $pageFactory->m4lDSM();
-        $pages['software'] = $pageFactory->software();
         $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
 
         $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);

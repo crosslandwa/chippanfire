@@ -13,6 +13,24 @@ class PageFactory {
         $this->_maxMSP = Link::external('MaxMSP', 'http://www.cycling74.com/');
     }
 
+    public function home() {
+        $title = 'ChipPanFire';
+        $href = 'index.html';
+        return new Page($title, $href, new SimpleContent('content-homepage.phtml'), Link::internal($title, $href));
+    }
+
+    public function music() {
+        $title = 'Music';
+        $href = 'music.html';
+        return new Page($title, $href, new SimpleContent('content-music.phtml'), Link::internal($title, $href));
+    }
+
+    public function contact() {
+        $title = 'Contact';
+        $href = 'contact.html';
+        return new Page($title, $href, new SimpleContent('content-contact.phtml'), Link::internal($title, $href));
+    }
+
     public function software() {
         $title = 'Software';
         $href = 'software.html';
