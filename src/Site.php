@@ -41,6 +41,24 @@ final class Site {
                 'content' => $softwareFactory->wacNetworkMidi(),
                 'has_summary' => true
             ),
+            'home' => array(
+                'title' => 'ChipPanFire',
+                'href' => 'index.html',
+                'location' => 'internal',
+                'content' => new SimpleContent('content-homepage.phtml')
+            ),
+            'music' => array(
+                'title' => 'Music',
+                'href' => 'music.html',
+                'location' => 'internal',
+                'content' => new SimpleContent('content-music.phtml')
+            ),
+            'contact' => array(
+                'title' => 'Contact',
+                'href' => 'contact.html',
+                'location' => 'internal',
+                'content' => new SimpleContent('content-contact.phtml')
+            ),
         );
 
         $pages = array();
@@ -48,24 +66,23 @@ final class Site {
         foreach ($pagesMeta as $key => $p) {
             $link = call_user_func('Link::' . $p['location'], $p['title'], $p['href']);
 
-            $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $link);
+            $page = new Page($p['title'], $p['href'], $p['content'], $link);
+
+            if ($p['location'] === 'internal') {
+                $pages[$key] = $page;
+            }
 
             if (isset($p['has_summary']) && $p['has_summary']) {
-                $softwareSummaries[] = new SoftwareSummary($pages[$key], $p['content']);
+                $softwareSummaries[] = new SoftwareSummary($page, $p['content']);
             }
         }
 
         // TODO keep moving into above pattern
-        $software = new Page('Software', 'software.html', new SoftwareHomeContent($softwareSummaries), Link::internal('Software', 'software.html'));
+        $pages['software'] = new Page('Software', 'software.html', new SoftwareHomeContent($softwareSummaries), Link::internal('Software', 'software.html'));
 
-        $home = new Page('ChipPanFire', 'index.html', new SimpleContent('content-homepage.phtml'), Link::internal('ChipPanFire', 'index.html'));
-        $music = new Page('Music', 'music.html', new SimpleContent('content-music.phtml'), Link::internal('Music', 'music.html'));
-        $contact = new Page('Contact', 'contact.html', new SimpleContent('content-contact.phtml'), Link::internal('Contact', 'contact.html'));
+        $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
 
-        $allPages = array($home, $music, $software, $pages['m4lDSM'], $pages['m4lWAI'], $pages['wacNetworkMidi'], $contact);
-        $navPages = array($home, $music, $software, $contact);
-
-        return new Site($allPages, new Navigation($navPages));
+        return new Site($pages, new Navigation($navPages));
     }
 
     /**
