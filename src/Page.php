@@ -22,7 +22,7 @@ final class Page {
     }
 
     public function href($classes = '') {
-        return '<a class="' . $classes . '" href="' . $this->filename() . '">' . $this->title() . '</a>';
+        return Link::internal($this->filename(), $this->title())->withClasses($classes);
     }
 
     private function _renderContent() {

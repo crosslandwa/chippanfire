@@ -9,6 +9,7 @@ function exception_error_handler($errno, $errstr, $errfile, $errline ) {
 set_error_handler("exception_error_handler");
 
 include 'src/Header.php';
+include 'src/Link.php';
 include 'src/Navigation.php';
 include 'src/Page.php';
 include 'src/SimpleContent.php';
