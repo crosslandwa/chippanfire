@@ -9,60 +9,17 @@
         </p>
     </div>
 
-    <?php foreach ($this->_summaries as $summary): ?>
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3><?php echo $summary->href() ?></h3>
-                <p><?php echo $summary->headlineText() ?></p>
+    <?php foreach (array_chunk($this->_summaries, 3) as $groupsOfThree): ?>
+        <div class="row ">
+            <?php foreach ($groupsOfThree as $summary): ?>
+            <div class="col-md-4">
+                <div class="software-menu-item">
+                    <h3><?php echo $summary->href() ?></h3>
+                    <p><?php echo $summary->headlineText() ?></p>
+                </div>
             </div>
+            <?php endforeach ?>
         </div>
     <?php endforeach ?>
 
-    <!--
-    <div class="row ">
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3><a href="software-m4l-device-snapshot-manager.html">Device Snapshot Manager</a></h3>
-                <p>A Max For Live device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices
-                    in realtime</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3><a href="software-m4l-where-am-i.html">Where Am I</a></h3>
-                <p>A Max For Live utility device that displays Live API information for the currently selected element
-                    of the Ableton
-                    Live interface</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3>Miniak Patch Editor</h3>
-                <p>Patch editor and manager for the Akai Miniak (and the Alesis Micron)</p>
-            </div>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3>wacNetworkMIDI 2</h3>
-                <p>A tool for transmitting MIDI from one computer to others on a local network without dedicated MIDI
-                    hardware</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3>Miniak Patch Editor 2</h3>
-                <p>A patch editor and manager for the Akai Miniak (and the Alesis Micron)</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="software-menu-item">
-                <h3>Device Snapshot Manager 2</h3>
-                <p>A Max For Live device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices
-                    in realtime</p>
-            </div>
-        </div>
-    </div>
-    -->
 </div>
