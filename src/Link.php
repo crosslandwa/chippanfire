@@ -28,10 +28,22 @@ final class Link {
     public final function __toString() {
         $text = $this->_text;
 
+        $attributes = array (
+            'class' => $this->_classes,
+            'href' => $this->_href
+        );
+
         if ($this->_isExternal) {
             $text .= ' <i class="fa fa-external-link"></i>';
+            $attributes['target'] = '_blank';
         }
-        return '<a class="' . $this->_classes . '" href="' . $this->_href . '">' . $text . '</a>';
+
+        $aAttributes = '';
+        foreach ($attributes as $attribute => $value) {
+            $aAttributes .= " {$attribute}=\"{$value}\"";
+        }
+
+        return '<a' . $aAttributes . '>' . $text . '</a>';
     }
 
 }
