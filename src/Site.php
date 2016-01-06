@@ -16,40 +16,54 @@ final class Site {
             'm4lDSM' => array(
                 'title' => 'Device Snapshot Manager',
                 'href' => 'software-m4l-device-snapshot-manager.html',
-                'content' => $softwareFactory->deviceSnapshotManager()
+                'content' => $softwareFactory->deviceSnapshotManager(),
+                'has_summary' => true
             ),
             'm4lWAI' => array(
                 'title' => 'Where Am I',
                 'href' => 'software-m4l-where-am-i.html',
-                'content' => $softwareFactory->whereAmI()
-            )
+                'content' => $softwareFactory->whereAmI(),
+                'has_summary' => true
+            ),
+            'kmkControlScript' => array(
+                'title' => 'KMK Control Script',
+                'href' => 'https://github.com/crosslandwa/kmkControl',
+                'is_external' => true,
+                'content' => $softwareFactory->kmkControlScript(),
+                'has_summary' => true
+            ),
+            'wacNetworkMidi' => array(
+                'title' => 'Wac Network MIDI',
+                'href' => 'software-wac-network-midi.html',
+                'content' => $softwareFactory->wacNetworkMidi(),
+                'has_summary' => true
+            ),
         );
 
         $pages = array();
+        $softwareSummaries = array();
         foreach ($pagesMeta as $key => $p) {
-            // TODO internal/external pages
-            $pages[$key] = new Page($p['title'], $p['href'], $p['content'], Link::internal($p['title'], $p['href']));
+            if (isset($p['is_external']) && $p['is_external']) {
+                $link = Link::external($p['title'], $p['href']);
+            } else {
+                $link = Link::internal($p['title'], $p['href']);
+            }
+
+            $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $link);
+
+            if (isset($p['has_summary']) && $p['has_summary']) {
+                $softwareSummaries[] = new SoftwareSummary($pages[$key], $p['content']);
+            }
         }
 
         // TODO keep moving into above pattern
-        $wacNetworkMidi = new Page('Wac Network MIDI', 'software-wac-network-midi.html', $softwareFactory->wacNetworkMidi(), Link::internal('Wac Network MIDI', 'software-wac-network-midi.html'));
-        $kmkControlScript = new Page('KMK Control Script', 'https://github.com/crosslandwa/kmkControl', $softwareFactory->kmkControlScript(), Link::external('KMK Control Script', 'https://github.com/crosslandwa/kmkControl'));
-
-        // TODO duplicate creation/use of content here...
-        $softwareSummaries = array(
-            new SoftwareSummary($pages['m4lDSM'], $softwareFactory->deviceSnapshotManager()),
-            new SoftwareSummary($pages['m4lWAI'], $softwareFactory->whereAmI()),
-            new SoftwareSummary($kmkControlScript, $softwareFactory->kmkControlScript()),
-            new SoftwareSummary($wacNetworkMidi, $softwareFactory->wacNetworkMidi())
-        );
-
         $software = new Page('Software', 'software.html', new SoftwareHomeContent($softwareSummaries), Link::internal('Software', 'software.html'));
 
         $home = new Page('ChipPanFire', 'index.html', new SimpleContent('content-homepage.phtml'), Link::internal('ChipPanFire', 'index.html'));
         $music = new Page('Music', 'music.html', new SimpleContent('content-music.phtml'), Link::internal('Music', 'music.html'));
         $contact = new Page('Contact', 'contact.html', new SimpleContent('content-contact.phtml'), Link::internal('Contact', 'contact.html'));
 
-        $allPages = array($home, $music, $software, $pages['m4lDSM'], $pages['m4lWAI'], $wacNetworkMidi, $contact);
+        $allPages = array($home, $music, $software, $pages['m4lDSM'], $pages['m4lWAI'], $pages['wacNetworkMidi'], $contact);
         $navPages = array($home, $music, $software, $contact);
 
         return new Site($allPages, new Navigation($navPages));
