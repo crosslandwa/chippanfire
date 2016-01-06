@@ -9,13 +9,13 @@
         </p>
     </div>
 
-    <?php foreach (array_chunk($this->_summaries, 3) as $groupsOfThree): ?>
+    <?php foreach (array_chunk($this->_linkedPages, 3) as $groupsOfThree): ?>
         <div class="row ">
-            <?php foreach ($groupsOfThree as $summary): ?>
+            <?php foreach ($groupsOfThree as $linkedPage): ?>
             <div class="col-md-4">
                 <div class="software-menu-item">
-                    <h3><?php echo $summary->href() ?></h3>
-                    <p><?php echo $summary->headlineText() ?></p>
+                    <h3><?php echo $linkedPage->href() ?></h3>
+                    <p><?php echo $linkedPage->headlineText() ?></p>
                 </div>
             </div>
             <?php endforeach ?>

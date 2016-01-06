@@ -6,13 +6,15 @@ final class Page {
     private $_filename;
     private $_content;
     private $_link;
+    private $_headlineText;
 
-    public function __construct($title, $filename, $content, Link $link) {
+    public function __construct($title, $filename, $content, Link $link, $headlineText = '') {
         $this->_header = new Header();
         $this->_title = $title;
         $this->_filename = $filename;
         $this->_content = $content;
         $this->_link = $link;
+        $this->_headlineText = $headlineText;
     }
 
     public function filename() {
@@ -33,5 +35,9 @@ final class Page {
 
     public function render($navigation) {
         require 'template/page.phtml';
+    }
+
+    public function headlineText() {
+        return $this->_headlineText;
     }
 }

@@ -16,9 +16,7 @@ include 'src/PageFactory.php';
 include 'src/SimpleContent.php';
 include 'src/Site.php';
 include 'src/SoftwareContent.php';
-include 'src/SoftwareContentFactory.php';
 include 'src/SoftwareHomeContent.php';
-include 'src/SoftwareSummary.php';
 
 
 $site = Site::create();

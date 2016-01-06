@@ -10,25 +10,9 @@ final class Site {
     }
 
     public final static function create() {
-        $softwareFactory = new SoftwareContentFactory();
         $pageFactory = new PageFactory();
 
         $pagesMeta = array(
-            'm4lDSM' => array(
-                'title' => 'Device Snapshot Manager',
-                'href' => 'software-m4l-device-snapshot-manager.html',
-                'content' => $softwareFactory->deviceSnapshotManager(),
-            ),
-            'm4lWAI' => array(
-                'title' => 'Where Am I',
-                'href' => 'software-m4l-where-am-i.html',
-                'content' => $softwareFactory->whereAmI(),
-            ),
-            'wacNetworkMidi' => array(
-                'title' => 'Wac Network MIDI',
-                'href' => 'software-wac-network-midi.html',
-                'content' => $softwareFactory->wacNetworkMidi(),
-            ),
             'home' => array(
                 'title' => 'ChipPanFire',
                 'href' => 'index.html',
@@ -51,23 +35,14 @@ final class Site {
             $pageLinks[$key] = Link::internal($p['title'], $p['href']);
         }
 
-        $kmk = array(
-            'title' => 'KMK Control Script',
-            'href' => 'https://github.com/crosslandwa/kmkControl',
-            'content' => $softwareFactory->kmkControlScript(),
-        );
-
-        $softwareSummaries = array();
-        forEach (array('m4lDSM', 'm4lWAI', 'wacNetworkMidi') as $key) {
-            $softwareSummaries[] = new SoftwareSummary($pageLinks[$key], $pagesMeta[$key]['content']);
-        }
-        $softwareSummaries[] = new SoftwareSummary(Link::external($kmk['title'], $kmk['href']), $kmk['content']);
-
         $pages = array();
         foreach ($pagesMeta as $key => $p) {
             $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $pageLinks[$key]);
         }
-        $pages['software'] = $pageFactory->software($softwareSummaries);
+        $pages['m4lWAI'] = $pageFactory->m4lWAI();
+        $pages['m4lDSM'] = $pageFactory->m4lDSM();
+        $pages['software'] = $pageFactory->software();
+        $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
 
         $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
         return new Site($pages, new Navigation($navPages));
