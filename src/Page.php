@@ -5,12 +5,14 @@ final class Page {
     private $_title;
     private $_filename;
     private $_content;
+    private $_link;
 
-    public function __construct($title, $filename, $content) {
+    public function __construct($title, $filename, $content, Link $link) {
         $this->_header = new Header();
         $this->_title = $title;
         $this->_filename = $filename;
         $this->_content = $content;
+        $this->_link = $link;
     }
 
     public function filename() {
@@ -22,7 +24,7 @@ final class Page {
     }
 
     public function href($classes = '') {
-        return Link::internal($this->filename(), $this->title())->withClasses($classes);
+        return $this->_link->withClasses($classes);
     }
 
     private function _renderContent() {

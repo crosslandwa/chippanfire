@@ -6,23 +6,23 @@ final class Link {
     private $_isExternal;
     private $_classes;
 
-    private function __construct($href, $text, $isExternal, $classes) {
-        $this->_href = $href;
+    private function __construct($text, $href, $isExternal, $classes) {
         $this->_text = $text;
+        $this->_href = $href;
         $this->_isExternal = $isExternal;
         $this->_classes = $classes;
     }
 
-    public final static function internal($href, $text) {
-        return new Link($href, $text, false, '');
+    public final static function internal($text, $href) {
+        return new Link($text, $href, false, '');
     }
 
-    public final static function external($href, $text) {
-        return new Link($href, $text, true, '');
+    public final static function external($text, $href) {
+        return new Link($text, $href, true, '');
     }
 
     public final function withClasses($classes) {
-        return new Link($this->_href, $this->_text, $this->_isExternal, $classes);
+        return new Link($this->_text, $this->_href, $this->_isExternal, $classes);
     }
 
     public final function __toString() {
