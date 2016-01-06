@@ -11,6 +11,7 @@ final class Site {
 
     public final static function create() {
         $softwareFactory = new SoftwareContentFactory();
+        $pageFactory = new PageFactory();
 
         $pagesMeta = array(
             'm4lDSM' => array(
@@ -62,17 +63,11 @@ final class Site {
         }
         $softwareSummaries[] = new SoftwareSummary(Link::external($kmk['title'], $kmk['href']), $kmk['content']);
 
-        $pagesMeta['software'] = array(
-            'title' => 'Software',
-            'href' => 'software.html',
-            'content' => new SoftwareHomeContent($softwareSummaries)
-        );
-        $pageLinks['software'] = Link::internal($pagesMeta['software']['title'], $pagesMeta['software']['href']);
-
         $pages = array();
         foreach ($pagesMeta as $key => $p) {
             $pages[$key] = new Page($p['title'], $p['href'], $p['content'], $pageLinks[$key]);
         }
+        $pages['software'] = $pageFactory->software($softwareSummaries);
 
         $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
         return new Site($pages, new Navigation($navPages));

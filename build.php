@@ -12,6 +12,7 @@ include 'src/Header.php';
 include 'src/Link.php';
 include 'src/Navigation.php';
 include 'src/Page.php';
+include 'src/PageFactory.php';
 include 'src/SimpleContent.php';
 include 'src/Site.php';
 include 'src/SoftwareContent.php';
