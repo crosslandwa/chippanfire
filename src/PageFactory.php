@@ -16,19 +16,19 @@ class PageFactory {
     public function home() {
         $title = 'ChipPanFire';
         $href = 'index.html';
-        return new InternalPage($title, $href, new SimpleContent('content-homepage.phtml'), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SimpleContent('content-homepage.phtml'));
     }
 
     public function music() {
         $title = 'Music';
         $href = 'music.html';
-        return new InternalPage($title, $href, new SimpleContent('content-music.phtml'), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SimpleContent('content-music.phtml'));
     }
 
     public function contact() {
         $title = 'Contact';
         $href = 'contact.html';
-        return new InternalPage($title, $href, new SimpleContent('content-contact.phtml'), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SimpleContent('content-contact.phtml'));
     }
 
     public function software() {
@@ -44,7 +44,7 @@ class PageFactory {
             $this->chipPanFire(),
         );
 
-        return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages));
     }
 
     public function m4lDSM() {
@@ -56,7 +56,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg'
         );
-        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, $headlineText);
     }
 
     public function m4lWAI() {
@@ -68,7 +68,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg'
         );
-        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, $headlineText);
     }
 
     public function m4lMCM() {
@@ -80,7 +80,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg'
         );
-        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, $headlineText);
     }
 
     public function wacNetworkMidi() {
@@ -92,7 +92,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png'
         );
-        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, $headlineText);
     }
 
     public function kmkControlScript() {

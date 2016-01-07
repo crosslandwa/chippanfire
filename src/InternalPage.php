@@ -8,12 +8,11 @@ final class InternalPage implements Page, Linkable {
     private $_link;
     private $_headlineText;
 
-    public function __construct($title, $filename, $content, Link $link, $headlineText = '') {
+    public function __construct($title, $filename, $content, $headlineText = '') {
         $this->_header = new Header();
         $this->_title = $title;
         $this->_filename = $filename;
         $this->_content = $content;
-        $this->_link = $link;
         $this->_headlineText = $headlineText;
     }
 
@@ -26,7 +25,7 @@ final class InternalPage implements Page, Linkable {
     }
 
     public function href($classes = '') {
-        return $this->_link->withClasses($classes);
+        return Link::internal($this->_title, $this->_filename)->withClasses($classes);
     }
 
     private function _renderContent() {
