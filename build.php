@@ -13,6 +13,7 @@ include 'src/Linkable.php';
 include 'src/Page.php';
 
 // classes
+include 'src/Documentation.php';
 include 'src/ExternalPage.php';
 include 'src/Header.php';
 include 'src/InternalPage.php';
