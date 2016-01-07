@@ -19,9 +19,7 @@
         <?php echo new OronjoBuy('Buy ' . $page->title() . ' for Windows', 77512) ?>
         <br>
         <br>
-        <form action="http://www.chippanfire.com/cpf_media/software/MPE-Documentation.pdf" method="GET">
-            <button type="submit" class="btn btn btn-success">Download Documentation</button>
-        </form>
+        <?php echo $this->_documentation() ?>
     </div>
     <div class="col-md-6">
         <h3>Download free demo version</h3>

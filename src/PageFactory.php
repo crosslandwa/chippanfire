@@ -60,7 +60,7 @@ class PageFactory {
         $title = 'Where Am I';
         $href = 'software-m4l-where-am-i.html';
         $strapline = $this->_maxForLive . ' utility device that displays Live API information for the currently selected element of the Ableton Live interface';
-        $content = new SoftwareContent('content-whereami.phtml', 'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg', null);
+        $content = new SoftwareContent('content-whereami.phtml', 'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg', 'WhereAmI.pdf');
         return new InternalPage($title, $href, $content, $strapline);
     }
 
@@ -68,7 +68,7 @@ class PageFactory {
         $title = 'MIDI Clip Modulo';
         $href = 'software-m4l-midi-clip-modulo.html';
         $strapline = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips.";
-        $content = new SoftwareContent('content-midiclipmodulo.phtml', 'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg', null);
+        $content = new SoftwareContent('content-midiclipmodulo.phtml', 'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg', 'MidiClipModulo.pdf');
         return new InternalPage($title, $href, $content, $strapline);
     }
 
@@ -76,6 +76,7 @@ class PageFactory {
         $title = 'Wac Network MIDI';
         $href = 'software-wac-network-midi.html';
         $strapline = 'Cross-platform (Win and OSX) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.';
+        // TODO add documentation download to page
         $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png', null);
         return new InternalPage($title, $href, $content, $strapline);
     }
@@ -84,7 +85,7 @@ class PageFactory {
         $title = 'Miniak Patch Editor';
         $href = 'software-miniak-patch-editor.html';
         $strapline = 'Patch editor/management tool for the '. Link::external('Akai Miniak', 'http://www.akaipro.com/product/miniak') . ' (and the ' . Link::external('Alesis Micron', 'http://www.vintagesynth.com/misc/micron.php') . ')';
-        $content = new SoftwareContent('content-miniakpatcheditor.phtml', 'http://www.chippanfire.com/cpf_media/software/miniak-patch-editor.jpg', null);
+        $content = new SoftwareContent('content-miniakpatcheditor.phtml', 'http://www.chippanfire.com/cpf_media/software/miniak-patch-editor.jpg', 'MPE-Documentation.pdf');
         return new InternalPage($title, $href, $content, $strapline);
     }
 
