@@ -1,6 +1,6 @@
 <?php
 
-final class InternalPage implements Linkable {
+final class InternalPage implements Page, Linkable {
     private $_header;
     private $_title;
     private $_filename;
@@ -33,7 +33,7 @@ final class InternalPage implements Linkable {
         $this->_content->render($this);
     }
 
-    public function render($navigation) {
+    public function render(Navigation $navigation) {
         require 'template/page.phtml';
     }
 

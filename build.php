@@ -10,8 +10,10 @@ set_error_handler("exception_error_handler");
 
 // interfaces
 include 'src/Linkable.php';
+include 'src/Page.php';
 
 // classes
+include 'src/ExternalPage.php';
 include 'src/Header.php';
 include 'src/InternalPage.php';
 include 'src/Link.php';

@@ -92,6 +92,6 @@ class PageFactory {
         $title = 'KMK Control Script';
         $href = 'https://github.com/crosslandwa/kmkControl';
         $headlineText = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively).';
-        return new InternalPage($title, $href, null, Link::external($title, $href), $headlineText);
+        return new ExternalPage($title, $href, $headlineText);
     }
 }
