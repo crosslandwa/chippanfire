@@ -20,6 +20,7 @@ final class Site {
         $pages['m4lDSM'] = $pageFactory->m4lDSM();
         $pages['m4lMCM'] = $pageFactory->m4lMCM();
         $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
+        $pages['miniakPatchEditor'] = $pageFactory->miniakPatchEditor();
 
         $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
         return new Site($pages, new Navigation($navPages));

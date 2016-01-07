@@ -41,6 +41,7 @@ class PageFactory {
             $this->m4lMCM(),
             $this->kmkControlScript(),
             $this->wacNetworkMidi(),
+            $this->miniakPatchEditor(),
             $this->chipPanFire(),
         );
 
@@ -76,6 +77,14 @@ class PageFactory {
         $href = 'software-wac-network-midi.html';
         $strapline = 'Cross-platform (Win and OSX) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.';
         $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png');
+        return new InternalPage($title, $href, $content, $strapline);
+    }
+
+    public function miniakPatchEditor() {
+        $title = 'Miniak Patch Editor';
+        $href = 'software-miniak-patch-editor.html';
+        $strapline = 'Patch editor/management tool for the '. Link::external('Akai Miniak', 'http://www.akaipro.com/product/miniak') . ' (and the ' . Link::external('Alesis Micron', 'http://www.vintagesynth.com/misc/micron.php') . ')';
+        $content = new SoftwareContent('content-miniakpatcheditor.phtml', 'http://www.chippanfire.com/cpf_media/software/miniak-patch-editor.jpg');
         return new InternalPage($title, $href, $content, $strapline);
     }
 
