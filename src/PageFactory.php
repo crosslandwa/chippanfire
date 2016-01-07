@@ -35,7 +35,14 @@ class PageFactory {
         $title = 'Software';
         $href = 'software.html';
 
-        $linkedPages = array($this->m4lDSM(), $this->m4lWAI(), $this->m4lMCM(), $this->kmkControlScript(), $this->wacNetworkMidi());
+        $linkedPages = array(
+            $this->m4lDSM(),
+            $this->m4lWAI(),
+            $this->m4lMCM(),
+            $this->kmkControlScript(),
+            $this->wacNetworkMidi(),
+            $this->chipPanFire(),
+        );
 
         return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages), Link::internal($title, $href));
     }
@@ -92,6 +99,13 @@ class PageFactory {
         $title = 'KMK Control Script';
         $href = 'https://github.com/crosslandwa/kmkControl';
         $headlineText = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively).';
+        return new ExternalPage($title, $href, $headlineText);
+    }
+
+    public function chipPanFire() {
+        $title = 'ChipPanFire site';
+        $href = 'https://github.com/crosslandwa/chippanfire-site';
+        $headlineText = 'Totally meta, see the source code for generating this site!';
         return new ExternalPage($title, $href, $headlineText);
     }
 }
