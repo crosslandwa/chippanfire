@@ -76,8 +76,7 @@ class PageFactory {
         $title = 'Wac Network MIDI';
         $href = 'software-wac-network-midi.html';
         $strapline = 'Cross-platform (Win and OSX) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.';
-        // TODO add documentation download to page
-        $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png', null);
+        $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png', 'wacNetworkMIDI.pdf');
         return new InternalPage($title, $href, $content, $strapline);
     }
 
