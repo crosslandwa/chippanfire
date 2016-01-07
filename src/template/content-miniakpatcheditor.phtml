@@ -13,14 +13,10 @@
             <li>A folder of example patches</li>
             <li>The <?php echo Link::external('MaxMSP', 'http://www.cycling74.com/') ?> source code</li>
         </ul>
-        <a class="btn btn btn-default" href="http://www.oronjo.com/live/next/?fi=77513" target="_blank"><img
-            src="http://www.oronjo.com/live/images/image.php?id=77513" border="0" alt=""><br>Buy Miniak Patch Editor for
-            OS X</a>
+        <?php echo new OronjoBuy('Buy ' . $page->title() . ' for OS X', 77513) ?>
         <br>
         <br>
-        <a class="btn btn btn-default" href="http://www.oronjo.com/live/next/?fi=77512" target="_blank"><img
-            src="http://www.oronjo.com/live/images/image.php?id=77512" border="0" alt=""><br>Buy Miniak Patch Editor for
-            Windows</a>
+        <?php echo new OronjoBuy('Buy ' . $page->title() . ' for Windows', 77512) ?>
         <br>
         <br>
         <form action="http://www.chippanfire.com/cpf_media/software/MPE-Documentation.pdf" method="GET">
