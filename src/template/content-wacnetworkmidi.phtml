@@ -19,15 +19,10 @@
         <h3>Download free demo version</h3>
         <p>A demo can be downloaded and used for free, but does not allow you to save default settings</p>
         <p>
-            <!--TODO Demos to be located on my server, not Oronjo-->
-            <a href="http://www.oronjo.com/live/next/?fi=77528" target="_blank">
-                <button type="submit" class="btn btn btn-primary">Download Demo for OS X</button>
-            </a>
+            <?php echo $this->_download('Download Demo for OS X', '77528') ?>
             <br>
             <br>
-            <a href="http://www.oronjo.com/live/next/?fi=77533" target="_blank">
-                <button type="submit" class="btn btn btn-primary">Download Demo for Windows</button>
-            </a>
+            <?php echo $this->_download('Download Demo for Windows', '77533') ?>
         </p>
     </div>
 </div>

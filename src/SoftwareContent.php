@@ -26,4 +26,11 @@ final class SoftwareContent {
     private function _documentation() {
         return new Documentation($this->_documentationFile);
     }
+
+    private function _download($text, $item) {
+        // TODO Free items (demos etc) to be located on my server, not Oronjo
+        return '<a href="http://www.oronjo.com/live/next/?fi=' . $item . '" target="_blank">'
+            . '<button type="submit" class="btn btn-primary">' . $text . '</button>'
+            . '</a>';
+    }
 }

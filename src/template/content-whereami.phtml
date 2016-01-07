@@ -2,10 +2,7 @@
     <div class="col-md-12">
         <h3>Download full version</h3>
         <p>Where Am I is distributed as a free Max For Live Audio effect (the download also includes documentation). The downloaded .amxd file is fully editable and re-usable.</p>
-        <!--TODO To be located on my server, not Oronjo-->
-        <a href="http://www.oronjo.com/live/next/?fi=80793" target="_blank">
-            <button type="submit" class="btn btn btn-primary">Download</button>
-        </a>
+        <?php echo $this->_download('Download', '80793') ?>
         <br>
         <br>
         <?php echo $this->_documentation() ?>
