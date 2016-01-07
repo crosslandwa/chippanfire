@@ -6,14 +6,14 @@ final class InternalPage implements Page, Linkable {
     private $_filename;
     private $_content;
     private $_link;
-    private $_headlineText;
+    private $_strapline;
 
-    public function __construct($title, $filename, $content, $headlineText = '') {
+    public function __construct($title, $filename, $content, $strapline = '') {
         $this->_header = new Header();
         $this->_title = $title;
         $this->_filename = $filename;
         $this->_content = $content;
-        $this->_headlineText = $headlineText;
+        $this->_strapline = $strapline;
     }
 
     public function filename() {
@@ -36,7 +36,7 @@ final class InternalPage implements Page, Linkable {
         require 'template/page.phtml';
     }
 
-    public function headlineText() {
-        return $this->_headlineText;
+    public function strapline() {
+        return $this->_strapline;
     }
 }

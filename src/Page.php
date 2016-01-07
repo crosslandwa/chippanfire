@@ -6,5 +6,5 @@ interface Page {
 
         public function href($classes = '');
 
-        public function headlineText();
+        public function strapline();
 }

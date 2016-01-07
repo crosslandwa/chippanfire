@@ -2,21 +2,15 @@
 
 final class SoftwareContent {
     private $_contentFilename;
-    private $_description;
     private $_image;
 
-    public function __construct($contentFilename, $description, $image) {
+    public function __construct($contentFilename, $image) {
         $this->_contentFilename = $contentFilename;
-        $this->_description = $description;
         $this->_image = $image;
     }
 
     public function render($page) {
         require 'template/content-software-wrapper.phtml';
-    }
-
-    public function headlineText() {
-        return $this->_description;
     }
 
     private function headlineImage() {

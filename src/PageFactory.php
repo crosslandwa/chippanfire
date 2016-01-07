@@ -50,62 +50,46 @@ class PageFactory {
     public function m4lDSM() {
         $title = 'Device Snapshot Manager';
         $href = 'software-m4l-device-snapshot-manager.html';
-        $headlineText = $this->_maxForLive . ' device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime';
-        $content = new SoftwareContent(
-            'content-devicesnapshotmanager.phtml',
-            $headlineText,
-            'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg'
-        );
-        return new InternalPage($title, $href, $content, $headlineText);
+        $strapline = $this->_maxForLive . ' device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime';
+        $content = new SoftwareContent('content-devicesnapshotmanager.phtml', 'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg');
+        return new InternalPage($title, $href, $content, $strapline);
     }
 
     public function m4lWAI() {
         $title = 'Where Am I';
         $href = 'software-m4l-where-am-i.html';
-        $headlineText = $this->_maxForLive . ' utility device that displays Live API information for the currently selected element of the Ableton Live interface';
-        $content = new SoftwareContent(
-            'content-whereami.phtml',
-            $headlineText,
-            'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg'
-        );
-        return new InternalPage($title, $href, $content, $headlineText);
+        $strapline = $this->_maxForLive . ' utility device that displays Live API information for the currently selected element of the Ableton Live interface';
+        $content = new SoftwareContent('content-whereami.phtml', 'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg');
+        return new InternalPage($title, $href, $content, $strapline);
     }
 
     public function m4lMCM() {
         $title = 'MIDI Clip Modulo';
         $href = 'software-m4l-midi-clip-modulo.html';
-        $headlineText = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips.";
-        $content = new SoftwareContent(
-            'content-midiclipmodulo.phtml',
-            $headlineText,
-            'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg'
-        );
-        return new InternalPage($title, $href, $content, $headlineText);
+        $strapline = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips.";
+        $content = new SoftwareContent('content-midiclipmodulo.phtml', 'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg');
+        return new InternalPage($title, $href, $content, $strapline);
     }
 
     public function wacNetworkMidi() {
         $title = 'Wac Network MIDI';
         $href = 'software-wac-network-midi.html';
-        $headlineText = 'Cross-platform (Win and OSX) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.';
-        $content = new SoftwareContent(
-            'content-wacnetworkmidi.phtml',
-            $headlineText,
-            'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png'
-        );
-        return new InternalPage($title, $href, $content, $headlineText);
+        $strapline = 'Cross-platform (Win and OSX) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.';
+        $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png');
+        return new InternalPage($title, $href, $content, $strapline);
     }
 
     public function kmkControlScript() {
         $title = 'KMK Control Script';
         $href = 'https://github.com/crosslandwa/kmkControl';
-        $headlineText = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively).';
-        return new ExternalPage($title, $href, $headlineText);
+        $strapline = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively).';
+        return new ExternalPage($title, $href, $strapline);
     }
 
     public function chipPanFire() {
         $title = 'ChipPanFire site';
         $href = 'https://github.com/crosslandwa/chippanfire-site';
-        $headlineText = 'Totally meta, see the source code for generating this site!';
-        return new ExternalPage($title, $href, $headlineText);
+        $strapline = 'Totally meta, see the source code for generating this site!';
+        return new ExternalPage($title, $href, $strapline);
     }
 }
