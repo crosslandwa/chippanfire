@@ -1,6 +1,6 @@
 <?php
 
-final class Page {
+final class InternalPage implements Linkable {
     private $_header;
     private $_title;
     private $_filename;

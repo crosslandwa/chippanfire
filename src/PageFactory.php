@@ -16,19 +16,19 @@ class PageFactory {
     public function home() {
         $title = 'ChipPanFire';
         $href = 'index.html';
-        return new Page($title, $href, new SimpleContent('content-homepage.phtml'), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SimpleContent('content-homepage.phtml'), Link::internal($title, $href));
     }
 
     public function music() {
         $title = 'Music';
         $href = 'music.html';
-        return new Page($title, $href, new SimpleContent('content-music.phtml'), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SimpleContent('content-music.phtml'), Link::internal($title, $href));
     }
 
     public function contact() {
         $title = 'Contact';
         $href = 'contact.html';
-        return new Page($title, $href, new SimpleContent('content-contact.phtml'), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SimpleContent('content-contact.phtml'), Link::internal($title, $href));
     }
 
     public function software() {
@@ -37,7 +37,7 @@ class PageFactory {
 
         $linkedPages = array($this->m4lDSM(), $this->m4lWAI(), $this->m4lMCM(), $this->kmkControlScript(), $this->wacNetworkMidi());
 
-        return new Page($title, $href, new SoftwareHomeContent($linkedPages), Link::internal($title, $href));
+        return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages), Link::internal($title, $href));
     }
 
     public function m4lDSM() {
@@ -49,7 +49,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/dsm-screenshot.jpg'
         );
-        return new Page($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
     }
 
     public function m4lWAI() {
@@ -61,7 +61,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/wai-screenshot.jpg'
         );
-        return new Page($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
     }
 
     public function m4lMCM() {
@@ -73,7 +73,7 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg'
         );
-        return new Page($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
     }
 
     public function wacNetworkMidi() {
@@ -85,13 +85,13 @@ class PageFactory {
             $headlineText,
             'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png'
         );
-        return new Page($title, $href, $content, Link::internal($title, $href), $headlineText);
+        return new InternalPage($title, $href, $content, Link::internal($title, $href), $headlineText);
     }
 
     public function kmkControlScript() {
         $title = 'KMK Control Script';
         $href = 'https://github.com/crosslandwa/kmkControl';
         $headlineText = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively).';
-        return new Page($title, $href, null, Link::external($title, $href), $headlineText);
+        return new InternalPage($title, $href, null, Link::external($title, $href), $headlineText);
     }
 }
