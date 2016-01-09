@@ -32,4 +32,4 @@ $site = Site::create();
 $site->clearLastBuild();
 $site->render();
 
-echo sprintf("Built in %f\n", microtime(true) - $start);
+echo sprintf("Site built in %fms\n", microtime(true) - $start);
