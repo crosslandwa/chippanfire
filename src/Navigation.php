@@ -35,7 +35,7 @@ final class Item {
 
     public function render($currentPage) {
         $activeClass = '';
-        if ($currentPage == $this->_linked) {
+        if ($currentPage === $this->_linked) {
             $activeClass = ' class="active" ';
         }
 
