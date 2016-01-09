@@ -32,10 +32,14 @@ class PageFactory {
     }
 
     public function software() {
-        $title = 'Software';
+        $title = 'Software Overview';
         $href = 'software.html';
 
-        $linkedPages = array(
+        return new InternalPage($title, $href, new SoftwareHomeContent($this->linkedSoftwarePages()));
+    }
+
+    public function linkedSoftwarePages() {
+        return array(
             $this->m4lDSM(),
             $this->m4lWAI(),
             $this->m4lMCM(),
@@ -45,7 +49,6 @@ class PageFactory {
             $this->chipPanFire(),
         );
 
-        return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages));
     }
 
     public function m4lDSM() {

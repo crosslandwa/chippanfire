@@ -1,0 +1,10 @@
+<li class="dropdown <?php if (in_array($currentPage, $this->_pages)) { echo 'active'; }?>">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><?php echo $this->_text ?><span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li <?php if ($currentPage == $this->_pages[0]) echo 'class="active"' ?>  ><?php echo $this->_pages[0]->href() ?></li>
+        <li role="separator" class="divider"></li>
+        <?php foreach (array_slice($this->_pages, 1) as $page): ?>
+        <li <?php if ($currentPage == $page) echo 'class="active"' ?> ><?php echo $page->href() ?></li>
+        <?php endforeach ?>
+    </ul>
+</li>

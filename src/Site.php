@@ -22,7 +22,9 @@ final class Site {
         $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
         $pages['miniakPatchEditor'] = $pageFactory->miniakPatchEditor();
 
-        $navPages = array($pages['home'], $pages['music'], $pages['software'], $pages['contact']);
+        $dropdown = new NavDropdown('Software', array_merge(array($pages['software']), $pageFactory->linkedSoftwarePages()));
+
+        $navPages = array($pages['home'], $pages['music'], $dropdown, $pages['contact']);
         return new Site($pages, new Navigation($navPages));
     }
 
