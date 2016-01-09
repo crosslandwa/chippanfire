@@ -28,8 +28,7 @@ final class SoftwareContent {
     }
 
     private function _download($text, $item) {
-        // TODO Free items (demos etc) to be located on my server, not Oronjo
-        return '<a href="http://www.oronjo.com/live/next/?fi=' . $item . '" target="_blank">'
+        return '<a href="assets/downloads/' . $item . '" >'
             . '<button type="submit" class="btn btn-primary">' . $text . '</button>'
             . '</a>';
     }
