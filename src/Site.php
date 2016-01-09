@@ -22,10 +22,13 @@ final class Site {
         $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
         $pages['miniakPatchEditor'] = $pageFactory->miniakPatchEditor();
 
-        $dropdown = new NavDropdown('Software', array_merge(array($pages['software']), $pageFactory->linkedSoftwarePages()));
+        $navigation = new Navigation($pages['home']);
+        $navigation
+            ->addItem($pages['music'])
+            ->addDropdown('Software', array_merge(array($pages['software']), $pageFactory->linkedSoftwarePages()))
+            ->addItem($pages['contact']);
 
-        $navItems = array(new NavItem($pages['music']), $dropdown, new NavItem($pages['contact']));
-        return new Site($pages, new Navigation($pages['home'], $navItems));
+        return new Site($pages, $navigation);
     }
 
     /**
