@@ -89,7 +89,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'MIDI Clip Modulo';
             $href = 'software-m4l-midi-clip-modulo.html';
-            $strapline = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips.";
+            $strapline = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips";
             $content = new SoftwareContent('content-midiclipmodulo.phtml', 'http://www.chippanfire.com/cpf_media/software/midi-clip-modulo.jpg', 'MidiClipModulo.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -99,7 +99,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Wac Network MIDI';
             $href = 'software-wac-network-midi.html';
-            $strapline = 'Cross-platform (Win and OSX) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network, without the need for hardware MIDI interfaces.';
+            $strapline = 'Cross-platform (Win/OS X) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)';
             $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'http://www.chippanfire.com/cpf_media/software/wac-network-midi.png', 'wacNetworkMIDI.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -119,7 +119,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'KMK Control Script';
             $href = 'https://github.com/crosslandwa/kmkControl';
-            $strapline = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively).';
+            $strapline = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively)';
             return new ExternalPage($title, $href, $strapline);
         });
     }
