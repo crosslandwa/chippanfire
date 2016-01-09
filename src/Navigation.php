@@ -16,7 +16,8 @@ final class Navigation {
     }
 
     public function addDropdown($text, $linkedItems) {
-        $this->_items[] = new Dropdown($text, $linkedItems);
+        $items = array_map(function($linkable) { return new Item($linkable); }, $linkedItems);
+        $this->_items[] = new Dropdown($text, $items);
         return $this;
     }
 
@@ -34,7 +35,7 @@ final class Item {
 
     public function render($currentPage) {
         $activeClass = '';
-        if ($currentPage === $this->_linked) {
+        if ($currentPage == $this->_linked) {
             $activeClass = ' class="active" ';
         }
 
@@ -44,11 +45,11 @@ final class Item {
 
 final class Dropdown {
     private $_text;
-    private $_pages;
+    private $_items;
 
-    public function __construct($text, $pages) {
+    public function __construct($text, $items) {
         $this->_text = $text;
-        $this->_pages = $pages;
+        $this->_items = $items;
     }
 
     public function render($currentPage) {
