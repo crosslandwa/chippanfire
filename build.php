@@ -1,5 +1,7 @@
 <?php
 
+$start = microtime(true);
+
 // Super strict, fail on warning
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -26,9 +28,28 @@ include 'src/Site.php';
 include 'src/SoftwareContent.php';
 include 'src/SoftwareHomeContent.php';
 
-$start = microtime(true);
+$pages = new PageFactory();
 
-$site = Site::create();
+$navigation = new Navigation($pages->home());
+$navigation->addItem($pages->music())
+    ->addDropdown('Software', array_merge(array($pages->software()), $pages->linkedSoftwarePages()))
+    ->addItem($pages->contact());
+
+$site = new Site(
+    array(
+        $pages->home(),
+        $pages->music(),
+        $pages->contact(),
+        $pages->software(),
+        $pages->m4lWAI(),
+        $pages->m4lDSM(),
+        $pages->m4lMCM(),
+        $pages->wacNetworkMidi(),
+        $pages->miniakPatchEditor()
+    ),
+    $navigation
+);
+
 $site->clearLastBuild();
 $site->render();
 

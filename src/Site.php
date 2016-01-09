@@ -4,31 +4,9 @@ final class Site {
     private $_pages;
     private $_navigation;
 
-    private function __construct($pages, $navigation) {
+    public function __construct($pages, $navigation) {
         $this->_pages = $pages;
         $this->_navigation = $navigation;
-    }
-
-    public final static function create() {
-        $pages = new PageFactory();
-
-        return new Site(
-            array(
-                $pages->home(),
-                $pages->music(),
-                $pages->contact(),
-                $pages->software(),
-                $pages->m4lWAI(),
-                $pages->m4lDSM(),
-                $pages->m4lMCM(),
-                $pages->wacNetworkMidi(),
-                $pages->miniakPatchEditor()
-            ),
-            new Navigation($pages->home())
-                ->addItem($pages->music())
-                ->addDropdown('Software', array_merge(array($pages->software()), $pages->linkedSoftwarePages()))
-                ->addItem($pages->contact())
-        );
     }
 
     /**
