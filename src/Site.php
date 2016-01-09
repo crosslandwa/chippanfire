@@ -10,25 +10,25 @@ final class Site {
     }
 
     public final static function create() {
-        $pageFactory = new PageFactory();
+        $pages = new PageFactory();
 
-        $pages['home'] = $pageFactory->home();
-        $pages['music'] = $pageFactory->music();
-        $pages['contact'] = $pageFactory->contact();
-        $pages['software'] = $pageFactory->software();
-        $pages['m4lWAI'] = $pageFactory->m4lWAI();
-        $pages['m4lDSM'] = $pageFactory->m4lDSM();
-        $pages['m4lMCM'] = $pageFactory->m4lMCM();
-        $pages['wacNetworkMidi'] = $pageFactory->wacNetworkMidi();
-        $pages['miniakPatchEditor'] = $pageFactory->miniakPatchEditor();
-
-        $navigation = new Navigation($pages['home']);
-        $navigation
-            ->addItem($pages['music'])
-            ->addDropdown('Software', array_merge(array($pages['software']), $pageFactory->linkedSoftwarePages()))
-            ->addItem($pages['contact']);
-
-        return new Site($pages, $navigation);
+        return new Site(
+            array(
+                $pages->home(),
+                $pages->music(),
+                $pages->contact(),
+                $pages->software(),
+                $pages->m4lWAI(),
+                $pages->m4lDSM(),
+                $pages->m4lMCM(),
+                $pages->wacNetworkMidi(),
+                $pages->miniakPatchEditor()
+            ),
+            new Navigation($pages->home())
+                ->addItem($pages->music())
+                ->addDropdown('Software', array_merge(array($pages->software()), $pages->linkedSoftwarePages()))
+                ->addItem($pages->contact())
+        );
     }
 
     /**
