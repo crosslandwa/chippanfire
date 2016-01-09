@@ -26,7 +26,10 @@ include 'src/Site.php';
 include 'src/SoftwareContent.php';
 include 'src/SoftwareHomeContent.php';
 
+$start = microtime(true);
 
 $site = Site::create();
 $site->clearLastBuild();
 $site->render();
+
+echo sprintf("Built in %f\n", microtime(true) - $start);
