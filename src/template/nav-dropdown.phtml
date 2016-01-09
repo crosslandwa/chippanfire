@@ -1,10 +1,10 @@
-<li class="dropdown <?php if (in_array(new Item($currentPage), $this->_items)) { echo 'active'; }?>">
+<li class="dropdown <?php if (in_array($currentItem, $this->_items)) { echo 'active'; }?>">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><?php echo $this->_text ?><span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <?php echo $this->_items[0]->render($currentPage) ?>
+        <?php echo $this->_items[0]->render($currentItem) ?>
         <li role="separator" class="divider"></li>
         <?php foreach (array_slice($this->_items, 1) as $item): ?>
-        <?php echo $item->render($currentPage) ?>
+        <?php echo $item->render($currentItem) ?>
         <?php endforeach ?>
     </ul>
 </li>

@@ -1,7 +1,6 @@
 <?php
 
 final class Navigation {
-
     private $_items;
     private $_homepage;
 
@@ -21,7 +20,8 @@ final class Navigation {
         return $this;
     }
 
-    public function render($currentPage) {
+    public function render(Linkable $current) {
+        $currentItem = new Item($current);
         require 'template/navigation.phtml';
     }
 }
@@ -33,9 +33,9 @@ final class Item {
         $this->_linked = $linked;
     }
 
-    public function render($currentPage) {
+    public function render(Item $currentItem) {
         $activeClass = '';
-        if ($currentPage === $this->_linked) {
+        if ($currentItem->_linked === $this->_linked) {
             $activeClass = ' class="active" ';
         }
 
@@ -52,7 +52,7 @@ final class Dropdown {
         $this->_items = $items;
     }
 
-    public function render($currentPage) {
+    public function render(Item $currentItem) {
         require 'template/nav-dropdown.phtml';
     }
 }
