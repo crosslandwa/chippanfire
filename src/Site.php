@@ -24,8 +24,8 @@ final class Site {
 
         $dropdown = new NavDropdown('Software', array_merge(array($pages['software']), $pageFactory->linkedSoftwarePages()));
 
-        $navPages = array($pages['home'], $pages['music'], $dropdown, $pages['contact']);
-        return new Site($pages, new Navigation($navPages));
+        $navItems = array(new NavItem($pages['music']), $dropdown, new NavItem($pages['contact']));
+        return new Site($pages, new Navigation($pages['home'], $navItems));
     }
 
     /**

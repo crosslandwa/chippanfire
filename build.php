@@ -19,6 +19,7 @@ include 'src/Header.php';
 include 'src/InternalPage.php';
 include 'src/Link.php';
 include 'src/NavDropdown.php';
+include 'src/NavItem.php';
 include 'src/Navigation.php';
 include 'src/OronjoBuy.php';
 include 'src/PageFactory.php';
