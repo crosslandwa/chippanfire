@@ -126,7 +126,7 @@ class PageFactory {
 
     public function chipPanFire() {
         return $this->_cacheAndReturn(function() {
-            $title = 'ChipPanFire site';
+            $title = 'ChipPanFire Source';
             $href = 'https://github.com/crosslandwa/chippanfire-site';
             $strapline = 'Totally meta, see the source code for generating this site!';
             return new ExternalPage($title, $href, $strapline);
