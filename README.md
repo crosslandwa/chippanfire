@@ -24,8 +24,6 @@ Upload the entire contents of the /site folder to your favourite host and point 
 
 
 ## TODO
-Page meta tags/titles
-Robots.txt
-rewrite rules on server e.g.
- - from: http://chippanfire.com/software/m4l-midi-clip-modulo/
- - to: http://chippanfire.com/software-m4l-midi-clip-modulo/
+- Page meta tags/titles
+- rewrite rules on server via .htaccess e.g.
+  - from: http://chippanfire.com/software/* to: http://chippanfire.com/software-*.html
