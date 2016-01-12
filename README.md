@@ -22,8 +22,4 @@ Use PHP to generate the static html assets by running the following from the top
 ## Deploy
 Upload the entire contents of the /site folder to your favourite host and point a DNS record at index.html
 
-
-## TODO
-- Page meta tags/titles
-- rewrite rules on server via .htaccess e.g.
-  - from: http://chippanfire.com/software/* to: http://chippanfire.com/software-*.html
+Note that cache-headers for the (static) content will need to be configured on the server...
