@@ -1,20 +1,21 @@
 <?php
 
 class PageFactory {
-    private $_maxForLive;
-    private $_abletonLive;
-    private $_maxMSP;
+    public static $maxForLive;
+    public static $abletonLive;
+    public static $maxMSP;
 
     private $_cache = array();
 
     public function __construct() {
-        $this->_maxForLive = Link::external('Max For Live', 'http://www.ableton.com/maxforlive');
-        $this->_abletonLive = Link::external('Ableton Live', 'http://www.ableton.com');
-        $this->_maxMSP = Link::external('MaxMSP', 'http://www.cycling74.com/');
+        PageFactory::$maxForLive = Link::external('Max For Live', 'http://www.ableton.com/maxforlive');
+        PageFactory::$abletonLive = Link::external('Ableton Live', 'http://www.ableton.com');
+        PageFactory::$maxMSP = Link::external('MaxMSP', 'http://www.cycling74.com/');
     }
 
     private function _cacheAndReturn($factoryCode) {
-        $callingFunctionName = debug_backtrace()[1]['function'];
+        $debug = debug_backtrace();
+        $callingFunctionName = $debug[1]['function'];
         if (!isset($this->_cache[$callingFunctionName])) {
             $this->_cache[$callingFunctionName] = call_user_func($factoryCode);
         }
@@ -46,10 +47,11 @@ class PageFactory {
     }
 
     public function software() {
-        return $this->_cacheAndReturn(function() {
+        $linkedPages = $this->linkedSoftwarePages();
+        return $this->_cacheAndReturn(function() use ($linkedPages) {
             $title = 'Software Overview';
             $href = 'software.html';
-            return new InternalPage($title, $href, new SoftwareHomeContent($this->linkedSoftwarePages()));
+            return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages));
         });
     }
 
@@ -69,7 +71,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Device Snapshot Manager';
             $href = 'software-m4l-device-snapshot-manager.html';
-            $strapline = $this->_maxForLive . ' device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime';
+            $strapline = PageFactory::$maxForLive . ' device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime';
             $content = new SoftwareContent('content-devicesnapshotmanager.phtml', 'assets/images/dsm-screenshot.jpg', 'DeviceSnapshotManager.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -79,7 +81,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Where Am I';
             $href = 'software-m4l-where-am-i.html';
-            $strapline = $this->_maxForLive . ' utility device that displays Live API information for the currently selected element of the Ableton Live interface';
+            $strapline = PageFactory::$maxForLive . ' utility device that displays Live API information for the currently selected element of the Ableton Live interface';
             $content = new SoftwareContent('content-whereami.phtml', 'assets/images/wai-screenshot.jpg', 'WhereAmI.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -89,7 +91,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'MIDI Clip Modulo';
             $href = 'software-m4l-midi-clip-modulo.html';
-            $strapline = $this->_maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips";
+            $strapline = PageFactory::$maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips";
             $content = new SoftwareContent('content-midiclipmodulo.phtml', 'assets/images/midi-clip-modulo.jpg', 'MidiClipModulo.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -99,7 +101,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Wac Network MIDI';
             $href = 'software-wac-network-midi.html';
-            $strapline = 'Cross-platform (Win/OS X) tool built with ' . $this->_maxMSP . ' for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)';
+            $strapline = 'Cross-platform (Win/OS X) tool built with ' . PageFactory::$maxMSP . ' for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)';
             $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'assets/images/wac-network-midi.png', 'wacNetworkMIDI.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -119,7 +121,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'KMK Control Script';
             $href = 'https://github.com/crosslandwa/kmkControl';
-            $strapline = 'In-depth control of ' . $this->_abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively)';
+            $strapline = 'In-depth control of ' . PageFactory::$abletonLive . ' using the Korg Microkontrol (greatly improved on that offered natively)';
             return new ExternalPage($title, $href, $strapline);
         });
     }
