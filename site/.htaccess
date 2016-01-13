@@ -1,0 +1,6 @@
+# software 301
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^software/(.*)/?$ http://chippanfire.com/software-$1.html  [R=301,L]
+</IfModule>

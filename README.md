@@ -7,7 +7,7 @@ A super-lightweight "framework" to generate a bunch of static HTML pages that al
 
 I'm interested in playing around with (bootstrap powered) responsive web without a 'bulky' framework sitting between me and the raw HTML/CSS
 
-I opted for PHP as its already installed on my machine (zero setup), and I've used it enough in the past to be wrestle it into submission fairly easily... 
+I opted for PHP as it is already installed on my machine (zero setup), and I've used it enough in the past to be wrestle it into submission fairly easily... 
 
 ## Setup/Editing
 Each page in the site uses a common document, header, navigation and footer.
@@ -20,4 +20,6 @@ Use PHP to generate the static html assets by running the following from the top
 ```php build.php```
 
 ## Deploy
-Upload the entire contents of the /site folder to your favourite host and point DNS at index.html
+Upload the entire contents of the /site folder to your favourite host and point a DNS record at index.html
+
+Note that cache-headers for the (static) content will need to be configured on the server...
