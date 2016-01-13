@@ -45,6 +45,14 @@ class PageFactory {
         });
     }
 
+    public function error() {
+        return $this->_cacheAndReturn(function() {
+            $title = 'Not Found 40404040404';
+            $href = 'error.html';
+            return new InternalPage($title, $href, new SimpleContent('content-error.phtml'));
+        });
+    }
+
     public function linkedSoftwarePages() {
         return array(
             $this->m4lDSM(),

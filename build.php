@@ -42,6 +42,7 @@ $site = new Site(
         $pages->music(),
         $pages->contact(),
         $pages->software(),
+        $pages->error(),
         $pages->m4lWAI(),
         $pages->m4lDSM(),
         $pages->m4lMCM(),
