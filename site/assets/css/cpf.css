@@ -1,4 +1,8 @@
-body {
+.cpf-navbar-brand {
+  max-height: 120%;
+}
+
+body, .headerless-main {
   padding-top: 50px;
 }
 .content-block {
