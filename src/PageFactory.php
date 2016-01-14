@@ -13,10 +13,14 @@ class PageFactory {
     }
 
     public function home() {
-        return $this->_cacheAndReturn(function() {
+        $linkedPages = array(
+            'music' => $this->music(),
+            'software' => $this->software(),
+        );
+        return $this->_cacheAndReturn(function() use ($linkedPages) {
             $title = '<img class="cpf-navbar-brand" src="assets/images/cpf_logo.png" alt="ChipPanFire" >';
             $href = 'index.html';
-            return new InternalPage($title, $href, new SimpleContent('content-homepage.phtml'));
+            return new InternalPage($title, $href, new SimpleContent('content-homepage.phtml', $linkedPages));
         });
     }
 

@@ -21,6 +21,10 @@ final class Link {
         return new Link($text, $href, true, '');
     }
 
+    public final function withText($text) {
+        return new Link($text, $this->_href, $this->_isExternal, $this->_classes);
+    }
+
     public final function withClasses($classes) {
         return new Link($this->_text, $this->_href, $this->_isExternal, $classes);
     }
