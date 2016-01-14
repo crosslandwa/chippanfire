@@ -45,7 +45,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() use ($linkedPages) {
             $title = 'Software Overview';
             $href = 'software.html';
-            return new InternalPage($title, $href, new SoftwareHomeContent($linkedPages));
+            return new InternalPage($title, $href, new SimpleContent('content-software.phtml', $linkedPages));
         });
     }
 
