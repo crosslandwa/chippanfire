@@ -103,7 +103,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Wac Network MIDI';
             $href = 'software-wac-network-midi.html';
-            $strapline = 'Cross-platform (Win/OS X) tool built with ' . Links::$maxMSP . ' for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)';
+            $strapline = 'Cross-platform (Win/OS X) tool for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)';
             $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'assets/images/wac-network-midi.png', 'wacNetworkMIDI.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
@@ -113,7 +113,7 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Miniak Patch Editor';
             $href = 'software-miniak-patch-editor.html';
-            $strapline = 'Patch editor/management tool for the '. Links::$miniak . ' (and the ' . Links::$micron . ')';
+            $strapline = 'Patch editor/management tool for the '. Links::$miniak . ' (and ' . Links::$micron . ') synthesiser';
             $content = new SoftwareContent('content-miniakpatcheditor.phtml', 'assets/images/miniak-patch-editor.jpg', 'MPE-Documentation.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
