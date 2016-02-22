@@ -38,7 +38,7 @@ final class Link {
         );
 
         if ($this->_isExternal) {
-            $text .= ' <i class="fa fa-external-link"></i>';
+            $text .= ' <i class="icon-external-link"></i>';
             $attributes['target'] = '_blank';
         }
 

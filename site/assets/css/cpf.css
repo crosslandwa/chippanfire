@@ -56,6 +56,15 @@ h3 {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
     margin-bottom: 15px;
 }
+
+.icon-external-link:after {
+    content: "";
+    display: inline-block;
+    background: url("../images/external-link.png") no-repeat top right;
+    width: 15px;
+    height: 15px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
