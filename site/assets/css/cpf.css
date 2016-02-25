@@ -58,13 +58,16 @@ h3 {
 }
 
 .icon-external-link:after {
-    content: "";
+    content: '';
     display: inline-block;
-    background: url("../images/external-link.png") no-repeat top right;
-    width: 15px;
-    height: 15px;
+    background: url("../images/external-link.svg");
+    -webkit-background-size: 1em 1em;
+    background-size: 1em 1em;
+    width: 1em;
+    height: 1em;
+    background-position: left bottom;
+    background-repeat: no-repeat;
 }
-
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
