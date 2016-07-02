@@ -113,3 +113,6 @@ body {
 label[for=bpm-control] {
   margin: 20px 0px 0px 0px;
 }
+#bpm-control {
+  margin: 0px 0px 10px 0px;
+}
