@@ -1,6 +1,6 @@
 <?php
 
-final class SoftwareContent {
+final class SoftwareContent implements PageContent {
     private $_contentFilename;
     private $_image;
     private $_documentationFile;
@@ -11,7 +11,7 @@ final class SoftwareContent {
         $this->_documentationFile = $documentationFile;
     }
 
-    public function render($page) {
+    public function render(Page $page) {
         require 'template/content-software-wrapper.phtml';
     }
 

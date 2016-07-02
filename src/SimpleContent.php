@@ -1,6 +1,6 @@
 <?php
 
-final class SimpleContent {
+final class SimpleContent implements PageContent {
     private $_contentFilename;
     private $_linked;
 
@@ -9,7 +9,7 @@ final class SimpleContent {
         $this->_linked = $linked;
     }
 
-    public function render($page) {
+    public function render(Page $page) {
         require 'template/' . $this->_contentFilename;
     }
 

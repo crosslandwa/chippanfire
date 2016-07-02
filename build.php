@@ -13,6 +13,7 @@ set_error_handler("exception_error_handler");
 // interfaces
 include 'src/Linkable.php';
 include 'src/Page.php';
+include 'src/PageContent.php';
 
 // classes
 include 'src/Documentation.php';
