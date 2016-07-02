@@ -24,4 +24,8 @@ final class ExternalPage implements Page, Linkable {
     public function strapline() {
         return $this->_strapline;
     }
+
+    public function render(Navigation $navigation) {
+        // no implementation needed here!
+    }
 }
