@@ -99,7 +99,7 @@ body {
     opacity: 1;
     cursor: pointer;
     border: 2px solid white;
-    transition: all 0.2s;
+    transition: all 0.05s;
 }
 .metronome-button.active {
     opacity: 0.25;
