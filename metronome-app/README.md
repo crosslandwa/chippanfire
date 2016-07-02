@@ -9,7 +9,4 @@ npm install //install dependencies
 npm run-script build //uses browserify to bundle app.js into /site/assets/js/metronome.js
 ```
 
-## Deploy
-Upload the entire contents of the /site folder to your favourite host and point a DNS record at index.html
-
-Note that cache-headers for the (static) content will need to be configured on the server...
+Note that the generated *metronome.js* is checked into version control!
