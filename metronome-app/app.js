@@ -31,7 +31,7 @@ function Metronome(on_start, on_stop) {
     this.toggle = function() {
         active = !active;
         if (active) {
-            accent.play(127, 20000);
+            accent.play(1, 20000);
             on_start();
         } else {
             on_stop();

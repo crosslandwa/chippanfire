@@ -6,8 +6,8 @@ function Player(asset_url, audio_context) {
     EventEmitter.call(this);
     let player = this;
 
-    this.play = function(velocity, cutoff_frequency) {
-        play(player, audio_context, velocity, cutoff_frequency);
+    this.play = function(gain, cutoff_frequency) {
+        play(player, audio_context, clip(gain, 0, 1), cutoff_frequency);
     }
 
     this.update_playback_rate = function(rate) {
@@ -24,6 +24,11 @@ function Player(asset_url, audio_context) {
 }
 util.inherits(Player, EventEmitter);
 
+function clip(value, min, max) {
+    if (value < min) return min;
+    return value > max ? max : value;
+}
+
 function loadSample(asset_url, audio_context, done) {
     var request = new XMLHttpRequest();
     request.open('GET', asset_url, true);
@@ -34,7 +39,7 @@ function loadSample(asset_url, audio_context, done) {
     request.send();
 }
 
-function play(player, audio_context, velocity, cutoff_frequency) {
+function play(player, audio_context, gain, cutoff_frequency) {
     if (!player._loaded) return;
 
     var now = time_now(audio_context);
@@ -50,7 +55,7 @@ function play(player, audio_context, velocity, cutoff_frequency) {
 
     var gain_node = audio_context.createGain();
     var filter_node = audio_context.createBiquadFilter();       
-    filter_node.frequency.value = cutoff_frequency > 30 ? cutoff_frequency : 30;
+    filter_node.frequency.value = clip(cutoff_frequency, 30, 20000);
     var source = audio_context.createBufferSource();
     
     source.connect(filter_node);
@@ -59,7 +64,7 @@ function play(player, audio_context, velocity, cutoff_frequency) {
     gain_node.connect(audio_context.destination);
 
     gain_node.gain.setValueAtTime(0, now);
-    gain_node.gain.linearRampToValueAtTime(velocity / 127, now + 0.01);
+    gain_node.gain.linearRampToValueAtTime(gain, now + 0.01);
 
     source.playbackRate.setValueAtTime(player._playback_rate, now);
     source.buffer = player._buffer;
@@ -71,7 +76,7 @@ function play(player, audio_context, velocity, cutoff_frequency) {
 
     player._voices.push({source: source, gain: gain_node.gain});
     source.start();
-    player.emit('started', velocity);
+    player.emit('started', gain);
 }
 
 function anchor(audio_param, now) {
