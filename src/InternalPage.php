@@ -5,10 +5,9 @@ final class InternalPage implements Page, Linkable {
     private $_title;
     private $_filename;
     private $_content;
-    private $_link;
     private $_strapline;
 
-    public function __construct($title, $filename, $content, $strapline = '') {
+    public function __construct($title, $filename, PageContent $content, $strapline = '') {
         $this->_header = new Header();
         $this->_title = $title;
         $this->_filename = $filename;
