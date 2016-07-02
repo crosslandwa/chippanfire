@@ -64,7 +64,7 @@ function play(player, audio_context, gain, cutoff_frequency) {
     gain_node.connect(audio_context.destination);
 
     gain_node.gain.setValueAtTime(0, now);
-    gain_node.gain.linearRampToValueAtTime(gain, now + 0.01);
+    gain_node.gain.linearRampToValueAtTime(gain, now);
 
     source.playbackRate.setValueAtTime(player._playback_rate, now);
     source.buffer = player._buffer;
