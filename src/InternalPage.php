@@ -38,4 +38,8 @@ final class InternalPage implements Page, Linkable {
     public function strapline() {
         return $this->_strapline;
     }
+
+    public function addScript($filename) {
+        $this->_header->addScript($filename);
+    }
 }
