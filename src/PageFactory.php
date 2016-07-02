@@ -59,6 +59,7 @@ class PageFactory {
 
     public function linkedSoftwarePages() {
         return array(
+            $this->metronome(),
             $this->m4lDSM(),
             $this->m4lWAI(),
             $this->m4lMCM(),
@@ -134,6 +135,16 @@ class PageFactory {
             $href = 'https://github.com/crosslandwa/chippanfire-site';
             $strapline = 'Totally meta, see the source code for generating this site!';
             return new ExternalPage($title, $href, $strapline);
+        });
+    }
+
+    public function metronome() {
+        return $this->_cacheAndReturn(function() {
+            $title = 'Metronome';
+            $href = 'metronome.html';
+            $page = new InternalPage($title, $href, new SimpleContent('content-metronome.phtml'), "An online metronome fo' keepin' yo' shit tight!");
+            $page->addScript('metronome.js');
+            return $page;
         });
     }
 }

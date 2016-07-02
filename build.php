@@ -47,7 +47,8 @@ $site = new Site(
         $pages->m4lDSM(),
         $pages->m4lMCM(),
         $pages->wacNetworkMidi(),
-        $pages->miniakPatchEditor()
+        $pages->miniakPatchEditor(),
+        $pages->metronome()
     ),
     $navigation
 );
