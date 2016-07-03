@@ -9,8 +9,10 @@ window.addEventListener('load', off_we_go);
 function off_we_go() {
     let button = document.getElementById('metronome-on-off'),
         bpm = document.getElementById('bpm-control'),
-        bpm_label = document.querySelector("label[for='bpm-control']")
-        metronome = new Metronome(120);
+        bpm_label = document.querySelector("label[for='bpm-control']"),
+        accent = document.getElementById('accent-control'),
+        accent_label = document.querySelector("label[for='accent-control']"),
+        metronome = new Metronome(120, 4);
 
 
     window.addEventListener("keypress", (event) => {
@@ -20,8 +22,14 @@ function off_we_go() {
     bpm.addEventListener("input", (event) => {
         const new_bpm = event.target.value;
         bpm_label.innerHTML = 'BPM: ' + new_bpm;
-        metronome.update_bpm(new_bpm)
-    })
+        metronome.update_bpm(new_bpm);
+    });
+
+    accent.addEventListener("input", (event) => {
+        const new_accent = event.target.value;
+        accent_label.innerHTML = 'ACCENT: ' + new_accent + ' beats';
+        metronome.update_accent_count(new_accent);
+    });
 
     button.addEventListener("click", metronome.toggle);
     metronome.on('tick_start', () => metronome_on(button));
@@ -36,7 +44,7 @@ function metronome_off(ui_btn) {
     ui_btn.classList.remove('active');
 }
 
-function Metronome(initial_bpm) {
+function Metronome(initial_bpm, initial_accent_count) {
     EventEmitter.call(this);
 
     let bpm_to_ms = function(bpm) {
@@ -48,7 +56,8 @@ function Metronome(initial_bpm) {
         tick = new Player('assets/audio/metronome-tick.mp3', audio_context),
         repeater = Repeater.create_scheduled_by_audio_context(audio_context, bpm_to_ms(initial_bpm)),
         count = 0,
-        bpm = initial_bpm
+        bpm = initial_bpm,
+        accent_count = initial_accent_count,
         metronome = this;
 
     let pulse = function() {
@@ -57,11 +66,15 @@ function Metronome(initial_bpm) {
         } else {
             tick.play(1, 20000);
         }
-        count = (++count % 4);
+        count = (++count % accent_count);
     }
 
     this.update_bpm = function(bpm) {
         repeater.interval(bpm_to_ms(bpm))
+    }
+
+    this.update_accent_count = function(count) {
+        accent_count = count;
     }
 
     this.toggle = function() {
