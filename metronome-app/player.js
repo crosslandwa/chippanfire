@@ -20,6 +20,7 @@ function Player(asset_url, audio_context) {
     loadSample(asset_url, audio_context, (buffer) => {
         this._buffer = buffer;
         this._loaded = true;
+        player.emit('loaded');
     });
 }
 util.inherits(Player, EventEmitter);
