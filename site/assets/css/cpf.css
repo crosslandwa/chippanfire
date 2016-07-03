@@ -106,6 +106,9 @@ body {
   border: 2px solid grey;
   transition: all 0.05s;
 }
+.metronome-button:hover {
+  border: 2px solid rgba(100, 100, 100, 0.3);
+}
 .metronome-button.active {
   opacity: 0.5;
   box-shadow: inset 0px 0px 30px red;
@@ -113,6 +116,11 @@ body {
 }
 label[for=bpm-control], label[for=accent-control] {
   margin: 20px 0px 0px 0px;
+}
+
+label[for=metronome-on-off] {
+    position: absolute;
+    margin-top: 30px;
 }
 #bpm-control, #accent-control {
   margin: 0px 0px 10px 0px;
