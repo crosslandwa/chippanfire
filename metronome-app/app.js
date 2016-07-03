@@ -14,24 +14,23 @@ function off_we_go() {
         accent_label = document.querySelector("label[for='accent-control']"),
         metronome = new Metronome(120, 4);
 
-
-    window.addEventListener("keypress", (event) => {
-        if (32 == event.charCode) metronome.toggle();
+    window.addEventListener('keydown', (event) => {
+        if (32 == event.keyCode) metronome.toggle();
     });
 
-    bpm.addEventListener("input", (event) => {
+    bpm.addEventListener('input', (event) => {
         const new_bpm = event.target.value;
         bpm_label.innerHTML = 'BPM: ' + new_bpm;
         metronome.update_bpm(new_bpm);
     });
 
-    accent.addEventListener("input", (event) => {
+    accent.addEventListener('input', (event) => {
         const new_accent = event.target.value;
         accent_label.innerHTML = 'ACCENT: ' + new_accent + ' beats';
         metronome.update_accent_count(new_accent);
     });
 
-    button.addEventListener("click", metronome.toggle);
+    button.addEventListener('mousedown', metronome.toggle);
     metronome.on('tick_start', () => metronome_on(button));
     metronome.on('tick_stop', () => metronome_off(button));
 }
@@ -46,7 +45,6 @@ function metronome_off(ui_btn) {
 
 function Metronome(initial_bpm, initial_accent_count) {
     EventEmitter.call(this);
-
     let bpm_to_ms = function(bpm) {
         return (60 / bpm) * 1000;
     }
