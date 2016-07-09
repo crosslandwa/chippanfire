@@ -68,16 +68,22 @@ function Metronome(initial_bpm, initial_accent_count) {
         count = (++count % accent_count);
     }
 
-    let load_samples = function(callback) {
-        accent = new Player('assets/audio/metronome-accent.mp3', audio_context);
-        accent.on('loaded', () => {
-            tick = new Player('assets/audio/metronome-tick.mp3', audio_context);
-            accent.on('started', () => metronome.emit('tick_start'));
-            tick.on('started', () => metronome.emit('tick_start'));
-            accent.on('stopped', () => metronome.emit('tick_stop'));
-            tick.on('stopped', () => metronome.emit('tick_stop'));
-            tick.on('loaded', callback);
-        })
+    let load_samples = function() {
+        if (accent) { return Promise.resolve(); }
+        return new Player('assets/audio/metronome-accent.mp3', audio_context)
+            .then((player) => {
+                accent = player;
+                accent.on('started', () => metronome.emit('tick_start'));
+                accent.on('stopped', () => metronome.emit('tick_stop'));
+            })
+            .then(() => {
+                return new Player('assets/audio/metronome-tick.mp3', audio_context)
+            })
+            .then((player) => {
+                tick = player;
+                tick.on('started', () => metronome.emit('tick_start'));
+                tick.on('stopped', () => metronome.emit('tick_stop'));
+            });
     }
 
     let do_toggle = function() {
@@ -99,11 +105,7 @@ function Metronome(initial_bpm, initial_accent_count) {
     }
 
     this.toggle = function() {
-        if (!accent) {
-            load_samples(do_toggle);
-        } else {
-            do_toggle();
-        }
+        load_samples().then(do_toggle);
     }
 }
 util.inherits(Metronome, EventEmitter);

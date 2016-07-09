@@ -17,11 +17,12 @@ function Player(asset_url, audio_context) {
     this._loaded = false;
     this._voices = [];
     this._playback_rate = 1;
-    loadSample(asset_url, audio_context, (buffer) => {
-        this._buffer = buffer;
-        this._loaded = true;
-        player.emit('loaded');
-    });
+    return loadSample(asset_url, audio_context)
+        .then((buffer) => {
+            this._buffer = buffer;
+            this._loaded = true;
+        })
+        .then(() => { return Promise.resolve(player) });
 }
 util.inherits(Player, EventEmitter);
 
@@ -30,14 +31,16 @@ function clip(value, min, max) {
     return value > max ? max : value;
 }
 
-function loadSample(asset_url, audio_context, done) {
-    var request = new XMLHttpRequest();
-    request.open('GET', asset_url, true);
-    request.responseType = 'arraybuffer';
-    request.onload = function () {
-        audio_context.decodeAudioData(request.response, done);
-    }
-    request.send();
+function loadSample(asset_url, audio_context) {
+    return new Promise((resolve, reject) => {
+        var request = new XMLHttpRequest();
+        request.open('GET', asset_url, true);
+        request.responseType = 'arraybuffer';
+        request.onload = function () {
+            audio_context.decodeAudioData(request.response, resolve);
+        }
+        request.send();
+    });
 }
 
 function play(player, audio_context, gain, cutoff_frequency) {
