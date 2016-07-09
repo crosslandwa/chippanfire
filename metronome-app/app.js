@@ -1,4 +1,4 @@
-const audio_context = new AudioContext(),
+const audio_context = window.AudioContext ? new window.AudioContext() : new window.webkitAudioContext(),
     Player = require('./player.js'),
     Repeater = require('./repeater.js'),
     EventEmitter = require('events'),
@@ -7,7 +7,7 @@ const audio_context = new AudioContext(),
 window.addEventListener('load', off_we_go);
 
 function off_we_go() {
-    let button = document.getElementById('metronome-on-off'),
+    var button = document.getElementById('metronome-on-off'),
         button_label = document.getElementById("label[for='metronome-on-off']"),
         bpm = document.getElementById('bpm-control'),
         bpm_label = document.querySelector("label[for='bpm-control']"),
@@ -31,7 +31,6 @@ function off_we_go() {
         metronome.update_accent_count(new_accent);
     });
 
-    // button_label.addEventListener('mo')
     button.addEventListener('click', metronome.toggle);
     metronome.on('tick_start', () => metronome_on(button));
     metronome.on('tick_stop', () => metronome_off(button));
@@ -52,7 +51,8 @@ function Metronome(initial_bpm, initial_accent_count) {
     }
 
     let active = false,
-        accent = tick = undefined,
+        accent = undefined,
+        tick = undefined,
         repeater = Repeater.create_scheduled_by_audio_context(audio_context, bpm_to_ms(initial_bpm)),
         count = 0,
         bpm = initial_bpm,
@@ -76,7 +76,10 @@ function Metronome(initial_bpm, initial_accent_count) {
             tick.on('started', () => metronome.emit('tick_start'));
             accent.on('stopped', () => metronome.emit('tick_stop'));
             tick.on('stopped', () => metronome.emit('tick_stop'));
-            tick.on('loaded', callback);
+            tick.on('loaded', () => {
+                tick.play(1, 20000);
+                callback();
+            });
         })
     }
 
