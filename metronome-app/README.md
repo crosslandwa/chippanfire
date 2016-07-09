@@ -10,4 +10,6 @@ npm install -g browserify //install browserify for bundling
 npm run-script build //uses browserify to bundle app.js into /site/assets/js/metronome.js
 ```
 
-Note that the generated *metronome.js* file is checked into version control!
+Interesting things:
+- the generated *metronome.js* file is checked into version control!
+- babelify plugin (for browserify) is used to transpile ES6 js into older style JS to support more browsers... 
