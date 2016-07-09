@@ -76,10 +76,7 @@ function Metronome(initial_bpm, initial_accent_count) {
             tick.on('started', () => metronome.emit('tick_start'));
             accent.on('stopped', () => metronome.emit('tick_stop'));
             tick.on('stopped', () => metronome.emit('tick_stop'));
-            tick.on('loaded', () => {
-                tick.play(1, 20000);
-                callback();
-            });
+            tick.on('loaded', callback);
         })
     }
 
