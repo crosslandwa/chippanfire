@@ -2,9 +2,28 @@ const audio_context = window.AudioContext ? new window.AudioContext() : new wind
     Player = require('./player.js'),
     Repeater = require('./repeater.js'),
     EventEmitter = require('events'),
-    util = require('util');
+    util = require('util'),
+    isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-window.addEventListener('load', off_we_go);
+if (isIOS) {
+    window.addEventListener('load', make_it_work_on_ios);
+} else {
+    window.addEventListener('load', off_we_go);
+}
+
+function make_it_work_on_ios() {
+    window.addEventListener('touchend', () => {
+        if (audio_context.state != 'running') {
+            console.log('Starting web audio context via the IOS dance');
+            var buffer = audio_context.createBuffer(1, 1, 22050);
+            var source = audio_context.createBufferSource();
+            source.buffer = buffer;
+            source.connect(audio_context.destination);
+            source.noteOn(0);
+            off_we_go();
+        }
+    }, false);
+}
 
 function off_we_go() {
     var button = document.getElementById('metronome-on-off'),
@@ -31,7 +50,9 @@ function off_we_go() {
         metronome.update_accent_count(new_accent);
     });
 
-    button.addEventListener('click', metronome.toggle);
+    button.addEventListener('click', () => {
+        metronome.toggle();
+    });
     metronome.on('tick_start', () => metronome_on(button));
     metronome.on('tick_stop', () => metronome_off(button));
 }
@@ -54,6 +75,7 @@ function Metronome(initial_bpm, initial_accent_count) {
         accent = undefined,
         tick = undefined,
         repeater = Repeater.create_scheduled_by_audio_context(audio_context, bpm_to_ms(initial_bpm)),
+        // repeater = new Repeater(setTimeout, bpm_to_ms(initial_bpm)),
         count = 0,
         bpm = initial_bpm,
         accent_count = initial_accent_count,
