@@ -23,3 +23,22 @@ Use PHP to generate the static html assets by running the following from the top
 Upload the entire contents of the /site folder to your favourite host and point a DNS record at index.html
 
 Note that cache-headers for the (static) content will need to be configured on the server...
+
+## HTTPS
+To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I used [certbot](https://certbot.eff.org/) to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
+
+**Install certbot**
+```
+brew update
+brew install certbot
+```
+
+**Acquire certificate**
+```
+mkdir -p ~/letsencrypt/log
+mkdir -p ~/letsencrypt/lib
+certbot certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~/letsencrypt/log/ --config-dir ~/letsencrypt/ --work-dir ~/letsencrypt/
+```
+_note use of custom output directories, instead of the root owned /etc/letsencrypt used by default_
+
+With the cert acquired on my local machine, its then a case of uploading the cert/key to webserver and updating Apache to use it. 
