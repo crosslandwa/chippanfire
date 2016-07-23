@@ -59,6 +59,7 @@ class PageFactory {
 
     public function linkedSoftwarePages() {
         return array(
+            $this->pushWrapper(),
             $this->metronome(),
             $this->m4lDSM(),
             $this->m4lWAI(),
@@ -144,6 +145,19 @@ class PageFactory {
             $href = 'metronome.html';
             $page = new InternalPage($title, $href, new SimpleContent('content-metronome.phtml'), "An online metronome fo' keepin' yo' shit tight!");
             $page->addScript('metronome.js');
+            return $page;
+        });
+    }
+
+    public function pushWrapper() {
+        return $this->_cacheAndReturn(function() {
+            $title = 'Push Wrapper';
+            $href = 'push-wrapper-example.html';
+            $wrapperLink = Link::external('Push Wrapper', 'https://github.com/crosslandwa/push-wrapper');
+            $pushLink = Link::external('Ableton Push (mk1)', 'https://github.com/crosslandwa/push-wrapper');
+            $strapline = "Turn your $pushLink into a simple Web Audio API powered Drum Machine. <br> A demo of my $wrapperLink in action.";
+            $page = new InternalPage($title, $href, new SimpleContent('content-push-wrapper.phtml'), $strapline);
+            $page->addScript('push-wrapper-example.js');
             return $page;
         });
     }

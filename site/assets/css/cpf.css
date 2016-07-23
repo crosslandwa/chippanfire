@@ -125,3 +125,60 @@ label[for=metronome-on-off] {
 #bpm-control, #accent-control {
   margin: 0px 0px 10px 0px;
 }
+
+/* Push wrapper page styles
+-------------------------------------------------- */
+
+.push-wrapper-buttons {
+    margin: 10px 0;
+    padding: 10px 0;
+    max-width: 800px;
+    height: 25%;
+    min-height: 101px;
+    max-height: 160px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    background-color: #d8d8da;
+    padding: 20px 0px;
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+
+.push-wrapper-button {
+    display: inline-block;
+    width: 9%;
+    padding: 3% 0 2% 0;
+    margin: 0px 1%;
+    background-color: #c7ccce;
+    border-radius: 10px;
+    opacity: 1;
+    cursor: pointer;
+    border: 2px solid grey;
+    transition: all 0.2s;
+}
+.push-wrapper-button.active {
+    opacity: 0.25;
+    box-shadow: inset 0px 0px 30px blue;
+    border: 2px solid white;
+    animation: shake .1s ease-in-out;
+}
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+        transform: translateY(0);
+        transform: scale(1, 1);
+    }
+    40% {
+        transform: translateX(10px);
+        transform: translateY(0px);
+        transform: scale(1.2, 1.2);
+    }
+    100% {
+        transform: translateX(0);
+        transform: translateY(0);
+    }
+}
