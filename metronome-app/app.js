@@ -1,5 +1,5 @@
 const audio_context = window.AudioContext ? new window.AudioContext() : new window.webkitAudioContext(),
-    Player = require('./player.js'),
+    Player = require('wac.sample-player'),
     Repeater = require('./repeater.js'),
     EventEmitter = require('events'),
     util = require('util'),
@@ -83,29 +83,33 @@ function Metronome(initial_bpm, initial_accent_count) {
 
     let pulse = function() {
         if (count == 0) {
-            accent.play(1, 20000);    
+            accent.play();
         } else {
-            tick.play(1, 20000);
+            tick.play();
         }
         count = (++count % accent_count);
     }
 
     let load_samples = function() {
         if (accent) { return Promise.resolve(); }
-        return new Player('assets/audio/metronome-accent.mp3', audio_context)
-            .then((player) => {
-                accent = player;
-                accent.on('started', () => metronome.emit('tick_start'));
-                accent.on('stopped', () => metronome.emit('tick_stop'));
+        return new Promise((resolve, reject) => {
+            new Player('assets/audio/metronome-accent.mp3', audio_context, resolve).toMaster();
+        })
+        .then((player) => {
+            accent = player;
+            accent.on('started', () => metronome.emit('tick_start'));
+            accent.on('stopped', () => metronome.emit('tick_stop'));
+        })
+        .then(() => {
+            return new Promise((resolve, reject) => {
+                new Player('assets/audio/metronome-tick.mp3', audio_context, resolve).toMaster();
             })
-            .then(() => {
-                return new Player('assets/audio/metronome-tick.mp3', audio_context)
-            })
-            .then((player) => {
-                tick = player;
-                tick.on('started', () => metronome.emit('tick_start'));
-                tick.on('stopped', () => metronome.emit('tick_stop'));
-            });
+        })
+        .then((player) => {
+            tick = player;
+            tick.on('started', () => metronome.emit('tick_start'));
+            tick.on('stopped', () => metronome.emit('tick_stop'));
+        });
     }
 
     let do_toggle = function() {
@@ -115,7 +119,7 @@ function Metronome(initial_bpm, initial_accent_count) {
         } else {
             repeater.stop();
             count = 0;
-        }    
+        }
     }
 
     this.update_bpm = function(bpm) {
