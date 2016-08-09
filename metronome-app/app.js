@@ -1,6 +1,6 @@
 const audio_context = window.AudioContext ? new window.AudioContext() : new window.webkitAudioContext(),
     Player = require('wac.sample-player'),
-    Repeater = require('./repeater.js'),
+    Scheduling = require('wac.scheduling')(audio_context),
     EventEmitter = require('events'),
     util = require('util'),
     isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -74,8 +74,7 @@ function Metronome(initial_bpm, initial_accent_count) {
     let active = false,
         accent = undefined,
         tick = undefined,
-        repeater = Repeater.create_scheduled_by_audio_context(audio_context, bpm_to_ms(initial_bpm)),
-        // repeater = new Repeater(setTimeout, bpm_to_ms(initial_bpm)),
+        repeater = Scheduling.Repeater(bpm_to_ms(initial_bpm)),
         count = 0,
         bpm = initial_bpm,
         accent_count = initial_accent_count,
@@ -123,7 +122,7 @@ function Metronome(initial_bpm, initial_accent_count) {
     }
 
     this.update_bpm = function(bpm) {
-        repeater.interval(bpm_to_ms(bpm))
+        repeater.updateInterval(bpm_to_ms(bpm))
     }
 
     this.update_accent_count = function(count) {

@@ -4,7 +4,8 @@
     "main": "app.js",
     "description": "A web based metronome for the chippanfire site",
     "dependencies": {
-        "wac.sample-player": "^1.0.0"
+        "wac.sample-player": "^1.0.0",
+        "wac.scheduling": "^1.0.0"
     },
     "devDependencies": {
         "babelify": "7.3.0",
