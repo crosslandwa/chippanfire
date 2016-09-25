@@ -22,26 +22,73 @@
           "Version": "2012-10-17",
           "Statement": [
             {
-              "Sid": "2",
+              "Sid": "PublicReadGetObject",
               "Effect": "Allow",
               "Principal": {
-                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E14A6V5RCDJX3Y"
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E4R778N2IVJ8P"
               },
               "Action": "s3:GetObject",
               "Resource": [
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:s3:::",
-                      {"Ref": "SiteS3Bucket"},
-                      "/*"
-                    ]
-                  ]
-                }
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", {"Ref": "SiteS3Bucket"}, "/*" ] ] }
               ]
             }
           ]
+        }
+      }
+    },
+    "SiteS3Cloudfront": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": ["chippanfire.com"],
+          "CacheBehaviors": [],
+          "Comment": "CDN for Chippanfire",
+          "CustomErrorResponses": [],
+          "DefaultCacheBehavior": {
+            "AllowedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "Compress": false,
+            "DefaultTTL": 86400,
+            "ForwardedValues": {
+              "Cookies": {
+                "Forward": "none"
+              },
+              "Headers": [],
+              "QueryString": false
+            },
+            "MaxTTL": 31536000,
+            "MinTTL": 0,
+            "SmoothStreaming": false,
+            "TargetOriginId": {"Ref": "SiteS3Bucket"},
+            "TrustedSigners": [],
+            "ViewerProtocolPolicy": "redirect-to-https"
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "Origins": [
+            {
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "SiteS3Bucket",
+                  "DomainName"
+                ]
+              },
+              "Id": {"Ref": "SiteS3Bucket"},
+              "S3OriginConfig": {
+                "OriginAccessIdentity": "origin-access-identity/cloudfront/E4R778N2IVJ8P"
+              }
+            }
+          ],
+          "ViewerCertificate": {
+            "IamCertificateId": "ASCAIT6SCYJ2D2WAHRXMY",
+            "SslSupportMethod": "sni-only"
+          }
         }
       }
     },
@@ -95,11 +142,47 @@
                   "Resource": [
                     { "Fn::Join" : ["", [ "arn:aws:s3:::", { "Ref" : "SiteS3Bucket" } ]] }
                   ]
+                },
+                {
+                  "Sid": "CertWangle",
+                  "Effect": "Allow",
+                  "Action": [
+                    "iam:ListServerCertificates",
+                    "iam:UploadServerCertificate",
+                    "iam:DeleteServerCertificate"
+                  ],
+                  "Resource": [
+                    "*"
+                  ]
                 }
               ]
             }
           }
         ]
+      }
+    },
+    "ChippanfireWWWDNS": {
+      "Type" : "AWS::Route53::RecordSet",
+      "Properties" : {
+        "HostedZoneName": "pilots.bbcconnectedstudio.co.uk.",
+        "Name" : "www.chippanfire.com",
+        "ResourceRecords" : [
+          "chippanfire.com.s3-website-eu-west-1.amazonaws.com"
+        ],
+        "TTL" : "60",
+        "Type" : "ALIAS"
+      }
+    },
+    "ChippanfireNakedDNS": {
+      "Type" : "AWS::Route53::RecordSet",
+      "Properties" : {
+        "HostedZoneName": "pilots.bbcconnectedstudio.co.uk.",
+        "Name" : "chippanfire.com",
+        "ResourceRecords" : [
+          "chippanfire.com.s3-website-eu-west-1.amazonaws.com"
+        ],
+        "TTL" : "60",
+        "Type" : "ALIAS"
       }
     }
   }
