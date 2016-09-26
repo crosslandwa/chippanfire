@@ -1,5 +1,7 @@
 #!/bin/bash
 
-aws s3 sync . s3://chippanfire.com/ --delete --cache-control max-age=300
+# HTML (24 hours cache) so page changes published within 24 hours (can manually invalidate)
+aws s3 sync ../site s3://chippanfire.com/ --delete --exclude "*" --include "*.html" --cache-control max-age=86400
 
-#aws s3 sync . s3://chippanfire.com/ --exclude "*" --include "*.json" --include "*.xml" --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --cache-control max-age=30
+# everything else (1 year cache)
+aws s3 sync ../site s3://chippanfire.com/ --delete --cache-control max-age=31536000
