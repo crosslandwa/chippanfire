@@ -47,12 +47,12 @@
             {
               "ErrorCode" : 403,
               "ResponseCode" : 404,
-              "ResponsePagePath" : "error.html"
+              "ResponsePagePath" : "/error.html"
             },
             {
               "ErrorCode" : 404,
               "ResponseCode" : 404,
-              "ResponsePagePath" : "error.html"
+              "ResponsePagePath" : "/error.html"
             }
           ],
           "DefaultCacheBehavior": {
