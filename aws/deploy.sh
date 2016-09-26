@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# HTML (24 hours cache) so page changes published within 24 hours (can manually invalidate)
+# HTML pages (24 hours cache) - changes published within 24 hours (can manually invalidate)
 aws s3 sync ../site s3://chippanfire.com/ --delete --exclude "*" --include "*.html" --cache-control max-age=86400
 
 # everything else (1 year cache)

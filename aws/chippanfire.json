@@ -43,7 +43,18 @@
           "Aliases": ["chippanfire.com"],
           "CacheBehaviors": [],
           "Comment": "CDN for Chippanfire",
-          "CustomErrorResponses": [],
+          "CustomErrorResponses": [
+            {
+              "ErrorCode" : 403,
+              "ResponseCode" : 404,
+              "ResponsePagePath" : "error.html"
+            },
+            {
+              "ErrorCode" : 404,
+              "ResponseCode" : 404,
+              "ResponsePagePath" : "error.html"
+            }
+          ],
           "DefaultCacheBehavior": {
             "AllowedMethods": [
               "GET",
