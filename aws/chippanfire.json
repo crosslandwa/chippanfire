@@ -162,6 +162,15 @@
         ]
       }
     },
+    "ChippanfireHostedZone": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "HostedZoneConfig": {
+          "Comment" : "Hosted zone for chippanfire"
+        },
+        "Name": "chippanfire.com."
+      }
+    },
     "ChippanfireDNSName" : {
       "Type" : "AWS::Route53::RecordSetGroup",
       "Properties" : {
