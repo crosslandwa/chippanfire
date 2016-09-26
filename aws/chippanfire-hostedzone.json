@@ -1,0 +1,16 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Creates hosted zone for chippanfire site",
+  "Parameters": {},
+  "Resources": {
+    "ChippanfireHostedZone": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "HostedZoneConfig": {
+          "Comment" : "Hosted zone for chippanfire"
+        },
+        "Name": "chippanfire.com."
+      }
+    }
+  }
+}

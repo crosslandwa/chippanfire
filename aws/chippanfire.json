@@ -85,6 +85,7 @@
               }
             }
           ],
+          "PriceClass": "PriceClass_100",
           "ViewerCertificate": {
             "IamCertificateId": "ASCAIT6SCYJ2D2WAHRXMY",
             "SslSupportMethod": "sni-only"
@@ -161,28 +162,28 @@
         ]
       }
     },
-    "ChippanfireWWWDNS": {
-      "Type" : "AWS::Route53::RecordSet",
+    "ChippanfireDNSName" : {
+      "Type" : "AWS::Route53::RecordSetGroup",
       "Properties" : {
-        "HostedZoneName": "pilots.bbcconnectedstudio.co.uk.",
-        "Name" : "www.chippanfire.com",
-        "ResourceRecords" : [
-          "chippanfire.com.s3-website-eu-west-1.amazonaws.com"
-        ],
-        "TTL" : "60",
-        "Type" : "ALIAS"
-      }
-    },
-    "ChippanfireNakedDNS": {
-      "Type" : "AWS::Route53::RecordSet",
-      "Properties" : {
-        "HostedZoneName": "pilots.bbcconnectedstudio.co.uk.",
-        "Name" : "chippanfire.com",
-        "ResourceRecords" : [
-          "chippanfire.com.s3-website-eu-west-1.amazonaws.com"
-        ],
-        "TTL" : "60",
-        "Type" : "ALIAS"
+        "HostedZoneName" : "chippanfire.com.",
+        "RecordSets" : [
+          {
+            "Name" : "chippanfire.com",
+            "Type" : "A",
+            "AliasTarget" : {
+              "HostedZoneId": "Z2FDTNDATAQYW2",
+              "DNSName": {"Fn::GetAtt" : [ "SiteS3Cloudfront", "DomainName"] }
+            }
+          },
+          {
+            "Name" : "www.chippanfire.com",
+            "Type" : "A",
+            "AliasTarget" : {
+              "HostedZoneId": "Z2FDTNDATAQYW2",
+              "DNSName": {"Fn::GetAtt" : [ "SiteS3Cloudfront", "DomainName"] }
+            }
+          }
+        ]
       }
     }
   }
