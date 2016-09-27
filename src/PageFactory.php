@@ -53,7 +53,9 @@ class PageFactory {
         return $this->_cacheAndReturn(function() {
             $title = 'Not Found 40404040404';
             $href = 'error.html';
-            return new InternalPage($title, $href, new SimpleContent('content-error.phtml'));
+            $page = new InternalPage($title, $href, new SimpleContent('content-error.phtml'));
+            $page->addScript('error-page-001.js');
+            return $page;
         });
     }
 
