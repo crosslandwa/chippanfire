@@ -20,9 +20,37 @@ Use PHP to generate the static html assets by running the following from the top
 ```php build.php```
 
 ## Deploy
-Upload the entire contents of the /site folder to your favourite host and point a DNS record at index.html
+The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /site folder to S3 using the AWS cli
 
-Note that cache-headers for the (static) content will need to be configured on the server...
+```
+cd ./site/
+
+# HTML pages (24 hours cache) - changes published within 24 hours (can manually invalidate)
+aws s3 sync . s3://chippanfire.com/ --delete --exclude "*" --include "*.html" --cache-control max-age=86400
+
+# everything else (1 year cache)
+aws s3 sync . s3://chippanfire.com/ --delete --cache-control max-age=31536000
+```
+
+## AWS & Infrastructure
+I've elected to use Cloudformation to configure the necessary AWS resources for hosting/serving the site.
+
+This **should** be automatable via the creation of a single stack via AWS Cloudformation, however, there's at least one chicken/egg scenario that prevents this.
+Specifically, I need to have uploaded a SSL cert before I can create a Cloudfront Distribution that uses it. I desire an EC2 instance role with permissions to upload that
+cert. I therefore cannot create that role and the Cloudfront Distribution in the same stack... The process I used was
+
+- Create Role (upload *partial* cloudformation template)
+- Create ec2 instance that assumes role (console)
+- Upload cert (ec2)
+- Create OAI user for cloudfront (console)
+- Create remaining resources (upload *full* cloudformation template)
+- Check out code (ec2)
+- build site (ec2)
+- deploy site (ec2)
+- Update NS records (DNS provider)
+
+*Note the cloudformation template configures index.html as the route document for the site. It is necessary to update
+the account where my domain is registered to point the main DNS record at the AWS nameservers for the created **hosted zone***
 
 ## HTTPS
 To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I used [certbot](https://certbot.eff.org/) to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
@@ -34,6 +62,8 @@ brew install certbot
 ```
 
 **Acquire certificate**
+To acquire a cert on my local machine:
+
 ```
 mkdir -p ~/letsencrypt/log
 mkdir -p ~/letsencrypt/lib
@@ -41,4 +71,11 @@ certbot certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~
 ```
 _note use of custom output directories, instead of the root owned /etc/letsencrypt used by default_
 
-With the cert acquired on my local machine, its then a case of uploading the cert/key to webserver and updating Apache to use it. 
+
+**Upload and use certificate**
+The AWS cli is used to upload certs (to IAM). The ID of the uploaded cert is used in the cloudformation template to specify what cert to use with Cloudfront (for enabling HTTPS on the site)
+
+```
+aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/chippanfire.com-cert/cert.pem --private-key file:///home/ec2-user/chippanfire.com-cert/privkey.pem --certificate-chain file:///home/ec2-user/chippanfire.com-cert/chain.pem --path /chippanfire/
+# aws iam list-server-certificates to get cert ID
+```
