@@ -64,7 +64,7 @@
               "GET",
               "HEAD"
             ],
-            "Compress": false,
+            "Compress": true,
             "DefaultTTL": 86400,
             "ForwardedValues": {
               "Cookies": {
