@@ -16,6 +16,7 @@ include 'src/Page.php';
 include 'src/PageContent.php';
 
 // classes
+include 'src/Asset.php';
 include 'src/Documentation.php';
 include 'src/ExternalPage.php';
 include 'src/Header.php';
@@ -28,6 +29,11 @@ include 'src/PageFactory.php';
 include 'src/SimpleContent.php';
 include 'src/Site.php';
 include 'src/SoftwareContent.php';
+
+// TODO make this switch by passing build parameter
+if (true) {
+    Asset::useLocal();
+}
 
 $pages = new PageFactory();
 

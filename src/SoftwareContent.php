@@ -28,7 +28,7 @@ final class SoftwareContent implements PageContent {
     }
 
     private function _download($text, $item) {
-        return '<a href="assets/downloads/' . $item . '" >'
+        return '<a href="' . new Asset('downloads/' . $item) . '" >'
             . '<button type="submit" class="btn btn-primary">' . $text . '</button>'
             . '</a>';
     }
