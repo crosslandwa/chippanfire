@@ -19,6 +19,11 @@ Use PHP to generate the static html assets by running the following from the top
 
 ```php build.php```
 
+Note that by default the asset used will have relative URLs - this enables local machine developement.
+When building for live a build parameter should be used that makes the build generate absolute URLs for all assets
+
+```php build.php live-assets```
+
 ## Deploy
 The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /site folder to S3 using the AWS cli
 

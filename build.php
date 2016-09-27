@@ -30,8 +30,11 @@ include 'src/SimpleContent.php';
 include 'src/Site.php';
 include 'src/SoftwareContent.php';
 
-// TODO make this switch by passing build parameter
-if (true) {
+$useLocalAssets = true;
+if ((count($argv) > 0) && ($argv[1] === 'live-assets')) {
+    $useLocalAssets = false;
+}
+if ($useLocalAssets) {
     Asset::useLocal();
 }
 
