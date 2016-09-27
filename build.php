@@ -31,7 +31,7 @@ include 'src/Site.php';
 include 'src/SoftwareContent.php';
 
 $useLocalAssets = true;
-if ((count($argv) > 0) && ($argv[1] === 'live-assets')) {
+if ((count($argv) > 1) && ($argv[1] === 'live-assets')) {
     $useLocalAssets = false;
 }
 if ($useLocalAssets) {
