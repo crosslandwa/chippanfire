@@ -5,7 +5,7 @@ final class SoftwareContent implements PageContent {
     private $_image;
     private $_documentationFile;
 
-    public function __construct($contentFilename, $image, $documentationFile) {
+    public function __construct($contentFilename, Asset $image, $documentationFile) {
         $this->_contentFilename = $contentFilename;
         $this->_image = $image;
         $this->_documentationFile = $documentationFile;

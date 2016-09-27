@@ -18,7 +18,7 @@ class PageFactory {
             'software' => $this->software(),
         );
         return $this->_cacheAndReturn(function() use ($linkedPages) {
-            $title = '<img class="cpf-navbar-brand" src="assets/images/cpf_logo.png" alt="ChipPanFire" >';
+            $title = '<img class="cpf-navbar-brand" src="' . new Asset('images/cpf_logo.png') . '" alt="ChipPanFire" >';
             $href = 'index.html';
             return new InternalPage($title, $href, new SimpleContent('content-homepage.phtml', $linkedPages));
         });
@@ -78,7 +78,7 @@ class PageFactory {
             $title = 'Device Snapshot Manager';
             $href = 'software-m4l-device-snapshot-manager.html';
             $strapline = Links::$maxForLive . ' device that adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime';
-            $content = new SoftwareContent('content-devicesnapshotmanager.phtml', 'assets/images/dsm-screenshot.jpg', 'DeviceSnapshotManager.pdf');
+            $content = new SoftwareContent('content-devicesnapshotmanager.phtml', new Asset('images/dsm-screenshot.jpg'), 'DeviceSnapshotManager.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
     }
@@ -88,7 +88,7 @@ class PageFactory {
             $title = 'Where Am I';
             $href = 'software-m4l-where-am-i.html';
             $strapline = Links::$maxForLive . ' utility device that displays Live API information for the currently selected element of the Ableton Live interface';
-            $content = new SoftwareContent('content-whereami.phtml', 'assets/images/wai-screenshot.jpg', 'WhereAmI.pdf');
+            $content = new SoftwareContent('content-whereami.phtml', new Asset('images/wai-screenshot.jpg'), 'WhereAmI.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
     }
@@ -98,7 +98,7 @@ class PageFactory {
             $title = 'MIDI Clip Modulo';
             $href = 'software-m4l-midi-clip-modulo.html';
             $strapline = Links::$maxForLive . " utility device that adds extra functionality to note editing in Ableton Live's MIDI clips";
-            $content = new SoftwareContent('content-midiclipmodulo.phtml', 'assets/images/midi-clip-modulo.jpg', 'MidiClipModulo.pdf');
+            $content = new SoftwareContent('content-midiclipmodulo.phtml', new Asset('images/midi-clip-modulo.jpg'), 'MidiClipModulo.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
     }
@@ -108,7 +108,7 @@ class PageFactory {
             $title = 'Wac Network MIDI';
             $href = 'software-wac-network-midi.html';
             $strapline = 'Cross-platform (Win/OS X) tool for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)';
-            $content = new SoftwareContent('content-wacnetworkmidi.phtml', 'assets/images/wac-network-midi.png', 'wacNetworkMIDI.pdf');
+            $content = new SoftwareContent('content-wacnetworkmidi.phtml', new Asset('images/wac-network-midi.png'), 'wacNetworkMIDI.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
     }
@@ -118,7 +118,7 @@ class PageFactory {
             $title = 'Miniak Patch Editor';
             $href = 'software-miniak-patch-editor.html';
             $strapline = 'Patch editor/management tool for the '. Links::$miniak . ' (and ' . Links::$micron . ') synthesiser';
-            $content = new SoftwareContent('content-miniakpatcheditor.phtml', 'assets/images/miniak-patch-editor.jpg', 'MPE-Documentation.pdf');
+            $content = new SoftwareContent('content-miniakpatcheditor.phtml', new Asset('images/miniak-patch-editor.jpg'), 'MPE-Documentation.pdf');
             return new InternalPage($title, $href, $content, $strapline);
         });
     }
