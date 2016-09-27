@@ -81,6 +81,8 @@ _note use of custom output directories, instead of the root owned /etc/letsencry
 The AWS cli is used to upload certs (to IAM). The ID of the uploaded cert is used in the cloudformation template to specify what cert to use with Cloudfront (for enabling HTTPS on the site)
 
 ```
-aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/chippanfire.com-cert/cert.pem --private-key file:///home/ec2-user/chippanfire.com-cert/privkey.pem --certificate-chain file:///home/ec2-user/chippanfire.com-cert/chain.pem --path /chippanfire/
+aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/chippanfire.com-cert/cert.pem --private-key file:///home/ec2-user/chippanfire.com-cert/privkey.pem --certificate-chain file:///home/ec2-user/chippanfire.com-cert/chain.pem --path /cloudfront/chippanfire/
 # aws iam list-server-certificates to get cert ID
 ```
+
+*Note the path must include **/cloudfront** and end with a trailing slash. With an incorrect path cloudformation gives a misleading error about "The specified SSL certificate doesn't exist, isn't valid, or doesn't include a valid certificate chain"* 

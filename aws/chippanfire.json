@@ -1,7 +1,12 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "Creates infrastructure for chippanfire site",
-  "Parameters": {},
+  "Parameters": {
+    "ServerCertificateIdParameter" : {
+      "Type" : "String",
+      "Description" : "The ID of the certificate in IAM for Cloudfront to use for SSL (HTTPS) traffic"
+    }
+  },
   "Resources": {
     "SiteS3Bucket": {
       "Type": "AWS::S3::Bucket",
@@ -98,7 +103,7 @@
           ],
           "PriceClass": "PriceClass_100",
           "ViewerCertificate": {
-            "IamCertificateId": "ASCAIT6SCYJ2D2WAHRXMY",
+            "IamCertificateId": { "Ref" : "ServerCertificateIdParameter" },
             "SslSupportMethod": "sni-only"
           }
         }
@@ -160,6 +165,7 @@
                   "Effect": "Allow",
                   "Action": [
                     "iam:ListServerCertificates",
+                    "iam:UpdateServerCertificate",
                     "iam:UploadServerCertificate",
                     "iam:DeleteServerCertificate"
                   ],
