@@ -8,6 +8,6 @@ final class Header {
     }
 
     public function addScript($filename) {
-        $this->_customScripts[] = $filename;
+        $this->_customScripts[] = new Asset('js/' . $filename);
     }
 }
