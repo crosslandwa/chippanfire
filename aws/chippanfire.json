@@ -14,6 +14,18 @@
         }
       }
     },
+    "SiteWWWRedirectBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "www.chippanfire.com",
+        "AccessControl": "BucketOwnerFullControl",
+        "WebsiteConfiguration": {
+          "RedirectAllRequestsTo": {
+            "HostName": "chippanfire.com"
+          }
+        }
+      }
+    },
     "SiteS3BucketPolicy": {
       "Type": "AWS::S3::BucketPolicy",
       "Properties": {
@@ -197,11 +209,11 @@
           },
           {
             "Name" : "www.chippanfire.com",
-            "Type" : "A",
-            "AliasTarget" : {
-              "HostedZoneId": "Z2FDTNDATAQYW2",
-              "DNSName": {"Fn::GetAtt" : [ "SiteS3Cloudfront", "DomainName"] }
-            }
+            "Type": "CNAME",
+            "TTL" : "300",
+            "ResourceRecords" : [
+              "www.chippanfire.com.s3-website-eu-west-1.amazonaws.com"
+            ]
           }
         ]
       }
