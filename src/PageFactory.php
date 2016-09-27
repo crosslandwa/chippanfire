@@ -54,7 +54,7 @@ class PageFactory {
             $title = 'Not Found 40404040404';
             $href = 'error.html';
             $page = new InternalPage($title, $href, new SimpleContent('content-error.phtml'));
-            $page->addScript('error-page-002.js');
+            $page->addScript('error-page-003.js');
             return $page;
         });
     }

@@ -20,7 +20,7 @@ function lookingFor(path) {
             break;
     }
     if (suggestHref) {
-        document.getElementById("redirect-suggestion").innerHTML = '...or perhaps you were looking for <a href="' + suggestHref + '">' + suggestedName + '</a>?';
+        document.getElementById("redirect-suggestion").innerHTML = '...or perhaps you were looking for <a href="https://chippanfire.com/' + suggestHref + '">' + suggestedName + '</a>?';
     }
 }
 
