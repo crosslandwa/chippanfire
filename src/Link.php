@@ -1,10 +1,16 @@
 <?php
 
 final class Link {
+    private static $_baseUrl = 'https://chippanfire.com/';
+
     private $_href;
     private $_text;
     private $_isExternal;
     private $_classes;
+
+    public static function useRelative() {
+        self::$_baseUrl = '';
+    }
 
     private function __construct($text, $href, $isExternal, $classes) {
         $this->_text = $text;
@@ -13,8 +19,12 @@ final class Link {
         $this->_classes = $classes;
     }
 
+    public final static function mailTo($text, $mailTo) {
+        return new Link($text, $mailTo, false, '');
+    }
+
     public final static function internal($text, $href) {
-        return new Link($text, $href, false, '');
+        return new Link($text, self::$_baseUrl . $href, false, '');
     }
 
     public final static function external($text, $href) {

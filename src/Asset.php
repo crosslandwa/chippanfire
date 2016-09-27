@@ -3,7 +3,7 @@
 class Asset {
     private static $_baseUrl = 'https://chippanfire.com/assets/';
 
-    public static function useLocal() {
+    public static function useRelative() {
         self::$_baseUrl = 'assets/';
     }
 

@@ -31,11 +31,12 @@ include 'src/Site.php';
 include 'src/SoftwareContent.php';
 
 $useLocalAssets = true;
-if ((count($argv) > 1) && ($argv[1] === 'live-assets')) {
+if ((count($argv) > 1) && ($argv[1] === 'absolute-links')) {
     $useLocalAssets = false;
 }
 if ($useLocalAssets) {
-    Asset::useLocal();
+    Asset::useRelative();
+    Link::useRelative();
 }
 
 $pages = new PageFactory();
