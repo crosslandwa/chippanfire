@@ -36,30 +36,32 @@
             </div>
             <div class="pwe-metronome">
                 <div class="pwe-metronome__title text--bold">Metronome</div>
-                <div>
-                    <label class="pwe-metronome__slider-label text--bold" for="bpm-control">BPM: 120</label>
-                    <input class="pwe-metronome__slider" id="bpm-control" type="range" name="BPM" min="20" max="300" value="120">
-                    <br>
-                    <label class="pwe-metronome__slider-label text--bold" for="accent-control">ACCENT: 4 beats</label>
-                    <input class="pwe-metronome__slider" id="accent-control" type="range" name="ACCENT" min="1" max="16" value="4">
-                    <br>
+                <div class="pwe-metronome__slider-controls">
+                    <div class="pwe-metronome__slider-control">
+                        <label class="pwe-metronome__slider-label text--bold" for="bpm-control">BPM: 120</label>
+                        <input class="pwe-metronome__slider" id="bpm-control" type="range" name="BPM" min="20" max="300" value="120">
+                    </div>
+                    <div class="pwe-metronome__slider-control">
+                        <label class="pwe-metronome__slider-label text--bold" for="accent-control">ACCENT: 4 beats</label>
+                        <input class="pwe-metronome__slider" id="accent-control" type="range" name="ACCENT" min="1" max="16" value="4">
+                    </div>
                 </div>
                 <div class="pwe-metronome__buttons">
-                    <div class="pwe-button pwe-button--narrow tap">tap(n)</div>
-                    <div class="pwe-button pwe-button--narrow metronome-on-off">on(m)</div>
-                    <div class="pwe-button pwe-button--narrow metronome-mute">mute(,)</div>
+                    <div class="pwe-button pwe-button--short pwe-button--narrow tap">tap(n)</div>
+                    <div class="pwe-button pwe-button--short pwe-button--narrow metronome-on-off">on(m)</div>
+                    <div class="pwe-button pwe-button--short pwe-button--narrow metronome-mute">mute(,)</div>
                 </div>
             </div>
         </div>
         <div id="no-midi-warning" class="pwe-no-midi-warning"><strong>Looks like your browser doesn't support the Web MIDI API. No Push action for you...</strong></div>
         <div class="pwe-info">
-            Keyboard/mouse control
+            <strong>Keyboard/mouse control</strong>
             <ul class="pwe-info__ul" >
                 <li>Play samples with the q-w-e-r-t-y-u-i keys</li>
                 <li>Select sequences with the 1-2-3-4-5-6-7-8 keys</li>
                 <li>Use the arm-play-delete buttons to record and play sequences in real time</li>
             </ul>
-            Push control
+            <strong>Push control</strong>
             <ul class="pwe-info__ul" >
                 <li>Play samples using the Push's <em>velocity sensitive pads</em> - one column in the grid plays each sample</li>
                 <li>Pads higher up the grid raise the sample filter frequency</li>
@@ -72,7 +74,7 @@
                 <li>Use the <em>Play</em> button to start and stop recorded sequences</li>
                 <li>Use the <em>Delete + Channel Select</em> buttons to delete recorded sequences</li>
             </ul>
-            Quantisation
+            <strong>Quantisation</strong>
             <ul class="pwe-info__ul" >
                 <li><strong>With the metronome running</strong> sample recording/playback is quantised to the metronome's BPM</li>
                 <li>Turn the metronome on/off with the Push's <em>Metronome</em> button</li>

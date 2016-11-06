@@ -170,7 +170,7 @@ label[for=metronome-on-off] {
 }
 .pwe-metronome {
     position: relative;
-    margin: 10px 10px;
+    margin: 0 0 10px 0;
     display: inline-block;
     width: 96%;
     background-color: #c7ccce;
@@ -184,9 +184,18 @@ label[for=metronome-on-off] {
     padding: 10px 0 0 0;
 }
 
+.pwe-metronome__slider-controls {
+    width: 100%;
+}
+
+.pwe-metronome__slider-control {
+    width: 50%;
+    float: left;
+}
+
 .pwe-metronome__slider {
-    margin: 15px 0 15px 0 !important;
-    width: 30% !important;
+    margin: 10px 0 15px 0 !important;
+    width: 90% !important;
     display: inline !important;
 }
 
@@ -246,7 +255,11 @@ label[for=metronome-on-off] {
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="pwe-metronome"] {
-        width: 94%;
+        padding: 0;
+    }
+
+    [class*="pwe-sequencer__row"] {
+        padding: 10px 0 0 0;
     }
 
     [class*="pwe-button"] {
@@ -261,10 +274,6 @@ label[for=metronome-on-off] {
     }
 
     [class*="pwe-button--narrow"] {
-        width: 21%;
-    }
-
-    [class*="pwe-metronome__slider"] {
-        width: 90% !important;
+        width: 20%;
     }
 }
