@@ -89,5 +89,6 @@ aws iam upload-server-certificate --server-certificate-name chippanfire.com --ce
 *Note the path must include **/cloudfront** and end with a trailing slash. With an incorrect path cloudformation gives a misleading error about "The specified SSL certificate doesn't exist, isn't valid, or doesn't include a valid certificate chain"*
 
 **Update cloudfront**
+
 Update stack via the AWS console, providing the IAM certificate ID of the just
 uploaded cert as the certificate ID template parameter
