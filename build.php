@@ -30,9 +30,9 @@ include 'src/SimpleContent.php';
 include 'src/Site.php';
 include 'src/SoftwareContent.php';
 
-$useLocalAssets = true;
-if ((count($argv) > 1) && ($argv[1] === 'absolute-links')) {
-    $useLocalAssets = false;
+$useLocalAssets = false;
+if ((count($argv) > 1) && ($argv[1] === 'relative-links')) {
+    $useLocalAssets = true;
 }
 if ($useLocalAssets) {
     Asset::useRelative();

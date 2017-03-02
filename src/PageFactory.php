@@ -159,7 +159,7 @@ class PageFactory {
             $pushLink = Link::external('Ableton Push (mk1)', 'https://github.com/crosslandwa/push-wrapper');
             $strapline = "Turn your $pushLink into a simple Web Audio API powered Drum Machine. <br> A demo of my $wrapperLink in action.";
             $page = new InternalPage($title, $href, new SimpleContent('content-push-wrapper.phtml'), $strapline);
-            $page->addScript('push-wrapper-example.js');
+            $page->addScript('push-wrapper-example-002.js');
             return $page;
         });
     }

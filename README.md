@@ -7,7 +7,7 @@ A super-lightweight "framework" to generate a bunch of static HTML pages that al
 
 I'm interested in playing around with (bootstrap powered) responsive web without a 'bulky' framework sitting between me and the raw HTML/CSS
 
-I opted for PHP as it is already installed on my machine (zero setup), and I've used it enough in the past to be wrestle it into submission fairly easily... 
+I opted for PHP as it is already installed on my machine (zero setup), and I've used it enough in the past to be wrestle it into submission fairly easily...
 
 ## Setup/Editing
 Each page in the site uses a common document, header, navigation and footer.
@@ -19,10 +19,10 @@ Use PHP to generate the static html assets by running the following from the top
 
 ```php build.php```
 
-Note that by default the assets/links will have relative URLs - this enables local machine development.
-When building for live a build parameter should be used that makes the build generate absolute URLs for all assets/links
+Note that by default the assets/links will have absolute URLs, as required for live builds.
+When building for development a build parameter should be used that makes the build generate relative URLs for all assets/links
 
-```php build.php absolute-links```
+```php build.php relative-links```
 
 ## Deploy
 The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /site folder to S3 using the AWS cli
@@ -58,17 +58,15 @@ cert. I therefore cannot create that role and the Cloudfront Distribution in the
 the account where my domain is registered to point the main DNS record at the AWS nameservers for the created **hosted zone***
 
 ## HTTPS
-To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I used [certbot](https://certbot.eff.org/) to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
+To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I use [certbot](https://certbot.eff.org/) to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
 
-**Install certbot**
+**Install certbot (local machine)**
 ```
 brew update
 brew install certbot
 ```
 
-**Acquire certificate**
-To acquire a cert on my local machine:
-
+**Acquire certificate (local machine)**
 ```
 mkdir -p ~/letsencrypt/log
 mkdir -p ~/letsencrypt/lib
@@ -76,11 +74,21 @@ certbot certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~
 ```
 _note use of custom output directories, instead of the root owned /etc/letsencrypt used by default_
 
-
-**Upload and use certificate**
-The AWS cli is used to upload certs (to IAM). The ID of the uploaded cert is used in the cloudformation template to specify what cert to use with Cloudfront (for enabling HTTPS on the site)
-
+**Copy certs to EC2 (local machine)**
 ```
-aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/chippanfire.com-cert/cert.pem --private-key file:///home/ec2-user/chippanfire.com-cert/privkey.pem --certificate-chain file:///home/ec2-user/chippanfire.com-cert/chain.pem --path /chippanfire/
+scp -r ~/letsencrypt/live/chippanfire.com/*.pem USER@EC2_PUBLIC_DNS:chippanfire.com-cert
+```
+**Upload and use certificate (EC2, using aws-cli)**
+```
+aws iam delete-server-certificate --server-certificate-name chippanfire.com-old #delete previous backup
+aws iam update-server-certificate --server-certificate-name chippanfire.com --new-server-certificate-name chippanfire.com-old # backup current cert
+aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/chippanfire.com-cert/cert.pem --private-key file:///home/ec2-user/chippanfire.com-cert/privkey.pem --certificate-chain file:///home/ec2-user/chippanfire.com-cert/chain.pem --path /cloudfront/chippanfire/
 # aws iam list-server-certificates to get cert ID
 ```
+
+*Note the path must include **/cloudfront** and end with a trailing slash. With an incorrect path cloudformation gives a misleading error about "The specified SSL certificate doesn't exist, isn't valid, or doesn't include a valid certificate chain"*
+
+**Update cloudfront**
+
+Update stack via the AWS console, providing the IAM certificate ID of the just
+uploaded cert as the certificate ID template parameter
