@@ -4,8 +4,8 @@
   "description": "CPF site generated via JS",
   "main": "index.js",
   "scripts": {
-    "build:copyImages": "cp -r ./site/assets/images ./dist/assets/images",
-    "build:bundleAndCopyHTML": "cp -r ./build/* ./dist",
+    "build:copyImages": "cp -r ./assets/images ./dist/assets/images",
+    "build:bundleAndCopyHTML": "webpack",
     "build:cleanBuild": "rm -rf ./build/*",
     "build:cleanDist": "rm -rf ./dist/* && mkdir ./dist/assets",
     "build:renderTemplates": "node index.js",

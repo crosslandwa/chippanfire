@@ -57,6 +57,6 @@ const pages = [
 ]
 
 module.exports = {
-  fileMap: [/* sync. returns list of files with 'chunks' an template file name */],
+  pages: pages.map(page => page.file),
   renderTemplates: () => Promise.all(pages.map(renderPage))
 }
