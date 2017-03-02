@@ -12,7 +12,7 @@ module.exports = {
   entry: scripts.reduce((acc, script) => Object.assign(acc, { [scriptName(script)]: `./${script}` }), {}),
   output: {
     filename: '[name]-[hash].js',
-    path: __dirname + '/dist'
+    path: __dirname + '/dist/assets'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
@@ -22,7 +22,7 @@ module.exports = {
     })
   ].concat(pages.map(page => new HtmlWebpackPlugin({
     chunks: ['common'].concat(page.scripts.map(scriptName)),
-    filename: page.file,
+    filename: `../${page.file}`,
     template: `./build/${page.file}`
   }))),
   module: {
@@ -32,23 +32,23 @@ module.exports = {
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader"
+        loader: "file-loader?outputPath=fonts/"
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: "url-loader?prefix=font/&limit=5000"
+        loader: "url-loader?prefix=font/&limit=5000&outputPath=fonts/"
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+        loader: "url-loader?limit=10000&mimetype=application/octet-stream&outputPath=fonts/"
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+        loader: "url-loader?limit=10000&mimetype=image/svg+xml&outputPath=images/"
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=8192'
+        loader: 'url-loader?limit=8192&outputPath=images/'
       }
     ]
   }
