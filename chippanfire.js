@@ -1,32 +1,28 @@
-const ejs = require('ejs')
+const { renderFile } = require('ejs')
 const fs = require('fs')
+const absoluteLinks = true;
+const href = path => (absoluteLinks ? '' : 'https://www.chippanfire.com/') + path
+const renderPage = page => new Promise((resolve, reject) => {
+  renderFile('templates/page.ejs', page, {}, (err, str) => err ? reject(err) : resolve({ content: str, file: page.file }))
+})
 
-function renderPage(page) {
-  return new Promise((resolve, reject) => {
-    ejs.renderFile('templates/page.ejs', page || {}, {}, function(err, str) {
-      return err ? reject(err) : resolve({ content: str, file: page.file })
-    })
-  })
-}
-
-absoluteLinks = false;
 
 const musicPage = {
-  href: 'https://www.chippanfire.com/music.html',
+  href: href('music.html'),
   content: {
     title: 'Music'
   }
 }
 
 const softwarePage = {
-  href: 'https://www.chippanfire.com/software.html',
+  href: href('software.html'),
   content: {
     title: 'Software'
   }
 }
 
 const homePage =  {
-  href: 'https://www.chippanfire.com/index.html',
+  href: href('index.html'),
   template: 'index',
   content: {
     music: { href: musicPage.href },
@@ -35,6 +31,7 @@ const homePage =  {
 }
 
 const errorPage = {
+  href: href('error.html'),
   template: 'error',
   content: {
     title: 'Not Found 40404040404'
@@ -42,7 +39,7 @@ const errorPage = {
 }
 
 const baseData = {
-  assetsBaseUrl: absoluteLinks ? 'https://chippanfire.com/assets' : 'assets',
+  assetsBaseUrl: href('assets'),
   navigation: {
     homePageUrl: homePage.href,
     items: [
