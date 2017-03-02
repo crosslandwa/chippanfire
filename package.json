@@ -1,0 +1,24 @@
+{
+  "name": "cpf-js",
+  "version": "1.0.0",
+  "description": "CPF site generated via JS",
+  "main": "index.js",
+  "scripts": {
+    "build:cleanBuild": "rm -rf ./build/*",
+    "build:cleanDist": "rm -rf ./dist/*",
+    "build:renderTemplates": "node index.js",
+    "build": "npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "ejs": "^2.5.5",
+    "file-loader": "^0.10.0",
+    "html-webpack-plugin": "^2.28.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1"
+  },
+  "author": "https://github.com/crosslandwa",
+  "license": "ISC"
+}
