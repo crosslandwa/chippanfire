@@ -23,6 +23,7 @@ module.exports = {
   ].concat(pages.map(page => new HtmlWebpackPlugin({
     chunks: ['common'].concat(page.scripts.map(scriptName)),
     filename: `../${page.file}`,
+    inject: 'head',
     template: `./build/${page.file}`
   }))),
   module: {
