@@ -1,7 +1,16 @@
+const { writeFile } = require('fs')
 const { renderTemplates } = require('./chippanfire.js')
 
 function writeToBuildDirectory (renderedTemplates) {
-  console.log('writing')
+  return Promise.all(renderedTemplates.map(writeToFile))
+}
+
+function writeToFile(template) {
+  return new Promise((resolve, reject) => {
+    writeFile(`./build/${template.file}`, template.content, function(err) {
+      return err ? reject(err) : resolve()
+    })
+  })
 }
 
 renderTemplates()
