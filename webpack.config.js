@@ -2,12 +2,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { pages } = require('./chippanfire.js')
 const webpack = require('webpack')
 
+const afterLastSlash = x => x.split('/')[x.split('/').length - 1] || x
+const beforeLastDot = x => x.split('.')[x.split('.').length - 2]
+const scriptName = x => beforeLastDot(afterLastSlash(x))
+
+const scripts = pages.reduce((acc, page) => acc.concat(page.scripts) , []).concat('./assets/common.js')
+
 module.exports = {
-  entry: {
-    common: './assets/common.js',
-  },
+  entry: scripts.reduce((acc, script) => Object.assign(acc, { [scriptName(script)]: `./${script}` }), {}),
   output: {
-    filename: '[name].js',
+    filename: '[name]-[hash].js',
     path: __dirname + '/dist'
   },
   plugins: [
@@ -17,9 +21,9 @@ module.exports = {
       }
     })
   ].concat(pages.map(page => new HtmlWebpackPlugin({
-    chunks: ['common'],
-    filename: page,
-    template: `./build/${page}`
+    chunks: ['common'].concat(page.scripts.map(scriptName)),
+    filename: page.file,
+    template: `./build/${page.file}`
   }))),
   module: {
     rules: [{

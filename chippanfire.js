@@ -52,11 +52,11 @@ const baseData = {
 
 const pages = [
   Object.assign({}, baseData, homePage, { file: 'index.html' }),
-  Object.assign({}, baseData, errorPage, { file: 'error.html' }),
+  Object.assign({}, baseData, errorPage, { file: 'error.html', scripts: ['assets/error-page.js']}),
   Object.assign({}, baseData, musicPage, { file: 'music.html' }),
 ]
 
 module.exports = {
-  pages: pages.map(page => page.file),
+  pages: pages.map(page => { return { file: page.file, scripts: page.scripts || [] } }),
   renderTemplates: () => Promise.all(pages.map(renderPage))
 }
