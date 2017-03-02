@@ -4,10 +4,12 @@
   "description": "CPF site generated via JS",
   "main": "index.js",
   "scripts": {
+    "build:copyImages": "cp -r ./site/assets/images ./dist/assets/images",
+    "build:bundleAndCopyHTML": "cp -r ./build/* ./dist",
     "build:cleanBuild": "rm -rf ./build/*",
-    "build:cleanDist": "rm -rf ./dist/*",
+    "build:cleanDist": "rm -rf ./dist/* && mkdir ./dist/assets",
     "build:renderTemplates": "node index.js",
-    "build": "npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates",
+    "build": "npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates && npm run build:copyImages && npm run build:bundleAndCopyHTML",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
