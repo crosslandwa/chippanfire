@@ -12,14 +12,17 @@ const musicPage = {
     title: 'Music'
   },
   href: href('music.html'),
+  strapline: 'Mad music yo!',
   template: 'music'
 }
 
 const softwarePage = {
   content: {
+    linked: [ musicPage, musicPage, musicPage, musicPage ],
     title: 'Software'
   },
-  href: href('software.html')
+  href: href('software.html'),
+  template: 'software'
 }
 
 const homePage =  {
@@ -45,7 +48,8 @@ const baseData = {
   navigation: {
     homePageUrl: homePage.href,
     items: [
-      { href: musicPage.href, title: musicPage.content.title }
+      { href: musicPage.href, title: musicPage.content.title },
+      { href: softwarePage.href, title: softwarePage.content.title }
     ]
   }
 }
@@ -54,6 +58,7 @@ const pages = [
   Object.assign({}, baseData, homePage, { file: 'index.html' }),
   Object.assign({}, baseData, errorPage, { file: 'error.html', scripts: ['assets/error-page.js']}),
   Object.assign({}, baseData, musicPage, { file: 'music.html' }),
+  Object.assign({}, baseData, softwarePage, { file: 'software.html' }),
 ]
 
 module.exports = {
