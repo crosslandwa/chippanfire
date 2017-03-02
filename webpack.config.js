@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { pages } = require('./chippanfire.js')
+const webpack = require('webpack')
 
 module.exports = {
   entry: {
@@ -9,11 +10,17 @@ module.exports = {
     filename: '[name].js',
     path: __dirname + '/dist'
   },
-  plugins: pages.map(page => new HtmlWebpackPlugin({
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ].concat(pages.map(page => new HtmlWebpackPlugin({
     chunks: ['common'],
     filename: page,
     template: `./build/${page}`
-  })),
+  }))),
   module: {
     rules: [{
         test: /\.css$/,
