@@ -56,6 +56,12 @@ const homePage =  {
   template: 'index'
 }
 
+const contactPage = {
+  content: { title: 'Contact' },
+  href: href('contact.html'),
+  template: 'contact'
+}
+
 const errorPage = {
   content: {
     title: 'Not Found 40404040404'
@@ -73,7 +79,8 @@ const baseData = {
     homePageUrl: homePage.href,
     items: [
       navItem(musicPage),
-      Object.assign(navItem(softwarePage), { dropdown: [navItem(m4lPage)] })
+      Object.assign(navItem(softwarePage), { dropdown: [navItem(m4lPage)] }),
+      navItem(contactPage)
     ]
   }
 }
@@ -84,6 +91,7 @@ const pages = [
   Object.assign({}, baseData, musicPage, { file: 'music.html' }),
   Object.assign({}, baseData, softwarePage, { file: 'software.html' }),
   Object.assign({}, baseData, m4lPage, { file: 'max-for-live-devices.html' }),
+  Object.assign({}, baseData, contactPage, { file: 'contact.html' }),
 ]
 
 module.exports = {
