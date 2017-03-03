@@ -5,8 +5,8 @@
       <%- include('external-link', {url: 'http://www.ableton.com/maxforlive', text: 'Max or Live'}) %> devices I have made
     </p>
   </div>
-
   <div class="col-md-12">
+    <hr>
     <h2>Device Snapshot Manager</h2>
     <p class="lead">
       Adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime
@@ -42,8 +42,8 @@
       <li> Added ability to name snapshots</li>
     </ul>
   </div>
-
   <div class="col-md-12">
+    <hr>
     <h2>Where Am I</h2>
     <p class="lead">
       Device that displays Live API information for the currently selected element of the Ableton Live interface
@@ -70,8 +70,29 @@
       <li>Device no longer fills Lives undo buffer when observing changes in selected track/device/etc</li>
     </ul>
   </div>
-
+  <div class="col-md-12">
+    <hr>
+    <h2>MIDI Clip Modulo</h2>
+    <p class="lead">
+      Device that adds extra functionality to note editing in Ableton Live's MIDI clips
+      <br>
+      <br>
+      <img src="<%- image('midi-clip-modulo.jpg') %>" alt="midi clip modulo screenshot" class="headline-image">
+    </p>
+  </div>
+  <div class="row content-block ">
+    <div class="col-md-12">
+      <h3>Download full version</h3>
+      <p>Midi Clip Modulo's functionality can be mapped to keyboard/MIDI shortcuts to quickly integrate into your clip editing workflow. The device always makes edits to the currently selected MIDI clip, and all edits are fully undo-able via Lives undo function</p>
+      <p>It is known to work with Ableton Live 8, but I've not updated for a very loooong time</p>
+      <%- include('download', { file: 'm4l-midi-clip-modulo-v1-0-0.zip', text: 'Download' })%>
+      <br>
+      <br>
+      <%- include('documentation', { file: 'MidiClipModulo.pdf' })%>
+    </div>
+  </div>
   <div class="col-md-12 alert alert-info">
+    <hr>
     <p>
       <em>
         Paid software downloads from ChipPanFire are managed
