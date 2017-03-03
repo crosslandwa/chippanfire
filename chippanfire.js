@@ -12,13 +12,21 @@ const musicPage = {
     title: 'Music'
   },
   href: href('music.html'),
-  strapline: 'Mad music yo!',
   template: 'music'
+}
+
+const m4lPage = {
+  content: {
+    title: 'Max For Live Devices'
+  },
+  href: href('max-for-live-devices.html'),
+  strapline: 'A collection of Max For Live devices I have made',
+  template: 'm4l-devices'
 }
 
 const softwarePage = {
   content: {
-    linked: [ musicPage, musicPage, musicPage, musicPage ],
+    linked: [ m4lPage ],
     title: 'Software'
   },
   href: href('software.html'),
@@ -40,14 +48,6 @@ const errorPage = {
   },
   href: href('error.html'),
   template: 'error'
-}
-
-const m4lPage = {
-  content: {
-    title: 'Max For Live Devices'
-  },
-  href: href('max-for-live-devices.html'),
-  template: 'm4l-devices'
 }
 
 const navItem = page => Object.assign({ href: page.href, title: page.content.title })
