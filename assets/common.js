@@ -4,6 +4,8 @@
 
 require('./bootstrap/css/bootstrap.min.css')
 
+require('./nav-dropdown.js')
+
 // <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 require('./css/ie10-viewport-bug-workaround.css')
 

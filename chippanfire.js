@@ -42,14 +42,24 @@ const errorPage = {
   template: 'error'
 }
 
+const m4lPage = {
+  content: {
+    title: 'Max For Live Devices'
+  },
+  href: href('max-for-live-devices.html'),
+  template: 'error'
+}
+
+const navItem = page => Object.assign({ href: page.href, title: page.content.title })
+
 const baseData = {
   assetsBaseUrl: href('assets'),
   image: path => `${href('assets/images')}/${path}`,
   navigation: {
     homePageUrl: homePage.href,
     items: [
-      { href: musicPage.href, title: musicPage.content.title },
-      { href: softwarePage.href, title: softwarePage.content.title }
+      navItem(musicPage),
+      Object.assign(navItem(softwarePage), { dropdown: [navItem(m4lPage)] })
     ]
   }
 }

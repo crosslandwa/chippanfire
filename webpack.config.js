@@ -50,6 +50,14 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         loader: 'url-loader?limit=8192&outputPath=images/'
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
       }
     ]
   }
