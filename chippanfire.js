@@ -24,6 +24,13 @@ const m4lPage = {
   template: 'm4l-devices'
 }
 
+const kmkScriptPage = {
+  content: { title: 'KMK Control Script' },
+  external: true,
+  href: 'https://github.com/crosslandwa/kmkControl',
+  strapline: 'In-depth control of Ableton Live using the Korg Microkontrol'
+}
+
 const cpfPage = {
   content: { title: 'ChipPanFire Source' },
   external: true,
@@ -33,7 +40,7 @@ const cpfPage = {
 
 const softwarePage = {
   content: {
-    linked: [ m4lPage, cpfPage ],
+    linked: [ m4lPage, kmkScriptPage, cpfPage ],
     title: 'Software'
   },
   href: href('software.html'),
