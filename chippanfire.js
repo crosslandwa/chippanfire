@@ -70,7 +70,7 @@ const errorPage = {
   template: 'error'
 }
 
-const navItem = page => Object.assign({ href: page.href, title: page.content.title })
+const navItem = page => Object.assign({ href: page.href, title: page.content.title, external: !!page.external })
 
 const baseData = {
   assetsBaseUrl: href('assets'),
@@ -79,7 +79,10 @@ const baseData = {
     homePageUrl: homePage.href,
     items: [
       navItem(musicPage),
-      Object.assign(navItem(softwarePage), { dropdown: [navItem(m4lPage)] }),
+      Object.assign(
+        navItem(softwarePage),
+        { dropdown: [ navItem(m4lPage), navItem(kmkScriptPage), navItem(cpfPage) ] }
+      ),
       navItem(contactPage)
     ]
   }

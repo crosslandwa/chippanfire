@@ -23,7 +23,13 @@
             <li<%- (locals.content.title === item.title) ? ' class="active"' : '' %>><a href="<%= item.href %>"><%= item.title %></a></li>
             <li role="separator" class="divider"></li>
             <% item.dropdown.forEach(dropItem => { %>
-            <li<%- (locals.content.title === dropItem.title) ? ' class="active"' : '' %>><a href="<%= dropItem.href %>"><%= dropItem.title %></a></li>
+            <li<%- (locals.content.title === dropItem.title) ? ' class="active"' : '' %>>
+              <% if (dropItem.external) { %>
+              <%- include('external-link', {url: dropItem.href, text: dropItem.title}) %>
+              <% } else { %>  
+              <a href="<%= dropItem.href %>"><%= dropItem.title %></a>
+              <% } %>
+            </li>
             <% }) %>
           </ul>
         </li>
