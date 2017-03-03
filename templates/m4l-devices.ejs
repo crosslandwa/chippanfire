@@ -1,0 +1,57 @@
+<div class="content-block">
+  <div class="col-md-12">
+    <h1><%= title %></h1>
+    <p class="lead">
+      <%- include('external-link', {url: 'http://www.ableton.com/maxforlive', text: 'Max or Live'}) %> devices I have made
+    </p>
+  </div>
+
+  <div class="col-md-12">
+    <h2>Device Snapshot Manager</h2>
+    <p class="lead">
+      Adds the ability to store and recall ‘snapshots’ of Ableton Live devices in realtime
+      <br>
+      <br>
+      <img src="<%- image('dsm-screenshot.jpg') %>" alt="<%= title %> screenshot" class="headline-image">
+    </p>
+  </div>
+
+  <div class="row content-block ">
+    <div class="col-md-6">
+      <h3>Download full version</h3>
+      <p>Device Snapshot Manager is distributed as two fully editable Max For Live .amxd files – one MIDI effect and one Audio effect.</p>
+      <p>It is known to work with Ableton Live 8, but I've not updated for a very loooong time</p>
+      <%- include('download', { file: 'm4l-device-snapshot-manager-v1-1-1.zip', text: 'Download' })%>
+      <br>
+      <br>
+      <%- include('documentation', { file: 'DeviceSnapshotManager.pdf' })%>
+    </div>
+    <div class="col-md-6 no-spill">
+      <h3>Watch</h3>
+      <iframe width="336" height="252" src="https://www.youtube.com/embed/IIeFszBbUHc" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <h3>Version History</h3>
+    <h4>1.1.1</h4>
+    <ul>
+      <li>Fixed bug where snapshots with more than 128 parameters were not fully recalled</li>
+      <li>Improved speed of JS-based Live API interactions</li>
+    </ul>
+    <h4>1.1.0</h4>
+    <ul>
+      <li> Added ability to name snapshots</li>
+    </ul>
+  </div>
+
+
+  <div class="col-md-12 alert alert-info">
+    <p>
+      <em>
+        Paid software downloads from ChipPanFire are managed
+        via <%- include('external-link', {url: 'http://www.oronjo.com/', text: 'Oronjo'}) %>. Clicking a ‘Buy’ button
+        will take you to the Oronjo site where the software can be bought via Paypal
+      </em>
+    </p>
+  </div>
+</div>

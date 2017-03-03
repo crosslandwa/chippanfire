@@ -47,7 +47,7 @@ const m4lPage = {
     title: 'Max For Live Devices'
   },
   href: href('max-for-live-devices.html'),
-  template: 'error'
+  template: 'm4l-devices'
 }
 
 const navItem = page => Object.assign({ href: page.href, title: page.content.title })
@@ -69,6 +69,7 @@ const pages = [
   Object.assign({}, baseData, errorPage, { file: 'error.html', scripts: ['assets/error-page.js']}),
   Object.assign({}, baseData, musicPage, { file: 'music.html' }),
   Object.assign({}, baseData, softwarePage, { file: 'software.html' }),
+  Object.assign({}, baseData, m4lPage, { file: 'max-for-live-devices.html' }),
 ]
 
 module.exports = {
