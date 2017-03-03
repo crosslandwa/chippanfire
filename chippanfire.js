@@ -24,9 +24,16 @@ const m4lPage = {
   template: 'm4l-devices'
 }
 
+const cpfPage = {
+  content: { title: 'ChipPanFire Source' },
+  external: true,
+  href: 'https://github.com/crosslandwa/chippanfire-site',
+  strapline: 'Totally meta, see the source code for generating this site!'
+}
+
 const softwarePage = {
   content: {
-    linked: [ m4lPage ],
+    linked: [ m4lPage, cpfPage ],
     title: 'Software'
   },
   href: href('software.html'),

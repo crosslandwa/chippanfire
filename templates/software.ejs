@@ -12,12 +12,14 @@
     <% chunk(linked).forEach(three => { %>
     <div class="row ">
         <% three.forEach(linkedPage => { %>
-        <div class="col-md-4">
+        <a href="<%= linkedPage.href %>"<% if (linkedPage.external) { %> target="_blank"<% } %>>
+          <div class="col-md-4">
             <div class="software-menu-item">
-                <h3><a href="<%= linkedPage.href %>"><%= linkedPage.content.title %></a></h3>
-                <p><%= linkedPage.strapline %></p>
+              <h3><%= linkedPage.content.title %><% if (linkedPage.external) { %><i class="icon-external-link"></i><% } %></h3>
+              <p><%= linkedPage.strapline %></p>
             </div>
-        </div>
+          </div>
+        </a>
         <% }) %>
     </div>
     <% }) %>
