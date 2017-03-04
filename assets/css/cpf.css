@@ -21,12 +21,16 @@ h3 {
     margin-top: 10px;
 }
 
-.container .text-muted {
+.footer__text {
     margin: 20px 0;
 }
 
-.text-muted {
+.text--muted {
     color: #777;
+}
+
+.text--black {
+  color: #333;
 }
 
 .no-spill {
