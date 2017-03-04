@@ -15,4 +15,4 @@ function writeToFile(template) {
 
 renderTemplates()
   .then(writeToBuildDirectory)
-  .then(() => { console.log('Template rendering complete') }, console.log)
+  .then(() => { console.log('Template rendering complete') }, e => { console.log(e); process.exit(1) })
