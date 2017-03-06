@@ -38,9 +38,16 @@ const cpfPage = {
   strapline: 'Totally meta, see the source code for generating this site!'
 }
 
+const wacNetworkMidiPage = {
+  content: { title: 'Wac Network MIDI' },
+  href: href('wac-network-midi.html'),
+  strapline: 'Cross-platform (Win/OS X) tool for transmitting MIDI between computers',
+  template: 'content-wac-network-midi'
+}
+
 const softwarePage = {
   content: {
-    linked: [ m4lPage, kmkScriptPage, cpfPage ],
+    linked: [ m4lPage, wacNetworkMidiPage, kmkScriptPage, cpfPage ],
     title: 'Software'
   },
   href: href('software.html'),
@@ -95,6 +102,7 @@ const pages = [
   Object.assign({}, baseData, softwarePage, { file: 'software.html' }),
   Object.assign({}, baseData, m4lPage, { file: 'max-for-live-devices.html' }),
   Object.assign({}, baseData, contactPage, { file: 'contact.html' }),
+  Object.assign({}, baseData, wacNetworkMidiPage, { file: 'wac-network-midi.html' }),
 ]
 
 module.exports = {
