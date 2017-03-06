@@ -11,7 +11,7 @@ const musicPage = {
   content: {
     title: 'Music'
   },
-  href: href('music.html'),
+  file: 'music.html',
   template: 'music'
 }
 
@@ -19,7 +19,7 @@ const m4lPage = {
   content: {
     title: 'Max For Live Devices'
   },
-  href: href('max-for-live-devices.html'),
+  file: 'max-for-live-devices.html',
   strapline: 'A collection of Max For Live devices I have made',
   template: 'm4l-devices'
 }
@@ -40,7 +40,7 @@ const cpfPage = {
 
 const wacNetworkMidiPage = {
   content: { title: 'Wac Network MIDI' },
-  href: href('wac-network-midi.html'),
+  file: 'wac-network-midi.html',
   strapline: 'Cross-platform (Win/OS X) tool for transmitting MIDI between computers',
   template: 'content-wac-network-midi'
 }
@@ -50,22 +50,22 @@ const softwarePage = {
     linked: [ m4lPage, wacNetworkMidiPage, kmkScriptPage, cpfPage ],
     title: 'Software'
   },
-  href: href('software.html'),
+  file: 'software.html',
   template: 'software'
 }
 
 const homePage =  {
   content: {
-    music: { href: musicPage.href },
-    software: { href: softwarePage.href }
+    music: { href: href(musicPage.file) },
+    software: { href: href(softwarePage.file) }
   },
-  href: href('index.html'),
+  file: 'index.html',
   template: 'index'
 }
 
 const contactPage = {
   content: { title: 'Contact' },
-  href: href('contact.html'),
+  file: 'contact.html',
   template: 'contact'
 }
 
@@ -73,17 +73,18 @@ const errorPage = {
   content: {
     title: 'Not Found 40404040404'
   },
-  href: href('error.html'),
+  file: 'error.html',
+  scripts: ['assets/error-page.js'],
   template: 'error'
 }
 
-const navItem = page => Object.assign({ href: page.href, title: page.content.title, external: !!page.external })
+const navItem = page => Object.assign({ href: href(page.file), title: page.content.title, external: !!page.external })
 
 const baseData = {
   assetsBaseUrl: href('assets'),
   image: path => `${href('assets/images')}/${path}`,
   navigation: {
-    homePageUrl: homePage.href,
+    homePageUrl: href(homePage.file),
     items: [
       navItem(musicPage),
       Object.assign(navItem(softwarePage), { dropdown: softwarePage.content.linked.map(navItem) }),
@@ -92,15 +93,9 @@ const baseData = {
   }
 }
 
-const pages = [
-  Object.assign({}, baseData, homePage, { file: 'index.html' }),
-  Object.assign({}, baseData, errorPage, { file: 'error.html', scripts: ['assets/error-page.js']}),
-  Object.assign({}, baseData, musicPage, { file: 'music.html' }),
-  Object.assign({}, baseData, softwarePage, { file: 'software.html' }),
-  Object.assign({}, baseData, m4lPage, { file: 'max-for-live-devices.html' }),
-  Object.assign({}, baseData, contactPage, { file: 'contact.html' }),
-  Object.assign({}, baseData, wacNetworkMidiPage, { file: 'wac-network-midi.html' }),
-]
+const pages = [ homePage, errorPage, musicPage,
+  softwarePage, m4lPage, contactPage, wacNetworkMidiPage ]
+  .map(page => Object.assign({}, page, baseData, { href: href(page.file) }))
 
 module.exports = {
   pages: pages.map(page => { return { file: page.file, scripts: page.scripts || [] } }),
