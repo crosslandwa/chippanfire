@@ -5,7 +5,7 @@ const href = path => (absoluteLinks ? '' : 'https://www.chippanfire.com/') + pat
 const renderPage = page => new Promise((resolve, reject) => {
   renderFile('templates/page.ejs', page, {}, (err, str) => err ? reject(err) : resolve({ content: str, file: page.file }))
 })
-
+const addHref = page => page.href ? page : Object.assign({}, page, { href: href(page.file) })
 
 const musicPage = {
   content: {
@@ -47,7 +47,7 @@ const wacNetworkMidiPage = {
 
 const softwarePage = {
   content: {
-    linked: [ m4lPage, wacNetworkMidiPage, kmkScriptPage, cpfPage ],
+    linked: [ m4lPage, wacNetworkMidiPage, kmkScriptPage, cpfPage ].map(addHref),
     title: 'Software'
   },
   file: 'software.html',
@@ -78,7 +78,7 @@ const errorPage = {
   template: 'error'
 }
 
-const navItem = page => Object.assign({ href: href(page.file), title: page.content.title, external: !!page.external })
+const navItem = page => Object.assign({}, { href: addHref(page).href, title: page.content.title, external: !!page.external })
 
 const baseData = {
   assetsBaseUrl: href('assets'),
@@ -95,7 +95,7 @@ const baseData = {
 
 const pages = [ homePage, errorPage, musicPage,
   softwarePage, m4lPage, contactPage, wacNetworkMidiPage ]
-  .map(page => Object.assign({}, page, baseData, { href: href(page.file) }))
+  .map(page => Object.assign({}, addHref(page), baseData))
 
 module.exports = {
   pages: pages.map(page => { return { file: page.file, scripts: page.scripts || [] } }),
