@@ -4,13 +4,15 @@
   "description": "CPF site generated via JS",
   "main": "index.js",
   "scripts": {
-    "build:copyAudio": "cp -r ./site/assets/audio ./dist/assets/audio",
-    "build:copyImages": "cp -r ./assets/images ./dist/assets/images",
     "build:bundleAndCopyHTML": "webpack",
+    "build:copyAudio": "cp -r ./assets/audio ./dist/assets/audio",
+    "build:copyDownloads": "cp -r ./assets/downloads ./dist/assets/downloads",
+    "build:copyImages": "cp -r ./assets/images ./dist/assets/images",
+    "build:copyRobots": "cp ./assets/robots.txt ./dist/",
     "build:cleanBuild": "rm -rf ./build/*",
     "build:cleanDist": "rm -rf ./dist/* && mkdir ./dist/assets",
     "build:renderTemplates": "node index.js",
-    "build": "npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates && npm run build:copyImages && npm run build:copyAudio && npm run build:bundleAndCopyHTML",
+    "build": "npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates && npm run build:copyImages && npm run build:copyAudio && npm run build:copyDownloads && npm run build:copyRobots && npm run build:bundleAndCopyHTML",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
