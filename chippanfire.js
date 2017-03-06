@@ -56,7 +56,7 @@ const metronomePage = {
   content: { title: 'Metronome' },
   file: 'metronome.html',
   strapline: "An online metronome fo' keepin' yo' shit tight!",
-  scripts: ['metronome-app/metronome.js'],
+  scripts: ['metronome-app/metronome.js', 'metronome-app/metronome-styles.css'],
   template: 'content-metronome'
 }
 
