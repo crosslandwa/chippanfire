@@ -60,9 +60,17 @@ const metronomePage = {
   template: 'content-metronome'
 }
 
+const pushWrapperPage = {
+  content: { title: 'Push Wrapper' },
+  file: 'push-wrapper.html',
+  strapline: 'An online drum machine controlled by your Ableton Push (mk1)',
+  scripts: ['push-wrapper-app/push-wrapper-example.js', 'push-wrapper-app/push-wrapper-example-styles.css'],
+  template: 'content-push-wrapper'
+}
+
 const softwarePage = {
   content: {
-    linked: [ metronomePage, m4lPage, wacNetworkMidiPage, miniakPatchEditorPage, kmkScriptPage, cpfPage ].map(addHref),
+    linked: [ pushWrapperPage, metronomePage, m4lPage, wacNetworkMidiPage, miniakPatchEditorPage, kmkScriptPage, cpfPage ].map(addHref),
     title: 'Software'
   },
   file: 'software.html',
@@ -110,7 +118,7 @@ const baseData = {
 
 const pages = [ homePage, errorPage, musicPage,
   softwarePage, m4lPage, contactPage, wacNetworkMidiPage,
-  miniakPatchEditorPage, metronomePage ]
+  miniakPatchEditorPage, metronomePage, pushWrapperPage ]
   .map(page => Object.assign({}, addHref(page), baseData))
 
 module.exports = {
