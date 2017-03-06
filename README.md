@@ -56,7 +56,7 @@ cert. I therefore cannot create that role and the Cloudfront Distribution in the
 - Update NS records (DNS provider)
 
 *Note the cloudformation template configures index.html as the route document for the site. It is necessary to update
-the account where my domain is registered to point the main DNS record at the AWS nameservers for the created **hosted zone***
+the account where my domain is registered to point the main DNS record at the AWS nameservers for the **hosted zone** created*
 
 ## HTTPS
 To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I use [certbot](https://certbot.eff.org/) to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
