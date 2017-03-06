@@ -20,13 +20,13 @@
         <li id="<%= `${item.title}-dropdown` %>" class="dropdown<%= (isThisPage(item) || dropDownContainsThisPage(item)) ? ' active' : '' %>">
           <a href="#" onclick="document.getElementById('<%= `${item.title}-dropdown` %>').classList.toggle('open')" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><%= item.title %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li<%- (locals.content.title === item.title) ? ' class="active"' : '' %>><a href="<%= item.href %>"><%= item.title %></a></li>
+            <li<%- isThisPage(item) ? ' class="active"' : '' %>><a href="<%= item.href %>"><%= item.title %></a></li>
             <li role="separator" class="divider"></li>
             <% item.dropdown.forEach(dropItem => { %>
-            <li<%- (locals.content.title === dropItem.title) ? ' class="active"' : '' %>>
+            <li<%- isThisPage(dropItem) ? ' class="active"' : '' %>>
               <% if (dropItem.external) { %>
               <%- include('external-link', {url: dropItem.href, text: dropItem.title}) %>
-              <% } else { %>  
+              <% } else { %>
               <a href="<%= dropItem.href %>"><%= dropItem.title %></a>
               <% } %>
             </li>

@@ -86,10 +86,7 @@ const baseData = {
     homePageUrl: homePage.href,
     items: [
       navItem(musicPage),
-      Object.assign(
-        navItem(softwarePage),
-        { dropdown: [ navItem(m4lPage), navItem(kmkScriptPage), navItem(cpfPage) ] }
-      ),
+      Object.assign(navItem(softwarePage), { dropdown: softwarePage.content.linked.map(navItem) }),
       navItem(contactPage)
     ]
   }
