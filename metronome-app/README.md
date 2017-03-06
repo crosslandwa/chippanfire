@@ -9,5 +9,5 @@ npm install //install dependencies of this app - MUST be run for the main site w
 ```
 
 Interesting things:
-- the webpack build transpiles *app.js* (and the node_modules it requires) into ES5!
-  - this replaces me needed to manually transpile (previoudly done with babel to build app.js -> metronome.js)
+- the webpack build transpiles *metronome.js* (and the node_modules it requires) into ES5!
+  - this replaces me needing to manually transpile (previously done with babel to build app.js -> metronome.js)
