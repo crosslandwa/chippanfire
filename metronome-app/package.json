@@ -4,15 +4,8 @@
     "main": "app.js",
     "description": "A web based metronome for the chippanfire site",
     "dependencies": {
-        "wac.sample-player": "^1.0.0",
-        "wac.scheduling": "^1.0.0"
-    },
-    "devDependencies": {
-        "babelify": "7.3.0",
-        "babel-preset-es2015": "6.9.0"
-    },
-    "scripts": {
-        "build": "browserify app.js -o ../site/assets/js/metronome.js --debug -t [ babelify --presets [ es2015 ] ]"
+        "wac.sample-player": "^2.0.0",
+        "wac.scheduling": "^1.5.0"
     },
     "author": "https://github.com/crosslandwa",
     "license": "MIT"

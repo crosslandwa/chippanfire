@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { pages } = require('./chippanfire.js')
 const webpack = require('webpack')
+const path = require('path')
 
 const afterLastSlash = x => x.split('/')[x.split('/').length - 1] || x
 const beforeLastDot = x => x.split('.')[x.split('.').length - 2]
@@ -53,7 +54,11 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        include: [
+          path.resolve(__dirname, 'assets/'),
+          path.resolve(__dirname, 'metronome-app/node_modules/'),
+          path.resolve(__dirname, 'metronome-app'),
+        ],
         loader: 'babel-loader',
         query: {
           presets: ['es2015']

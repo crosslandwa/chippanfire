@@ -1,15 +1,13 @@
 # metronome-app
 
-Generates the metronome.js app included in the CPF site at /site/assets/js/metronome.js
+The metronome.js app included in the CPF site
 
 ## Build
 
 ```javascript
-npm install //install dependencies of this app
-npm install -g browserify //install browserify for bundling
-npm run-script build //uses browserify to bundle app.js into /site/assets/js/metronome.js
+npm install //install dependencies of this app - MUST be run for the main site webpack build to work
 ```
 
 Interesting things:
-- the generated *metronome.js* file is checked into version control!
-- babelify plugin (for browserify) is used to transpile ES6 js into older style JS to support more browsers... 
+- the webpack build transpiles *app.js* (and the node_modules it requires) into ES5!
+  - this replaces me needed to manually transpile (previoudly done with babel to build app.js -> metronome.js)

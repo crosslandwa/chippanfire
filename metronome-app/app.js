@@ -1,6 +1,6 @@
-const audio_context = window.AudioContext ? new window.AudioContext() : new window.webkitAudioContext(),
-    Player = require('wac.sample-player'),
-    Scheduling = require('wac.scheduling')(audio_context),
+const audio_context = window.AudioContext ? new window.AudioContext() : new window.webkitAudioContext()
+const PlayerFactory = require('wac.sample-player')(audio_context)
+const Scheduling = require('wac.scheduling')(audio_context),
     EventEmitter = require('events'),
     util = require('util'),
     isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -91,24 +91,19 @@ function Metronome(initial_bpm, initial_accent_count) {
 
     let load_samples = function() {
         if (accent) { return Promise.resolve(); }
-        return new Promise((resolve, reject) => {
-            new Player('assets/audio/metronome-accent.mp3', audio_context, resolve).toMaster();
-        })
-        .then((player) => {
-            accent = player;
+        return Promise.all([
+            PlayerFactory.forResource('assets/audio/metronome-accent.mp3'),
+            PlayerFactory.forResource('assets/audio/metronome-tick.mp3')
+        ]).then(([accentPlayer, tickPlayer]) => {
+            accent = accentPlayer;
             accent.on('started', () => metronome.emit('tick_start'));
             accent.on('stopped', () => metronome.emit('tick_stop'));
-        })
-        .then(() => {
-            return new Promise((resolve, reject) => {
-                new Player('assets/audio/metronome-tick.mp3', audio_context, resolve).toMaster();
-            })
-        })
-        .then((player) => {
-            tick = player;
+            accent.toMaster()
+            tick = tickPlayer;
             tick.on('started', () => metronome.emit('tick_start'));
             tick.on('stopped', () => metronome.emit('tick_stop'));
-        });
+            tick.toMaster()
+        })
     }
 
     let do_toggle = function() {

@@ -52,9 +52,17 @@ const miniakPatchEditorPage = {
   template: 'content-miniak-patch-editor'
 }
 
+const metronomePage = {
+  content: { title: 'Metronome' },
+  file: 'metronome.html',
+  strapline: "An online metronome fo' keepin' yo' shit tight!",
+  scripts: ['metronome-app/app.js'],
+  template: 'content-metronome'
+}
+
 const softwarePage = {
   content: {
-    linked: [ m4lPage, wacNetworkMidiPage, miniakPatchEditorPage, kmkScriptPage, cpfPage ].map(addHref),
+    linked: [ metronomePage, m4lPage, wacNetworkMidiPage, miniakPatchEditorPage, kmkScriptPage, cpfPage ].map(addHref),
     title: 'Software'
   },
   file: 'software.html',
@@ -102,7 +110,8 @@ const baseData = {
 
 const pages = [ homePage, errorPage, musicPage,
   softwarePage, m4lPage, contactPage, wacNetworkMidiPage,
-  miniakPatchEditorPage ].map(page => Object.assign({}, addHref(page), baseData))
+  miniakPatchEditorPage, metronomePage ]
+  .map(page => Object.assign({}, addHref(page), baseData))
 
 module.exports = {
   pages: pages.map(page => { return { file: page.file, scripts: page.scripts || [] } }),
