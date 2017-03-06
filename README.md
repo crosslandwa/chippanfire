@@ -3,32 +3,30 @@
 Generation of the (static) chippanfire site
 
 ## Why
-A super-lightweight "framework" to generate a bunch of static HTML pages that all have a common layout. I wanted to minimise the amount of HTML I had to hand-crank to be just the 'content' of each page.
-
-I'm interested in playing around with (bootstrap powered) responsive web without a 'bulky' framework sitting between me and the raw HTML/CSS
-
-I opted for PHP as it is already installed on my machine (zero setup), and I've used it enough in the past to be wrestle it into submission fairly easily...
+I wanted to make my own static site to learn a bunch of things. In the two iterations (one PHP, one JS/Webpack) I've covered:
+- applying bootstrap/CSS through fairly direct manipulation of HTML markup (without a framework doing the heavy lifting for me)
+- hosting static sites on AWS S3, using AWS Cloudfront and Letsencrypt to serve the site over HTTPS
+- bundling/transpiling assets as part of build to target a variety browsers (currently using Webpack)
+- templating HTML files (initially done via custom PHP, now using EJS)
 
 ## Setup/Editing
-Each page in the site uses a common document, header, navigation and footer.
-The layout of the site is configured in build.php.
-HTML snippets (stored as .phtml) for each element of a page are stored in src/template
+Each page in the site uses a common document, header, and navigation template (stored in `/templates`)
+The layout of the site is configured in `chippanfire.js`
+Each page has its own HTML template (also in `/templates`)
 
 ## Build
-Use PHP to generate the static html assets by running the following from the top-level folder
-
-```php build.php```
-
-Note that by default the assets/links will have absolute URLs, as required for live builds.
-When building for development a build parameter should be used that makes the build generate relative URLs for all assets/links
-
-```php build.php relative-links```
-
-## Deploy
-The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /site folder to S3 using the AWS cli
+NPM and webpack do all the work here, and output a full site to ``./dist/``
 
 ```
-cd ./site/
+npm install
+npm run build
+```
+
+## Deploy
+The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /dist folder to S3 using the AWS cli
+
+```
+cd ./dist/
 
 # HTML pages (24 hours cache) - changes published within 24 hours (can manually invalidate)
 aws s3 sync . s3://chippanfire.com/ --delete --exclude "*" --include "*.html" --cache-control max-age=86400
