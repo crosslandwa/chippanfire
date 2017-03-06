@@ -19,6 +19,9 @@ NPM and webpack do all the work here, and output a full site to ``./dist/``
 
 ```
 npm install
+cd metronome-app
+npm install
+cd ..
 npm run build
 ```
 
