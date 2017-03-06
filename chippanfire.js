@@ -8,20 +8,16 @@ const renderPage = page => new Promise((resolve, reject) => {
 const addHref = page => page.href ? page : Object.assign({}, page, { href: href(page.file) })
 
 const musicPage = {
-  content: {
-    title: 'Music'
-  },
+  content: { title: 'Music' },
   file: 'music.html',
-  template: 'music'
+  template: 'content-music'
 }
 
 const m4lPage = {
-  content: {
-    title: 'Max For Live Devices'
-  },
+  content: { title: 'Max For Live Devices' },
   file: 'max-for-live-devices.html',
   strapline: 'A collection of Max For Live devices I have made',
-  template: 'm4l-devices'
+  template: 'content-m4l-devices'
 }
 
 const kmkScriptPage = {
@@ -74,7 +70,7 @@ const softwarePage = {
     title: 'Software'
   },
   file: 'software.html',
-  template: 'software'
+  template: 'content-software'
 }
 
 const homePage =  {
@@ -83,13 +79,13 @@ const homePage =  {
     software: { href: href(softwarePage.file) }
   },
   file: 'index.html',
-  template: 'index'
+  template: 'content-index'
 }
 
 const contactPage = {
   content: { title: 'Contact' },
   file: 'contact.html',
-  template: 'contact'
+  template: 'content-contact'
 }
 
 const errorPage = {
@@ -98,7 +94,7 @@ const errorPage = {
   },
   file: 'error.html',
   scripts: ['assets/error-page.js'],
-  template: 'error'
+  template: 'content-error'
 }
 
 const navItem = page => Object.assign({}, { href: addHref(page).href, title: page.content.title, external: !!page.external })
