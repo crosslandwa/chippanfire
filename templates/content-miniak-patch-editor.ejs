@@ -1,0 +1,76 @@
+<div class="content-block">
+  <div class="col-md-12">
+    <h1><%= title %></h1>
+    <p class="lead">
+      Patch editor/management tool for the <%- include('external-link', {url: 'http://www.akaipro.com/product/miniak', text: 'Akai Miniak'}) %>
+      / <%- include('external-link', {url: 'http://www.vintagesynth.com/misc/micron.php', text: 'Alesis Micron'}) %> synthesiser
+      <br>
+      <br>
+      <img src="<%- image('miniak-patch-editor.jpg') %>" alt="miniak patch editor screenshot" class="headline-image">
+    </p>
+  </div>
+  <div class="row content-block ">
+      <div class="col-md-6">
+          <h3>Buy full version</h3>
+          <p>The paid download includes:</p>
+          <ul>
+              <li>The Miniak Patch Editor application</li>
+              <li>A template for controlling Miniak Patch Editor from the popular iDevice software
+                  <%- include('external-link', {url: 'http://hexler.net/software/touchosc', text: 'TouchOSC'}) %>, created by <strong>Adam
+                  Neddo</strong> (see documentation for contact details). <em>Note the template controls the editor
+                  software
+                  (which updates the Miniak in realtime), but not the Miniak directly</em></li>
+              <li>Documentation for setup and use</li>
+              <li>A folder of example patches</li>
+              <li>The <%- include('external-link', {url: 'http://www.cycling74.com/', text: 'MaxMSP'}) %> source code</li>
+          </ul>
+          <%- include('oronjo-buy', { id: 77513, text: `Buy ${title} for OS X` })%>
+          <br>
+          <br>
+          <%- include('oronjo-buy', { id: 77512, text: `Buy ${title} for Windows` })%>
+          <br>
+          <br>
+          <%- include('documentation', { file: 'MPE-Documentation.pdf' })%>
+      </div>
+      <div class="col-md-6">
+          <h3>Download free demo version</h3>
+          <p>A demo version can be downloaded and used for free, but does not include the following features:</p>
+          <ul>
+              <li>Patch management</li>
+              <li>Patch randomisation</li>
+              <li>OSC interfacing</li>
+          </ul>
+          <p>It can be used as a fully functional patch editor. I recommend trying the demo before purchasing the full
+              version of the software to ensure it suits your needs and works with your synthesizer</p>
+          <p>
+              <%- include('download', { file: 'demos/Minaik-Patch-Editor-Demo-OSX.zip', text: 'Download Demo for OS X' })%>
+              <br>
+              <br>
+              <%- include('download', { file: 'demos/Miniak-Patch-Editor-Demo-WIN.zip', text: 'Download Demo for Windows' })%>
+          </p>
+      </div>
+  </div>
+  <div class="col-md-12">
+      <h3>Version History</h3>
+      <h4>1.1.0</h4>
+      <ul>
+          <li> Added an OSC interface, allowing realtime control of Miniak Patch Editor (and the Miniak) from other OSC
+              aware applications
+          </li>
+          <li>Added &#8216;auto patch retrieval mode&#8217; &#8211; Miniak Patch Editor automatically retreives the loaded
+              patch from the Miniak to keep the editor and your synth in sync
+          </li>
+          <li>Bugfix: certain filter types could only have a maximum frequency of 10KHz, instead of the full 20KHz</li>
+      </ul>
+  </div>
+  <hr>
+  <div class="col-md-12 alert alert-info">
+    <p>
+      <em>
+        Paid software downloads from ChipPanFire are managed
+        via <%- include('external-link', {url: 'http://www.oronjo.com/', text: 'Oronjo'}) %>. Clicking a ‘Buy’ button
+        will take you to the Oronjo site where the software can be bought via Paypal
+      </em>
+    </p>
+  </div>
+</div>

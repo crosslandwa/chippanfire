@@ -45,9 +45,16 @@ const wacNetworkMidiPage = {
   template: 'content-wac-network-midi'
 }
 
+const miniakPatchEditorPage = {
+  content: { title: 'Miniak Patch Editor' },
+  file: 'miniak-patch-editor.html',
+  strapline: 'Patch editor/management tool for the Akai Miniak synthesiser',
+  template: 'content-miniak-patch-editor'
+}
+
 const softwarePage = {
   content: {
-    linked: [ m4lPage, wacNetworkMidiPage, kmkScriptPage, cpfPage ].map(addHref),
+    linked: [ m4lPage, wacNetworkMidiPage, miniakPatchEditorPage, kmkScriptPage, cpfPage ].map(addHref),
     title: 'Software'
   },
   file: 'software.html',
@@ -94,8 +101,8 @@ const baseData = {
 }
 
 const pages = [ homePage, errorPage, musicPage,
-  softwarePage, m4lPage, contactPage, wacNetworkMidiPage ]
-  .map(page => Object.assign({}, addHref(page), baseData))
+  softwarePage, m4lPage, contactPage, wacNetworkMidiPage,
+  miniakPatchEditorPage ].map(page => Object.assign({}, addHref(page), baseData))
 
 module.exports = {
   pages: pages.map(page => { return { file: page.file, scripts: page.scripts || [] } }),
