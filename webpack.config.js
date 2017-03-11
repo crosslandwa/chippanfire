@@ -20,6 +20,24 @@ module.exports = {
       compress: {
         warnings: false
       }
+    }),
+    new HtmlWebpackPlugin({
+      chunks: [],
+      filename: '../error.html',
+      inject: 'head',
+      template: `./templates/error-page.html`
+    }),
+    new HtmlWebpackPlugin({
+      chunks: [],
+      filename: '../nuts.html',
+      inject: 'head',
+      template: `./templates/error-page.html`
+    }),
+    new HtmlWebpackPlugin({
+      chunks: [],
+      filename: '../thing.html',
+      inject: 'head',
+      template: `./templates/error-page.html`
     })
   ].concat(pages.map(page => new HtmlWebpackPlugin({
     chunks: ['common'].concat(page.scripts.map(scriptName)),

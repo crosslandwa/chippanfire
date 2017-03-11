@@ -92,7 +92,7 @@ const errorPage = {
   content: {
     title: 'Not Found 40404040404'
   },
-  file: 'error.html',
+  file: 'nice-error.html',
   scripts: ['assets/error-page.js'],
   template: 'content-error'
 }

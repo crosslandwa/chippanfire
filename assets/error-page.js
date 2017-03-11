@@ -1,13 +1,5 @@
 const contains = path => test => path.indexOf(test) != -1
 
-function redirectIfNotErrorPage(path) {
-  if (!path.endsWith('error.html')) {
-    window.location.replace(`http://localhost:8000/error.html?search=${encodeURIComponent(path)}`);
-    return true
-  }
-  return false
-}
-
 function lookingFor(href) {
   var urlContains = contains(href.toLowerCase());
   var suggestedName;
@@ -19,12 +11,12 @@ function lookingFor(href) {
     case urlContains('socco'):
     case urlContains('chico'):
     case urlContains('music'):
-    case urlContains('thing'):
       suggestHref = 'music.html'
       suggestedName = 'music'
       break;
     case urlContains('midi'):
     case urlContains('miniak'):
+    case urlContains('thing'):
     case urlContains('where'):
     case urlContains('snapshot'):
     case urlContains('modulo'):
@@ -44,5 +36,5 @@ function lookingFor(href) {
 }
 
 window.addEventListener('load', function () {
-  redirectIfNotErrorPage(window.location.pathname) || lookingFor(window.location.href);
+  lookingFor(window.location.href);
 })
