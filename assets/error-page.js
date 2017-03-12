@@ -16,7 +16,6 @@ function lookingFor(href) {
       break;
     case urlContains('midi'):
     case urlContains('miniak'):
-    case urlContains('thing'):
     case urlContains('where'):
     case urlContains('snapshot'):
     case urlContains('modulo'):
