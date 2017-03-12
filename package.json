@@ -14,7 +14,7 @@
     "build:prepareDist": "mkdir -p ./dist/assets && mkdir ./build",
     "build:renderTemplates": "node index.js",
     "build": "npm run build:prepareDist && npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates && npm run build:copyImages && npm run build:copyAudio && npm run build:copyDownloads && npm run build:copyRobots && npm run build:bundleAndCopyHTML",
-    "deploy": "cd ./dist && npm run deploy:html && npm run deploy:assets && cd -",
+    "deploy": "npm run deploy:html && npm run deploy:assets && cd -",
     "deploy:assets": "aws s3 sync ./dist s3://chippanfire.com/ --delete --cache-control max-age=31536000",
     "deploy:html": "aws s3 sync ./dist s3://chippanfire.com/ --delete --exclude \"*\" --include \"*.html\" --cache-control max-age=86400",
     "test": "echo \"Error: no test specified\" && exit 1"
