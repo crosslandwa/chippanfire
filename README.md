@@ -26,17 +26,9 @@ npm run build
 ```
 
 ## Deploy
-The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /dist folder to S3 using the AWS cli
+The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /dist folder to S3 using the AWS cli, via `npm run deploy`
 
-```
-cd ./dist/
-
-# HTML pages (24 hours cache) - changes published within 24 hours (can manually invalidate)
-aws s3 sync . s3://chippanfire.com/ --delete --exclude "*" --include "*.html" --cache-control max-age=86400
-
-# everything else (1 year cache)
-aws s3 sync . s3://chippanfire.com/ --delete --cache-control max-age=31536000
-```
+Note that HTML pages are deployed with a 24 hours cache time (changes published within 24 hours, can manually invalidate) whilst everything else has a 1 year cache
 
 ## AWS & Infrastructure
 I've elected to use Cloudformation to configure the necessary AWS resources for hosting/serving the site.
