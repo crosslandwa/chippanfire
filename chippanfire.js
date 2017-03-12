@@ -1,11 +1,9 @@
 const { renderFile } = require('ejs')
 const fs = require('fs')
-const absoluteLinks = true
-const href = path => (absoluteLinks ? '' : 'https://www.chippanfire.com/') + path
 const renderPage = page => new Promise((resolve, reject) => {
   renderFile('templates/page.ejs', page, {}, (err, str) => err ? reject(err) : resolve({ content: str, file: page.file }))
 })
-const addHref = page => page.href ? page : Object.assign({}, page, { href: href(page.file) })
+const addHref = page => page.href ? page : Object.assign({}, page, { href: page.file })
 
 const musicPage = {
   content: { title: 'Music' },
@@ -75,8 +73,8 @@ const softwarePage = {
 
 const homePage =  {
   content: {
-    music: { href: href(musicPage.file) },
-    software: { href: href(softwarePage.file) }
+    music: { href: musicPage.file },
+    software: { href: softwarePage.file }
   },
   file: 'index.html',
   template: 'content-index'
@@ -100,9 +98,9 @@ const errorPage = {
 const navItem = page => Object.assign({}, { href: addHref(page).href, title: page.content.title, external: !!page.external })
 
 const baseData = {
-  image: path => `${href('assets/images')}/${path}`,
+  image: path => `assets/images/${path}`,
   navigation: {
-    homePageUrl: href(homePage.file),
+    homePageUrl: homePage.file,
     items: [
       navItem(musicPage),
       Object.assign(navItem(softwarePage), { dropdown: softwarePage.content.linked.map(navItem) }),
