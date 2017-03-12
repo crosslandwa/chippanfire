@@ -11,7 +11,7 @@
     "build:copyRobots": "cp ./assets/robots.txt ./dist/",
     "build:cleanBuild": "rm -rf ./build/*",
     "build:cleanDist": "rm -rf ./dist/* && mkdir ./dist/assets",
-    "build:prepareDist": "mkdir -p ./dist/assets && mkdir ./build",
+    "build:prepareDist": "mkdir -p ./dist/assets && mkdir -p ./build",
     "build:renderTemplates": "node index.js",
     "build": "npm run build:prepareDist && npm run build:cleanDist && npm run build:cleanBuild && npm run build:renderTemplates && npm run build:copyImages && npm run build:copyAudio && npm run build:copyDownloads && npm run build:copyRobots && npm run build:bundleAndCopyHTML",
     "deploy": "npm run deploy:html && npm run deploy:assets",
