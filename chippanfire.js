@@ -1,9 +1,9 @@
 const { renderFile } = require('ejs')
-const fs = require('fs')
 const renderPage = page => new Promise((resolve, reject) => {
   renderFile('templates/page.ejs', page, {}, (err, str) => err ? reject(err) : resolve({ content: str, file: page.file }))
 })
 const addHref = page => page.href ? page : Object.assign({}, page, { href: page.file })
+const navItem = page => Object.assign({}, { href: addHref(page).href, title: page.content.title, external: !!page.external })
 
 const musicPage = {
   content: { title: 'Music' },
@@ -94,8 +94,6 @@ const errorPage = {
   scripts: ['assets/error-page.js'],
   template: 'content-error'
 }
-
-const navItem = page => Object.assign({}, { href: addHref(page).href, title: page.content.title, external: !!page.external })
 
 const baseData = {
   image: path => `assets/images/${path}`,
