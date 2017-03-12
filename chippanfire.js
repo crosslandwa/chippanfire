@@ -100,7 +100,6 @@ const errorPage = {
 const navItem = page => Object.assign({}, { href: addHref(page).href, title: page.content.title, external: !!page.external })
 
 const baseData = {
-  assetsBaseUrl: href('assets'),
   image: path => `${href('assets/images')}/${path}`,
   navigation: {
     homePageUrl: href(homePage.file),
