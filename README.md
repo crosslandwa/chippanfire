@@ -51,26 +51,30 @@ cert. I therefore cannot create that role and the Cloudfront Distribution in the
 the account where my domain is registered to point the main DNS record at the AWS nameservers for the* **hosted zone** *created*
 
 ## HTTPS
-To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I use [certbot](https://certbot.eff.org/) to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
+To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I use [certbot](https://certbot.eff.org/) running on an EC2 instance to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
 
-**Install certbot (local machine)**
-```
-brew update
-brew install certbot
-```
+**Install certbot ()**
+I followed the steps [here](https://certbot.eff.org/docs/install.html#certbot-auto)
 
-**Acquire certificate (local machine)**
+**Acquire certificate**
 ```
 mkdir -p ~/letsencrypt/log
 mkdir -p ~/letsencrypt/lib
-certbot certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~/letsencrypt/log/ --config-dir ~/letsencrypt/ --work-dir ~/letsencrypt/
+./certbot-auto certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~/letsencrypt/log/ --config-dir ~/letsencrypt/ --work-dir ~/letsencrypt/
 ```
 _note use of custom output directories, instead of the root owned /etc/letsencrypt used by default_
 
-**Copy certs to EC2 (local machine)**
+I'll be presented VALUE and FILENAME values by the installer, which I need to make publically accessible via S3:
 ```
-scp -r ~/letsencrypt/live/chippanfire.com/*.pem USER@EC2_PUBLIC_DNS:chippanfire.com-cert
+echo VALUE > tmp/FILENAME
+aws s3 sync ./tmp/ s3://chippanfire.com/.well-known/acme-challenge/
 ```
+
+**Copy certs to EC2 working directory**
+```
+cp letsencrypt/live/chippanfire.com/*.pem chippanfire.com-cert/
+```
+
 **Upload and use certificate (EC2, using aws-cli)**
 ```
 aws iam delete-server-certificate --server-certificate-name chippanfire.com-old #delete previous backup
