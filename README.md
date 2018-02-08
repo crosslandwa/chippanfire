@@ -53,7 +53,8 @@ the account where my domain is registered to point the main DNS record at the AW
 ## HTTPS
 To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I use [certbot](https://certbot.eff.org/) running on an EC2 instance to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
 
-**Install certbot ()**
+**Install certbot**
+
 I followed the steps [here](https://certbot.eff.org/docs/install.html#certbot-auto)
 
 **Acquire certificate**
