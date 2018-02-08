@@ -65,22 +65,17 @@ mkdir -p ~/letsencrypt/lib
 ```
 _note use of custom output directories, instead of the root owned /etc/letsencrypt used by default_
 
-I'll be presented VALUE and FILENAME values by the installer, which I need to make publically accessible via S3:
+I'll be presented VALUE and FILENAME pairs by the installer, which I need to make publically accessible via S3:
 ```
 echo VALUE > tmp/FILENAME
 aws s3 sync ./tmp/ s3://chippanfire.com/.well-known/acme-challenge/
 ```
 
-**Copy certs to EC2 working directory**
-```
-cp letsencrypt/live/chippanfire.com/*.pem chippanfire.com-cert/
-```
-
-**Upload and use certificate (EC2, using aws-cli)**
+**Upload and use certificate (using aws-cli)**
 ```
 aws iam delete-server-certificate --server-certificate-name chippanfire.com-old #delete previous backup
 aws iam update-server-certificate --server-certificate-name chippanfire.com --new-server-certificate-name chippanfire.com-old # backup current cert
-aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/chippanfire.com-cert/cert.pem --private-key file:///home/ec2-user/chippanfire.com-cert/privkey.pem --certificate-chain file:///home/ec2-user/chippanfire.com-cert/chain.pem --path /cloudfront/chippanfire/
+aws iam upload-server-certificate --server-certificate-name chippanfire.com --certificate-body file:///home/ec2-user/letsencrypt/live/chippanfire.com/cert.pem --private-key file:///home/ec2-user/letsencrypt/live/chippanfire.com/privkey.pem --certificate-chain file:///home/ec2-user/letsencrypt/live/chippanfire.com/chain.pem --path /cloudfront/chippanfire/
 # aws iam list-server-certificates to get cert ID
 ```
 
@@ -88,5 +83,4 @@ aws iam upload-server-certificate --server-certificate-name chippanfire.com --ce
 
 **Update cloudfront**
 
-Update stack via the AWS console, providing the IAM certificate ID of the just
-uploaded cert as the certificate ID template parameter
+Update stack via the AWS console, providing the IAM certificate ID of the just uploaded cert as the certificate ID template parameter
