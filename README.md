@@ -54,14 +54,16 @@ the account where my domain is registered to point the main DNS record at the AW
 To support pages that send/receive MIDI SYSEX with the Web Audio API, the site needs to run on HTTPS (this is also good practice anyhow). I use [certbot](https://certbot.eff.org/) running on an EC2 instance to acquire certs from [Let's Encrypt](https://letsencrypt.org/) to power this.
 
 **Install certbot**
-
-I followed the steps [here](https://certbot.eff.org/docs/install.html#certbot-auto)
+I installed with pip:
+```
+pip install --user -U certbot
+```
 
 **Acquire certificate**
 ```
 mkdir -p ~/letsencrypt/log
 mkdir -p ~/letsencrypt/lib
-./certbot-auto certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~/letsencrypt/log/ --config-dir ~/letsencrypt/ --work-dir ~/letsencrypt/
+certbot certonly --manual -d chippanfire.com -d www.chippanfire.com --logs-dir ~/letsencrypt/log/ --config-dir ~/letsencrypt/ --work-dir ~/letsencrypt/
 ```
 _note use of custom output directories, instead of the root owned /etc/letsencrypt used by default_
 
