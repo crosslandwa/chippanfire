@@ -33,7 +33,11 @@ const cpfPage = {
 }
 
 const wacNetworkMidiPage = {
-  content: { title: 'Wac Network MIDI' },
+  content: {
+    title: 'Wac Network MIDI',
+    github: 'https://github.com/crosslandwa/wac-network-midi'
+
+  },
   file: 'wac-network-midi.html',
   strapline: 'Cross-platform (Win/OS X) tool for transmitting MIDI between computers',
   template: 'content-wac-network-midi'

@@ -2,47 +2,28 @@
   <div class="col-md-12">
     <h1><%= title %></h1>
     <p class="lead">
-      Cross-platform (Win/OS X) tool for transmitting MIDI from one computer to another via a network (sans hardware MIDI interfaces)
+      MaxMSP tool for transmitting MIDI from one computer (Win/OS X) to another via a network (sans hardware MIDI interfaces)
       <br>
       <br>
       <img src="<%- image('wac-network-midi.png') %>" alt="wac network midi screenshot" class="headline-image">
     </p>
   </div>
   <div class="row content-block ">
-      <div class="col-md-6">
-          <h3>Buy full version</h3>
-          <p>The paid download includes:</p>
+      <div class="col-md-12">
+          <h3><a href="<%= github %>" target="_blank">Download from Github<i class="icon-external-link"></i></a></h3>
+          <p>Wac Network MIDI is a <%- include('external-link', {url: 'http://www.cycling74.com/', text: 'MaxMSP'}) %> patch that can be downloaded and used <strong>for free!</strong></p>
+          <p>The download includes:</p>
           <ul>
-              <li>wacNetworkMIDI application</li>
+              <li>The Wac Network MIDI MaxMSP patch</li>
               <li>Documentation for setup and use</li>
-              <li>The MaxMSP source code</li>
           </ul>
-          <%- include('oronjo-buy', { id: 77529, text: `Buy ${title} for OS X` })%>
-          <br>
-          <br>
-          <%- include('oronjo-buy', { id: 77532, text: `Buy ${title} for Windows` })%>
-          <br>
-          <br>
-          <%- include('documentation', { file: 'wacNetworkMIDI.pdf' })%>
-      </div>
-      <div class="col-md-6">
-          <h3>Download free demo version</h3>
-          <p>A demo can be downloaded and used for free, but does not allow you to save default settings</p>
-          <p>
-              <%- include('download', { file: 'demos/wac-Network-Midi-Demo-OSX.zip', text: 'Download Demo for OS X' })%>
-              <br>
-              <br>
-              <%- include('download', { file: 'demos/wac-Network-Midi-Demo-WIN.zip', text: 'Download Demo for Windows' })%>
-          </p>
       </div>
   </div>
   <hr>
   <div class="col-md-12 alert alert-info">
     <p>
       <em>
-        Paid software downloads from ChipPanFire are managed
-        via <%- include('external-link', {url: 'http://www.oronjo.com/', text: 'Oronjo'}) %>. Clicking a ‘Buy’ button
-        will take you to the Oronjo site where the software can be bought via Paypal
+        This software used to be a paid download - I no longer maintain those versions of the app (I couldn't keep up with Windows/OS X changes). To those who paid for tha app in tha past, thanks for your support!
       </em>
     </p>
   </div>
