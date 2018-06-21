@@ -40,7 +40,10 @@ const wacNetworkMidiPage = {
 }
 
 const miniakPatchEditorPage = {
-  content: { title: 'Miniak Patch Editor' },
+  content: {
+    title: 'Miniak Patch Editor',
+    github: 'https://github.com/crosslandwa/miniak-patch-editor',
+  },
   file: 'miniak-patch-editor.html',
   strapline: 'Patch editor/management tool for the Akai Miniak synthesiser',
   template: 'content-miniak-patch-editor'
