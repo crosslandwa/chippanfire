@@ -71,6 +71,9 @@ I'll be presented VALUE and FILENAME pairs by the installer, which I need to mak
 ```
 echo VALUE > tmp/FILENAME
 aws s3 sync ./tmp/ s3://chippanfire.com/.well-known/acme-challenge/
+
+# and delete them afterwards with (remove the --dryrun option to actually remove them)
+aws s3 sync ./tmp/ s3://chippanfire.com/.well-known/acme-challenge/ --delete --dryrun
 ```
 
 **Upload and use certificate (using aws-cli)**
