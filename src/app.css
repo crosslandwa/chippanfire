@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.cpf-header-nav {
+  width: 100%;
+  background: #f8f8f8;
+  border-style: solid;
+  border-width: 0 0 1px;
+  border-color: #e7e7e7;
+}
+
+.cpf-header-nav__item {
+  display: inline-block;
+  padding: 1em;
+}
+
+.cpf-header-nav__item--lead {
+  padding-left: 0;
+}
+
+.cpf-container {
+  margin: auto;
+  padding: 0 1em;
+  max-width: 980px;
+}
