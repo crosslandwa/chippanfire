@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import App from './App'
+import Home from './home'
 import { readFile, writeFile } from './files/'
 
 const html = css => `<!DOCTYPE html>
@@ -15,7 +15,7 @@ ${css}
     </style>
   </head>
   <body>
-    ${ReactDOMServer.renderToStaticMarkup(<App />)}
+    ${ReactDOMServer.renderToStaticMarkup(<Home />)}
   </body>
 </html>
 `

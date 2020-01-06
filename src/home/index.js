@@ -7,7 +7,7 @@ const LeadNavItem = ({ a, label }) => <a className="cpf-header-nav__item cpf-hea
 
 const SectionHeader = ({ id, label }) => <h1 id={id || ''}>{label}</h1>
 
-const App = props => (
+const Home = props => (
   <React.Fragment>
     <nav className="cpf-header-nav">
       <div className="cpf-container">
@@ -18,7 +18,8 @@ const App = props => (
     </nav>
     <div className="cpf-container">
       <p>
-        Hi, I'm Will Crossland, a musician, software developer and beer-user from northern England. I made this site as a home for the music/software I've made, and to provide a safe space to explore frontend development away from the day job.
+        Hi, I
+        'm Will Crossland, a musician, software developer and beer-user from northern England. I made this site as a home for the music/software I've made, and to provide a safe space to explore frontend development away from the day job.
       </p>
       <Music />
       <Contact />
@@ -26,4 +27,4 @@ const App = props => (
   </React.Fragment>
 )
 
-export default App
+export default Home
