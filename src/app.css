@@ -1,6 +1,8 @@
 body {
   font-family: sans-serif;
-  margin: 0;
+  margin: 0 0 8em 0;
+  padding-top: 4em;
+  font-weight: 300;
 }
 
 .cpf-header-nav {
@@ -9,6 +11,8 @@ body {
   border-style: solid;
   border-width: 0 0 1px;
   border-color: #e7e7e7;
+  position: fixed;
+  top: 0;
 }
 
 .cpf-header-nav__item {
@@ -26,6 +30,19 @@ body {
   max-width: 980px;
 }
 
+.cpf-footer {
+  position: fixed;
+  color: #777;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.cpf-section-header {
+  padding-top: 2em;
+  margin-bottom: 0;
+}
+
 .cpf-grid__row:after {
     content: "";
     display: block;
@@ -37,7 +54,6 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
-
 
 @media (min-width: 50em) {
   .cpf-grid__column-one-third {
