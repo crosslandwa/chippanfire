@@ -1,9 +1,11 @@
 import React from 'react'
+import Music from './Music'
+import Contact from './Contact'
 
 const NavItem = ({ a, label }) => <a className="cpf-header-nav__item" href={a}>{label}</a>
 const LeadNavItem = ({ a, label }) => <a className="cpf-header-nav__item cpf-header-nav__item--lead" href="index.html">{label}</a>
 
-const SectionHeader = ({ name, label }) => <a name={name || ''}><h1>{label}</h1></a>
+const SectionHeader = ({ id, label }) => <h1 id={id || ''}>{label}</h1>
 
 const App = props => (
   <React.Fragment>
@@ -18,8 +20,8 @@ const App = props => (
       <p>
         Hi, I'm Will Crossland, a musician, software developer and beer-user from northern England. I made this site as a home for the music/software I've made, and to provide a safe space to explore frontend development away from the day job.
       </p>
-      <SectionHeader name="music" label="Music" />
-      <SectionHeader name="contact" label="Contact" />
+      <Music />
+      <Contact />
     </div>
   </React.Fragment>
 )
