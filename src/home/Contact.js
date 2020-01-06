@@ -8,7 +8,6 @@ const Contact = props => (
       You can find me in these places:
       <ul>
           <li><a href="https://github.com/crosslandwa">Github</a></li>
-          <li><a href="mailto:willycwillydo@gmail.com">Send Mail</a></li>
       </ul>
     </p>
   </React.Fragment>
