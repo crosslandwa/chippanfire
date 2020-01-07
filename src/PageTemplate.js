@@ -1,12 +1,12 @@
 import React from 'react'
 
-const NavItem = ({ a, label }) => <a className="cpf-header-nav__item" href={a}>{label}</a>
+const NavItem = ({ a, label }) => <a className="cpf-link cpf-header-nav__item" href={a}>{label}</a>
 
 const PageTemplate = ({ children }) => (
   <React.Fragment>
     <nav className="cpf-header-nav">
       <div className="cpf-container">
-        <a className="cpf-header-nav__item cpf-header-nav__item--lead" href="index.html">
+        <a className="cpf-link cpf-header-nav__item cpf-header-nav__item--lead" href="index.html">
           <img className="cpf-header-nav__item-image" src="cpf_logo.png" alt="ChipPanFire" />
         </a>
         <NavItem a="index.html#music" label="Music" />

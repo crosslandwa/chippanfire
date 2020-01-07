@@ -1,5 +1,6 @@
 import React from 'react'
 import SectionHeader from './SectionHeader'
+import ExternalLink from '../external-link'
 
 const Contact = props => (
   <React.Fragment>
@@ -7,7 +8,9 @@ const Contact = props => (
     <p>
       You can find me in these places:
       <ul>
-        <li><a href="https://github.com/crosslandwa">Github</a></li>
+        <li>
+          <ExternalLink href="https://github.com/crosslandwa">Github</ExternalLink>
+        </li>
       </ul>
     </p>
   </React.Fragment>

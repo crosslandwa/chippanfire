@@ -80,3 +80,19 @@ body {
 .cpf-image--full-width {
   width: 100%;
 }
+
+.cpf-link {
+  color: #337ab7;
+}
+
+.cpf-link__external-link-icon:after {
+  content: '';
+  display: inline-block;
+  background: url('external-link.svg');
+  -webkit-background-size: 1em 1em;
+  background-size: 1em 1em;
+  width: 1em;
+  height: 1em;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
