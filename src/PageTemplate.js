@@ -10,6 +10,7 @@ const PageTemplate = ({ children }) => (
           <img className="cpf-header-nav__item-image" src="cpf_logo.png" alt="ChipPanFire" />
         </a>
         <NavItem a="index.html#music" label="Music" />
+        <NavItem a="index.html#software" label="Software" />
         <NavItem a="index.html#contact" label="Contact" />
       </div>
     </nav>
