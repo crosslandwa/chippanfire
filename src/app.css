@@ -21,6 +21,11 @@ body {
   padding: 1em;
 }
 
+.cpf-header-nav__item-image {
+  height: 2em;
+  margin-bottom: -0.7em;
+}
+
 .cpf-header-nav__item--lead {
   padding-left: 0;
 }
@@ -70,4 +75,8 @@ body {
   .cpf-grid__column-one-third:not(:first-child):not(:last-child) {
     padding: 0 1em;
   }
+}
+
+.cpf-image--full-width {
+  width: 100%;
 }

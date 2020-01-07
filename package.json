@@ -4,16 +4,17 @@
   "description": "CPF site generated via JS",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:build:copy-css && npm run build:build:transpile && npm run build:build:render",
+    "build": "npm run build:build:copy-css && npm run build:build:transpile && npm run build:build:prepare-dist-dir && npm run build:build:render && npm run build:build:copy-assets",
     "build:build:copy-css": "mkdir -p build && cp src/app.css build/app.css",
     "build:build:transpile": "babel ./src --out-dir build",
-    "build:build:render": "mkdir -p dist && cd build && node main.js && cd -",
+    "build:build:prepare-dist-dir": "rm -r dist && mkdir dist",
+    "build:build:render": "cd build && node main.js && cd -",
+    "build:build:copy-assets": "cp src/**/*.jpg dist/ && cp src/*.png dist/",
     "build:watch": "watch 'npm run build' ./src --interval 2",
     "deploy": "npm run deploy:html && npm run deploy:assets",
     "deploy:assets": "aws s3 sync ./dist s3://chippanfire.com/ --delete --cache-control max-age=31536000",
     "deploy:html": "aws s3 sync ./dist s3://chippanfire.com/ --delete --exclude \"*\" --include \"*.html\" --cache-control max-age=86400",
-    "lint": "eslint ./src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./src"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",

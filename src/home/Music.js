@@ -19,7 +19,7 @@ const Music = props => (
         <h2>Carson Brent</h2>
         <p>My wife sings and I play guitar/sing</p>
         <p>We used to gig around Bristol many moons ago. We've played at friends' weddings (this is fun). One day I plan on making some new recordings...</p>
-        <img src="carson-brent.jpg" alt="Carson Brent image" />
+        <img className="cpf-image--full-width" src="carson-brent.jpg" alt="Carson Brent image" />
       </div>
     </div>
   </React.Fragment>

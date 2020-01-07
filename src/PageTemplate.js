@@ -1,15 +1,14 @@
 import React from 'react'
-import Music from './Music'
-import Contact from './Contact'
 
 const NavItem = ({ a, label }) => <a className="cpf-header-nav__item" href={a}>{label}</a>
-const LeadNavItem = ({ a, label }) => <a className="cpf-header-nav__item cpf-header-nav__item--lead" href="index.html">{label}</a>
 
 const PageTemplate = ({ children }) => (
   <React.Fragment>
     <nav className="cpf-header-nav">
       <div className="cpf-container">
-        <LeadNavItem label="ChipPanFire" />
+        <a className="cpf-header-nav__item cpf-header-nav__item--lead" href="index.html">
+          <img className="cpf-header-nav__item-image" src="cpf_logo.png" alt="ChipPanFire" />
+        </a>
         <NavItem a="index.html#music" label="Music" />
         <NavItem a="index.html#contact" label="Contact" />
       </div>
