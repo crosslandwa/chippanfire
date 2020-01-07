@@ -47,6 +47,7 @@ body {
 .cpf-section-header {
   padding-top: 1.75em;
   margin-bottom: 0;
+  font-weight: 500;
 }
 
 .cpf-grid__row:after {
@@ -100,6 +101,7 @@ body {
 .cpf-header--small {
   margin-bottom: 0;
   font-size: 1.125rem;
+  font-weight: 500;
 }
 
 .cpf-software__panel {
