@@ -28,5 +28,6 @@ readFile('./app.css')
   .then(render => Promise.all([
     Promise.resolve(<Home />).then(render).then(writeFile('../dist/index.html')),
     Promise.resolve(<Error />).then(render).then(writeFile('../dist/error.html')),
-    Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFile('../dist/max-for-live-devices.html'))
+    Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFile('../dist/max-for-live-devices.html')),
+    Promise.resolve('User-agent: *\nDisallow:').then(writeFile('../dist/robots.txt'))
   ]))
