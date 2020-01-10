@@ -2,18 +2,6 @@ import React from 'react'
 import PageTemplate from '../PageTemplate'
 import ExternalLink from '../external-link'
 
-const Documentation = ({ href }) => (
-  <form action={href} method="GET">
-    <button type="submit" className="cpf-btn cpf-btn--secondary">Download Documentation</button>
-  </form>
-)
-
-const Download = ({ href, children }) => (
-  <a href={href} >
-    <button type="submit" className="cpf-btn">Download</button>
-  </a>
-)
-
 const Device = ({ children, documentation, download, id, title }) => {
   const childArray = React.Children.toArray(children)
   return (
@@ -25,8 +13,12 @@ const Device = ({ children, documentation, download, id, title }) => {
           <h3 className="cpf-header cpf-header--small">Download</h3>
           {childArray[1]}
           <p>It is known to work with Ableton Live 8, but I've not updated for a very loooong time</p>
-          <Download href={download} />
-          <Documentation href={documentation}/>
+          <a href={download} >
+            <button type="submit" className="cpf-btn">Download</button>
+          </a>
+          <form action={documentation} method="GET">
+            <button type="submit" className="cpf-btn cpf-btn--secondary">Download Documentation</button>
+          </form>
         </div>
         {childArray[2] && (
           <div className="cpf-grid__column-one-half">
