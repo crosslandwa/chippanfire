@@ -4,17 +4,17 @@
   "description": "CPF site generated via JS",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:build:copy-css && npm run build:build:transpile && npm run build:build:prepare-dist-dir && npm run build:build:render && npm run build:build:copy-images",
-    "build:build:copy-css": "mkdir -p build && cp src/app.css build/app.css",
-    "build:build:transpile": "babel ./src --out-dir build",
-    "build:build:prepare-dist-dir": "rm -r dist && mkdir dist",
-    "build:build:render": "cd build && node main.js && cd -",
-    "build:build:copy-images": "find ./src -type f \\( -iname \\*.jpg -o -iname \\*.png -o -iname \\*.svg -o -iname \\*.ico \\) -exec cp {} ./dist \\;",
-    "build:watch": "watch 'npm run build' ./src --interval 2",
+    "build": "npm run build:copy-css && npm run build:transpile && npm run build:prepare-dist-dir && npm run build:render && npm run build:copy-images",
+    "build:copy-css": "mkdir -p build && cp src/app.css build/app.css",
+    "build:transpile": "babel ./src --out-dir build",
+    "build:prepare-dist-dir": "rm -rf dist/* && mkdir -p dist",
+    "build:render": "cd build && node main.js && cd -",
+    "build:copy-images": "find ./src -type f \\( -iname \\*.jpg -o -iname \\*.png -o -iname \\*.svg -o -iname \\*.ico \\) -exec cp {} ./dist \\;",
     "deploy": "npm run deploy:html && npm run deploy:assets",
     "deploy:assets": "aws s3 sync ./dist s3://chippanfire.com/ --delete --cache-control max-age=31536000",
     "deploy:html": "aws s3 sync ./dist s3://chippanfire.com/ --delete --exclude \"*\" --include \"*.html\" --cache-control max-age=86400",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "watch": "watch 'npm run build' ./src --interval 2"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
