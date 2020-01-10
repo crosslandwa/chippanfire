@@ -3,7 +3,7 @@ import PageTemplate from '../PageTemplate'
 
 const Error = props => (
   <PageTemplate>
-    <h1 className="">Not Found 40404040404</h1>
+    <h1 className="cpf-header">Not Found 40404040404</h1>
     <p>Oh no! What you're looking for is not here. Maybe you followed an old link.</p>
     <p>Try using the navigation above to find what you were after...</p>
     <p id="redirect-suggestion"></p>
@@ -23,7 +23,7 @@ function lookingFor(href) {
       suggestHref = 'index.html#music'
       suggestedName = 'music'
       break;
-    case urlContains(['midi', 'miniak', 'where', 'snap', 'modulo', 'soft', 'kmk']):
+    case urlContains(['midi', 'miniak', 'snap', 'modulo', 'soft', 'kmk', 'device', 'where']):
       suggestHref = 'index.html#software'
       suggestedName = 'software'
       break;
@@ -33,7 +33,7 @@ function lookingFor(href) {
       break;
   }
   if (suggestHref) {
-    document.getElementById('redirect-suggestion').innerHTML = '...or were looking for <a href="' + suggestHref + '">' + suggestedName + '</a>?';
+    document.getElementById('redirect-suggestion').innerHTML = '...or were looking for <a class="cpf-link" href="' + suggestHref + '">' + suggestedName + '</a>?';
   }
 }
 

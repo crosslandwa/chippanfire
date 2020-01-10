@@ -2,10 +2,12 @@ import React from 'react'
 import SectionHeader from './SectionHeader'
 import ExternalLink from '../external-link'
 
-const Panel = ({ label, strap }) => (
+const Panel = ({ href, label, strap }) => (
   <div className="cpf-grid__column-one-third">
     <div className="cpf-software__panel">
-      <h2 className="cpf-header--small">{label}</h2>
+      <h2 className="cpf-header--small">
+        {href ? <a className="cpf-link" href={href}>{label}</a> : label}
+      </h2>
       <p>{strap}</p>
     </div>
   </div>
@@ -40,6 +42,7 @@ const Software = props => (
       <Panel
         label="Max For Live Devices"
         strap="A collection of Max For Live devices I have made"
+        href="max-for-live-devices.html"
       />
     </div>
     <div className="cpf-grid__row">

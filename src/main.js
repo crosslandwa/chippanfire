@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Home from './home'
+import MaxForLiveDevices from './max-for-live'
 import Error from './error'
 import { readFile, writeFile } from './files/'
 
@@ -26,5 +27,6 @@ readFile('./app.css')
   .then(html)
   .then(render => Promise.all([
     Promise.resolve(<Home />).then(render).then(writeFile('../dist/index.html')),
-    Promise.resolve(<Error />).then(render).then(writeFile('../dist/error.html'))
+    Promise.resolve(<Error />).then(render).then(writeFile('../dist/error.html')),
+    Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFile('../dist/max-for-live-devices.html'))
   ]))
