@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Home from './home'
+import Error from './error'
 import { readFile, writeFile } from './files/'
 
-const html = css => `<!DOCTYPE html>
+const html = css => component => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -16,11 +17,14 @@ ${css}
     </style>
   </head>
   <body>
-    ${ReactDOMServer.renderToStaticMarkup(<Home />)}
+    ${ReactDOMServer.renderToStaticMarkup(component)}
   </body>
 </html>
 `
 
 readFile('./app.css')
   .then(html)
-  .then(writeFile('../dist/index.html'))
+  .then(render => Promise.all([
+    Promise.resolve(<Home />).then(render).then(writeFile('../dist/index.html')),
+    Promise.resolve(<Error />).then(render).then(writeFile('../dist/error.html'))
+  ]))
