@@ -124,6 +124,7 @@ body {
 
 .cpf-image {
   margin-top: 1em;
+  display: block;
 }
 
 .cpf-image--fit-to-width {

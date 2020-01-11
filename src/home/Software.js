@@ -49,6 +49,7 @@ const Software = props => (
       <Panel
         label="Wac Network MIDI"
         strap="Cross-platform (Win/OS X) tool for transmitting MIDI between computers"
+        href="wac-network-midi.html"
       />
       <Panel
         label="Miniak Patch Editor"

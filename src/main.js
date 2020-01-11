@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server'
 import Home from './home'
 import MaxForLiveDevices from './max-for-live'
 import MiniakPatchEditor from './miniak-patch-editor'
+import WacNetworkMidi from './wac-network-midi'
 import Error from './error'
 import { readFile, writeFile } from './files/'
 
@@ -31,5 +32,6 @@ readFile('./app.css')
     Promise.resolve(<Error />).then(render).then(writeFile('../dist/error.html')),
     Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFile('../dist/max-for-live-devices.html')),
     Promise.resolve(<MiniakPatchEditor />).then(render).then(writeFile('../dist/miniak-patch-editor.html')),
+    Promise.resolve(<WacNetworkMidi />).then(render).then(writeFile('../dist/wac-network-midi.html')),
     Promise.resolve('User-agent: *\nDisallow:').then(writeFile('../dist/robots.txt'))
   ]))
