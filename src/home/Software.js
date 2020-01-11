@@ -53,6 +53,7 @@ const Software = props => (
       <Panel
         label="Miniak Patch Editor"
         strap="Patch editor/management tool for the Akai Miniak synthesiser"
+        href="miniak-patch-editor.html"
       />
       <PanelExternal
         label="KMK Control Script"
