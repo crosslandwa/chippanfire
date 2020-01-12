@@ -3,27 +3,51 @@
 Generation of the (static) chippanfire site
 
 ## Why
-I wanted to make my own static site to learn a bunch of things. In the two iterations (one PHP, one JS/Webpack) I've covered:
-- applying bootstrap/CSS through fairly direct manipulation of HTML markup (without a framework doing the heavy lifting for me)
-- hosting static sites on AWS S3, using AWS Cloudfront and Letsencrypt to serve the site over HTTPS
-- bundling/transpiling assets as part of build to target a variety browsers (currently using Webpack)
-- templating HTML files (initially done via custom PHP, now using EJS)
+I wanted to make my own static site to learn a bunch of things
 
-## Setup/Editing
-Each page in the site uses a common document, header, and navigation template (stored in `/templates`)
-The layout of the site is configured in `chippanfire.js`
-Each page has its own HTML template (also in `/templates`)
+**Generation 3**
+- Uses [React](https://reactjs.org/) as a templating langauge for the HTML generation
+  - Transpiling JSX code to vanilla javascript via [Babel](https://babeljs.io/)
+- All styling done via custom CSS following [BEM](http://getbem.com/) conventions
+- Hosting continues to be via AWS S3/Cloudfront
+
+**Generation 2**
+- uses [EJS](https://ejs.co/) to templates to render static HTML
+- uses Bootstrap for styling
+- bundling/transpiling assets as part of build to target a variety browsers via Webpack
+- hosting static sites on AWS S3, using AWS Cloudfront and Letsencrypt to serve the site over HTTPS
+
+**Generation 1**
+- PHP used to generate HTML from template files
+- uses Bootstrap for styling
 
 ## Build
-NPM and webpack do all the work here, and output a full site to ``./dist/``
 
-```
-npm install
-cd metronome-app
-npm install
-cd ..
+The site's static HTML is generated in two phases:
+- Babel is used to transpile the code in the `/src` directory
+- React is used as a templating language to generate HTML, which is pushed into the `/dist` directory
+
+```bash
 npm run build
+# or
+npm run watch #automatically re-build whenever changes are made to /src
 ```
+
+## Run
+To see the (locally) built site, start the dev webserver:
+```bash
+npm run dev-webserver # requires python to be installed on your system
+```
+
+Then navigate in your browser to http://localhost:8000/
+
+## Linting
+
+```bash
+npm run lint
+```
+
+Linting is done with [ESLint](https://eslint.org/) and is configured to conform code to https://standardjs.com/
 
 ## Deploy
 The site is hosted in an S3 bucket. Deployment is as simple as pushing the contents of the /dist folder to S3 using the AWS cli, via `npm run deploy`
