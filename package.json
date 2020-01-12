@@ -13,6 +13,7 @@
     "deploy": "npm run deploy:html && npm run deploy:assets",
     "deploy:assets": "aws s3 sync ./dist s3://chippanfire.com/ --delete --cache-control max-age=31536000",
     "deploy:html": "aws s3 sync ./dist s3://chippanfire.com/ --delete --exclude \"*\" --include \"*.html\" --cache-control max-age=86400",
+    "dev-webserver": "cd dist && python -m SimpleHTTPServer",
     "lint": "eslint ./src",
     "watch": "watch 'npm run build' ./src --interval 2"
   },

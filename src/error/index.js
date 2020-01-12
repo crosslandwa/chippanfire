@@ -23,7 +23,7 @@ function lookingFor(href) {
       suggestHref = 'index.html#music'
       suggestedName = 'music'
       break;
-    case urlContains(['midi', 'miniak', 'snap', 'modulo', 'soft', 'kmk', 'device', 'where']):
+    case urlContains(['device', 'kmk', 'metro', 'midi', 'miniak', 'modulo', 'push', 'snap', 'soft', 'where']):
       suggestHref = 'index.html#software'
       suggestedName = 'software'
       break;
