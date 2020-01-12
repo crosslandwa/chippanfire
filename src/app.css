@@ -1,7 +1,6 @@
 body {
   font-family: sans-serif;
   margin: 0 0 8em 0;
-  padding-top: 4em;
   font-weight: 300;
   overscroll-behavior: none;
 }
@@ -12,8 +11,6 @@ body {
   border-style: solid;
   border-width: 0 0 1px;
   border-color: #e7e7e7;
-  position: fixed;
-  top: 0;
 }
 
 .cpf-header-nav__item {
@@ -46,6 +43,7 @@ body {
 
 .cpf-header {
   margin-bottom: 0;
+  margin-top: 1em;
   font-weight: 500;
 }
 

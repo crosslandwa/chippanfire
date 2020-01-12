@@ -7,12 +7,12 @@ const Contact = props => (
     <SectionHeader id="contact" label="Contact" />
     <p>
       You can find me in these places:
-      <ul>
-        <li>
-          <ExternalLink href="https://github.com/crosslandwa">Github</ExternalLink>
-        </li>
-      </ul>
     </p>
+    <ul>
+      <li>
+        <ExternalLink href="https://github.com/crosslandwa">Github</ExternalLink>
+      </li>
+    </ul>
   </React.Fragment>
 )
 
