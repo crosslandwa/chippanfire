@@ -3,7 +3,7 @@ import PageTemplate from '../PageTemplate'
 
 const Error = props => (
   <PageTemplate>
-    <h1 className="cpf-header">Not Found 40404040404</h1>
+    <h1 className="cpf-header">Not Found</h1>
     <p>Oh no! What you're looking for is not here. Maybe you followed an old link.</p>
     <p>Try using the navigation above to find what you were after...</p>
     <p id="redirect-suggestion"></p>
