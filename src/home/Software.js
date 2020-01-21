@@ -37,17 +37,22 @@ const Software = props => (
         href="https://github.com/crosslandwa/push-wrapper"
       />
       <Panel
+        label="Metronome"
+        strap="An online metronome built with React, Redux and the Web Audio API"
+        href="metronome/index.html"
+      />
+      <Panel
         label="Max For Live Devices"
         strap="A collection of Max For Live devices I have made"
         href="max-for-live-devices.html"
       />
+    </div>
+    <div className="cpf-grid__row">
       <Panel
         label="Wac Network MIDI"
         strap="Cross-platform (Win/OS X) tool for transmitting MIDI between computers"
         href="wac-network-midi.html"
       />
-    </div>
-    <div className="cpf-grid__row">
       <Panel
         label="Miniak Patch Editor"
         strap="Patch editor/management tool for the Akai Miniak synthesiser"
@@ -58,6 +63,8 @@ const Software = props => (
         strap="In-depth control of Ableton Live using the Korg Microkontrol"
         href="https://github.com/crosslandwa/kmkControl"
       />
+    </div>
+    <div className="cpf-grid__row">
       <PanelExternal
         label="ChipPanFire"
         strap="Totally meta, see the source code for generating this site!"
