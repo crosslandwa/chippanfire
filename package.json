@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "CPF site generated via JS",
   "scripts": {
-    "build": "npm run build:copy-css && npm run build:transpile && npm run build:prepare-dist-dir && npm run build:render && npm run build:copy-assets",
-    "build:copy-css": "mkdir -p build && cp src/app.css build/app.css",
-    "build:transpile": "babel ./src --out-dir build",
+    "build": "npm run build:prepare-dist-dir && npm run build:render && npm run build:copy-assets",
     "build:prepare-dist-dir": "rm -rf dist/* && mkdir -p dist",
-    "build:render": "cd build && node main.js && cd -",
+    "build:render": "node build.js",
     "build:copy-assets": "find ./src -type f \\( -iname \\*.jpg -o -iname \\*.png -o -iname \\*.svg -o -iname \\*.ico -o -iname \\*.pdf -o -iname \\*.zip \\) -exec cp {} ./dist \\;",
     "deploy": "npm run deploy:html && npm run deploy:assets",
     "deploy:assets": "aws s3 sync ./dist s3://chippanfire.com/ --delete --cache-control max-age=31536000",
@@ -17,10 +15,10 @@
     "watch": "watch 'npm run build' ./src --interval 2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
+    "@babel/register": "^7.9.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",

@@ -25,13 +25,15 @@ ${css}
 </html>
 `
 
-readFile('./app.css')
+const writeFileToDist = filename => writeFile(`${__dirname}/../dist/${filename}`)
+
+readFile(`${__dirname}/app.css`)
   .then(html)
   .then(render => Promise.all([
-    Promise.resolve(<Home />).then(render).then(writeFile('../dist/index.html')),
-    Promise.resolve(<Error />).then(render).then(writeFile('../dist/error.html')),
-    Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFile('../dist/max-for-live-devices.html')),
-    Promise.resolve(<MiniakPatchEditor />).then(render).then(writeFile('../dist/miniak-patch-editor.html')),
-    Promise.resolve(<WacNetworkMidi />).then(render).then(writeFile('../dist/wac-network-midi.html')),
-    Promise.resolve('User-agent: *\nDisallow:').then(writeFile('../dist/robots.txt'))
+    Promise.resolve(<Home />).then(render).then(writeFileToDist('index.html')),
+    Promise.resolve(<Error />).then(render).then(writeFileToDist('error.html')),
+    Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFileToDist('max-for-live-devices.html')),
+    Promise.resolve(<MiniakPatchEditor />).then(render).then(writeFileToDist('miniak-patch-editor.html')),
+    Promise.resolve(<WacNetworkMidi />).then(render).then(writeFileToDist('wac-network-midi.html')),
+    Promise.resolve('User-agent: *\nDisallow:').then(writeFileToDist('robots.txt'))
   ]))
