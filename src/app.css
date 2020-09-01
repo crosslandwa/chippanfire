@@ -75,13 +75,10 @@ body {
   }
 
   .cpf-grid__column-one-third:first-child, .cpf-grid__column-one-half:first-child {
-    padding: 0 1em 0 0;
+    padding-right: 1em;
   }
-  .cpf-grid__column-one-third:last-child:not(:first-child), .cpf-grid__column-one-half:last-child:not(:first-child) {
-    padding: 0 0 0 1em;
-  }
-  .cpf-grid__column-one-third:not(:first-child):not(:last-child) {
-    padding: 0 1em;
+  .cpf-grid__column-one-third:nth-child(3), .cpf-grid__column-one-half:nth-child(2) {
+    padding-left: 1em;
   }
 }
 
