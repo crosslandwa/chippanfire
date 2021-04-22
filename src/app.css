@@ -82,10 +82,6 @@ body {
   }
 }
 
-.cpf-image--full-width {
-  width: 100%;
-}
-
 .cpf-link {
   color: #337ab7;
 }
@@ -162,4 +158,16 @@ body {
   margin: 3em 0;
   border: 0;
   border-top: 1px solid #eee;
+}
+
+.cpf-music-player__iframe--bandcamp {
+  border: 0;
+  height: 678px;
+  width: 288px;
+}
+
+.cpf-music-player__iframe--soundcloud {
+  max-width: 600px;
+  height: 450px;
+  width: 100%;
 }

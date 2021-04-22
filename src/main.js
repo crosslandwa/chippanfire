@@ -6,6 +6,7 @@ import MiniakPatchEditor from './miniak-patch-editor'
 import WacNetworkMidi from './wac-network-midi'
 import Error from './error'
 import { readFile, writeFile } from './files/'
+import path from 'path'
 
 const html = css => component => `<!DOCTYPE html>
 <html lang="en">
@@ -26,9 +27,9 @@ ${css}
 </html>
 `
 
-const writeFileToDist = filename => writeFile(`${__dirname}/../dist/${filename}`)
+const writeFileToDist = filename => writeFile(path.resolve('dist', filename))
 
-readFile(`${__dirname}/app.css`)
+readFile(path.resolve('src', 'app.css'))
   .then(html)
   .then(render => Promise.all([
     Promise.resolve(<Home />).then(render).then(writeFileToDist('index.html')),
