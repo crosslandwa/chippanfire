@@ -19,7 +19,7 @@ const PageTemplate = ({ children }) => (
     </div>
     <footer className="cpf-footer">
       <div className="cpf-container">
-        <p>ChipPanFire 2021</p>
+        <p>ChipPanFire</p>
       </div>
     </footer>
   </React.Fragment>

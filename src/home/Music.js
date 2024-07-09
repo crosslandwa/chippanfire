@@ -1,6 +1,5 @@
 import React from 'react'
 import SectionHeader from './SectionHeader'
-import ExternalLink from '../external-link'
 
 const Music = props => (
   <>
@@ -13,8 +12,10 @@ const Music = props => (
     </iframe>
 
     <h2 className="cpf-header--small">Socco Chico</h2>
-    <p>I make some music (sometimes with <ExternalLink href="https://soundcloud.com/adamparkinson">Adam Parkinson</ExternalLink>) for the dancefloor</p>
-    <iframe className="cpf-music-player__iframe--soundcloud" scrolling="no" frameBorder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1644437&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    <p>I make some music (sometimes with Adam Parkinson) for the dancefloor</p>
+    <iframe className="cpf-music-player__iframe--bandcamp" src="https://bandcamp.com/EmbeddedPlayer/album=4084820093/size=large/bgcol=ffffff/linkcol=63b2cc/transparent=true/" seamless>
+      <a href="https://soccochico.bandcamp.com/album/socco-chico">Socco Chico by Socco Chico</a>
+    </iframe>
 
     <h2 className="cpf-header--small">Kilclinton</h2>
     <p>Disco synth jams and drum edits with Brett Lambe</p>
