@@ -29,7 +29,7 @@
     "eslint-plugin-react": "^7.23.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "watch": "^1.0.2"
+    "watch": "^0.13.0"
   },
   "author": "https://github.com/crosslandwa",
   "license": "ISC"
