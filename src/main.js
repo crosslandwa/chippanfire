@@ -33,7 +33,7 @@ readFile(path.resolve('src', 'app.css'))
   .then(html)
   .then(render => Promise.all([
     Promise.resolve(<Home />).then(render).then(writeFileToDist('index.html')),
-    Promise.resolve(<Error />).then(render).then(writeFileToDist('error.html')),
+    Promise.resolve(<Error />).then(render).then(writeFileToDist('404.html')),
     Promise.resolve(<MaxForLiveDevices />).then(render).then(writeFileToDist('max-for-live-devices.html')),
     Promise.resolve(<MiniakPatchEditor />).then(render).then(writeFileToDist('miniak-patch-editor.html')),
     Promise.resolve(<WacNetworkMidi />).then(render).then(writeFileToDist('wac-network-midi.html')),
