@@ -36,10 +36,10 @@ const Software = props => (
         strap="Interface with your Ableton Push (mk1) from a web browser"
         href="https://github.com/crosslandwa/push-wrapper"
       />
-      <Panel
+      <PanelExternal
         label="Metronome"
         strap="An online metronome built with React, Redux and the Web Audio API"
-        href="metronome/index.html"
+        href="https://crosslandwa.github.io/metronome/"
       />
       <Panel
         label="Max For Live Devices"
@@ -65,10 +65,10 @@ const Software = props => (
       />
     </div>
     <div className="cpf-grid__row">
-      <Panel
+      <PanelExternal
         label="Dude Up"
-        strap={<>A web-app for settling up the cost of group activities. See the <ExternalLink href="https://github.com/crosslandwa/dudeup-webapp">source code here.</ExternalLink></>}
-        href="dude-up/index.html"
+        strap={<>A web-app for settling up the cost of group activities. See the <ExternalLink href="https://github.com/crosslandwa/dudeup">source code here.</ExternalLink></>}
+        href="https://crosslandwa.github.io/dudeup/"
       />
       <PanelExternal
         label="ChipPanFire"
