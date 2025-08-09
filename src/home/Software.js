@@ -27,9 +27,6 @@ const PanelExternal = ({ href, label, strap }) => (
 const Software = props => (
   <React.Fragment>
     <SectionHeader id="software" label="Software" />
-    <p>
-      I've made some (free!) software to help me make music, mostly for <ExternalLink href="https://www.cycling74.com/">MaxMSP</ExternalLink> and <ExternalLink href="https://www.ableton.com">Ableton Live</ExternalLink>, mostly. Some of it is available here, some of it is available from the below Github links
-    </p>
     <div className="cpf-grid__row">
       <PanelExternal
         label="Push Wrapper"
@@ -43,7 +40,7 @@ const Software = props => (
       />
       <Panel
         label="Max For Live Devices"
-        strap="A collection of Max For Live devices I have made"
+        strap="A collection of (free) Max For Live devices I have made"
         href="max-for-live-devices.html"
       />
     </div>

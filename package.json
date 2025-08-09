@@ -7,9 +7,9 @@
     "build:prepare-dist-dir": "rm -rf dist/* && mkdir -p dist",
     "build:render": "node build.js",
     "build:copy-assets": "find ./src -type f \\( -iname \\*.jpg -o -iname \\*.png -o -iname \\*.svg -o -iname \\*.ico -o -iname \\*.pdf -o -iname \\*.zip \\) -exec cp {} ./dist \\;",
-    "dev-webserver": "cd dist && python -m SimpleHTTPServer",
+    "dev-webserver": "cd dist && python3 -m http.server 8000",
     "lint": "eslint ./src",
-    "watch": "watch 'npm run build' ./src --interval 2"
+    "watch": "watch 'npm run build:render' ./src --interval 2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.6",
