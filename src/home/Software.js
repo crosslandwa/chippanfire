@@ -73,7 +73,7 @@ const Software = props => (
       <PanelExternal
         label="ChipPanFire"
         strap="Totally meta, see the source code for generating this site!"
-        href="https://github.com/crosslandwa/chippanfire-site"
+        href="https://github.com/crosslandwa/chippanfire"
       />
     </div>
   </React.Fragment>

@@ -1,4 +1,4 @@
-# chippanfire-site
+# chippanfire
 
 Generation of the (static) chippanfire site
 
@@ -24,8 +24,10 @@ I wanted to make my own static site to learn a bunch of things
 ## Build
 
 The site's static HTML is generated in two phases:
-- Babel is used to transpile the code in the `/src` directory
-- React is used as a templating language to generate HTML, which is pushed into the `/dist` directory
+1. Babel is used to transpile the code in the `/src` directory
+    - React is used as a templating language to generate HTML, which is pushed into the `/dist` directory
+1. Static assets are included in the build
+    - A bash command is used to find/copy assets into the `/dist` directory
 
 ```bash
 npm run build
